@@ -2,9 +2,21 @@
 # Technical Details:
 
 PERIOD 4
+
+
 Eunice Wong,Han Xiao
 
 Overcooked is a multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be two teams: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots. There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate
+
+Expanded Descrition:
+- Critical Features
+       - abstract class players
+            - movement
+       - abstract class object
+            - picked up/ placed down/ combined
+- Nice to Have Features
+       - moveable islands as the levels increase in difficulty
+       - 
      
 # Project Design
 
