@@ -21,7 +21,7 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 ### Extras
 :x: Sliding Kitchen Counters/Settings  
 :x: Different Cuisines/Settings  
-     
+
 # Project Design
 (UML Diagram to be uploaded)
 
