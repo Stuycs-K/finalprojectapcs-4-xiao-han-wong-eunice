@@ -1,9 +1,9 @@
 
 # Technical Details:
 
-PERIOD 4
-Eunice Wong, Han Xiao
-DUI
+PERIOD 4  <br/>
+Eunice Wong, Han Xiao  <br/>
+DUI  <br/>
 
 Overcooked is a multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be two teams: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots. There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate.
 
@@ -25,32 +25,52 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 # Project Design
 (UML Diagram to be uploaded)
 
-#### Classes  
-| Class (Abstract) | Subclasses | Instance Vars | Methods |
+### UML Chart 
+| Class       | Subclasses | Instance Vars | Methods |
 | :----------:| :---------: | :----------: | :----------: |
-| Player      | N/A         | -name: String <br/> -location: Vector <br/> -possessed: Object[] | +distanceFrom(Object): double <br/> +getName(): String <br/> +move(keyPressed): void <br/> +act(): void|
-| Order  | N/A  | -name: String <br/> -ingredients: food[] <br/> -contents: food[] | +getName(): String   |
-| Object    | Food    | 9999999      | TBA     |  
-| Food   | N/A   | -name: String <br/> -state: int <br/> -xTime: int | +getName(): String    |
+| Player      | N/A         | -name: String <br/> ~-location: Vector~ <br/> facing: int[] <br/> -possess: Object[] | +distanceFrom(Object): double <br/> +getName(): String <br/> +move(keyPressed): void <br/> +drop(Object): void <br/> +pickUp(Object): void <br/> +cook(Food): int <br/> +chop(Food): void <br/> +wash(Object): void|
+| Order       | N/A         | -name: String <br/> -ingredients: food[] <br/> -contents: food[] <br/> -procedure: Queue| +getName(): String <br/> +isComplete(): boolean |
+| Object      | Food <br/> Plate | <br/> -location: Vector      | TBA     |  
+| Food   | N/A   | -name: String <br/> -state: int <br/> -washTime: int <br/> -cookTime: int <br/> -chopTime: int | +getName(): String <br/> +changeState(): void <br/> +getWash(): int <br/> +getCook(): int <br/> +getChop(): int|
+| Appliances   | N/A   | -name: String <br/> -length: int <br/> -width: int| +getName(): String <br/> +animate(): void|
+
+
+#### Method Descriptions
+**getName(): String**   returns the name of the object<br/> 
+**+move(keyPressed): void** <br/> 
+**+drop(Object): void**   removes Object from Player's possession (instance variable list possess)<br/> 
+**+pickUp(Object): void** adds Object to Player's possession<br/> 
+**+cook(Food): int** <br/> 
+**+chop(Food): void** <br/> 
+**+wash(Object): void**   <br/>
+**+isComplete(): boolean**    <br/>
+**+changeState(): void** <br/> 
+**+getWash(): int**    <br/> 
+**+getCook(): int**    <br/> 
+**+getChop(): int**    <br/>
+**+animate(): void**   <br/>
 
 ##### Notes
-- Primary cuisine/setting yet to be decided
-- The states variable of food will contain an integer indicating (0: raw, 1: cooked, 2: burnt)  
+- ~Primary cuisine/setting yet to be decided~ Japanese Cuisine  
+~- The states variable of food will contain an integer indicating (0: raw, 1: cooked, 2: burnt)~
 - An order is considered complete when the foods (and their respective states) in the ingredients var match that of the contents var  
 - If the order is sent out with incorrect foods and/or states, no points are given
-- A player can only possess one object at a time  
+- A player can only possess one object at a time 
 - Actions performed on the object will be determined by location (one key determines all actions)  
   - Ex. if player is facing the trash, pressing the action key will result in the object being thrown away  
   - if a player is facing a chopping board with food on it, holding down the action key will begin chopping the food  
   - and so on... otherwise, the object can be dropped/picked up  
-- xTime variable denotes specific times required for actions to transform the state of food (ex. chopTime, cookTime, bakeTime... etc.)  
-- Possible modifications: an additional class may be added to represent components of dishes that need to be combined beforehand (ex. mixing together batter) and then processed (cooked)
+~- xTime variable denotes specific times required for actions to transform the state of food (ex. chopTime, cookTime, bakeTime... etc.)  ~
+~- Possible modifications: an additional class may be added to represent components of dishes that need to be combined beforehand (ex. mixing together batter) and then processed (cooked)~
   
-#### Algorithms
-How do bots perform actions? (maybe a queue of actions?)  
+### Algorithms
+~How do bots perform actions? (maybe a queue of actions?)~  
+Two bots will work together on the same order unless an emergency occurs (ex. food is burning). A set queue of tasks will be assigned to each recipe for the bots to follow.  
+When a bot is teaming with a person, the bot will work on a separate order and mainly help with prep
 
-#### How things fit together
-
+### How things fit together
+#### Animation and Processing
+#### Gameplay
     
 # Intended pacing:
 
@@ -58,8 +78,9 @@ How you are breaking down the project and who is responsible for which parts.
 
 | Date       | Tasks         | Notes        | 
 | :----------: | :---------: | :----------: |
-| May 23rd     | 9999999999 | 9999999999   |
-| May 26th     | 999999999  | 999999999    |
-| May 28th     | 99999999   | 99999999     |
-| May 30th     | 9999999    | 9999999      |
-| June 1st     | 9999999    | 9999999      |
+| May 22nd     | Han AND Eunice: complete plan and outline for game | N/A   |
+| May 23rd     | Han: <br/> Eunice: | N/A    |
+| May 26th     | Han: <br/> Eunice:     | N/A    |
+| May 28th     | Complete Bot Algorithm for both types of gameplay  | N/A     |
+| May 30th     | Han: <br/> Eunice:      | N/A      |
+| June 1st     | Han: <br/> Eunice:      | N/A      |
