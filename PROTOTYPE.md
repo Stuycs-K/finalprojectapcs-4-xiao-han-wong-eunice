@@ -28,11 +28,11 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 #### Classes  
 | Class       | Subclasses | Instance Vars | Methods |
 | :----------:| :---------: | :----------: | :----------: |
-| Player      | N/A         | -name: String <br/> -location: Vector <br/> -possessed: Object[] | +distanceFrom(Object): double <br/> +getName(): String <br/> +move(keyPressed): void <br/> +drop(): void <br/> +pickUp(): void|
+| Player      | N/A         | -name: String <br/> ~-location: Vector~ <br/> facing: int[] <br/> -possess: Object[] | +distanceFrom(Object): double <br/> +getName(): String <br/> +move(keyPressed): void <br/> +drop(Object): void <br/> +pickUp(Object): void <br/> +cook(Food) <br/> +chop(Food) <br/> +wash(Object)|
 | Order  | N/A  | -name: String <br/> -ingredients: food[] <br/> -contents: food[] <br/> -tasks: type TBD| +getName(): String   |
-| Object    | Food <br/> Utilities | <br/> -location: Vector      | TBA     |  
-| Food   | N/A   | -name: String <br/> -state: int <br/> -xTime: int | +getName(): String    |
-| Utilities   | N/A   | -name: String | +getName(): String    |
+| Object    | Food <br/> Plate | <br/> -location: Vector      | TBA     |  
+| Food   | N/A   | -name: String <br/> -state: int <br/> -washTime: int <br/> -cookTime: int <br/> -chopTime: int <br/> -procedure: Queue| +getName(): String    |
+| Appliances   | N/A   | -name: String <br/> -length: int <br/> -width: int| +getName(): String   |
 
 ##### Notes
 - ~Primary cuisine/setting yet to be decided~ Japanese Cuisine  
