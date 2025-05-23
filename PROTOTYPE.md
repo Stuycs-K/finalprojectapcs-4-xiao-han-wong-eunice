@@ -40,13 +40,13 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 **+move(keyPressed): void** <br/> 
 **+drop(Object): void**   removes Object from Player's possession (instance variable list possess)<br/> 
 **+pickUp(Object): void** adds Object to Player's possession<br/> 
-**+cook(Food): int** <br/> 
-**+chop(Food): void** <br/> 
-**+wash(Object): void**   <br/>
-**+isComplete(): boolean**    <br/>
-**+changeState(): void** <br/> 
-**+getWash(): int**    <br/> 
-**+getCook(): int**    <br/> 
+**+cook(Food): int** modifies food state according to timer <br/> 
+**+chop(Food): void** modifies food state according to timer<br/> 
+**+wash(Object): void** modifies object state according to timer<br/>
+**+isComplete(): boolean** returns if the action done is completed <br/>
+**+changeState(): void** modifies the variable state<br/> 
+**+getWash(): int**   <br/> 
+**+getCook(): int**   <br/> 
 **+getChop(): int**    <br/>
 **+animate(): void**   <br/>
 
@@ -62,11 +62,12 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
   - and so on... otherwise, the object can be dropped/picked up  
 ~- xTime variable denotes specific times required for actions to transform the state of food (ex. chopTime, cookTime, bakeTime... etc.)  ~
 ~- Possible modifications: an additional class may be added to represent components of dishes that need to be combined beforehand (ex. mixing together batter) and then processed (cooked)~
+- 
   
 ### Algorithms
 ~How do bots perform actions? (maybe a queue of actions?)~  
 Two bots will work together on the same order unless an emergency occurs (ex. food is burning). A set queue of tasks will be assigned to each recipe for the bots to follow.  
-When a bot is teaming with a person, the bot will work on a separate order and mainly help with prep
+When a bot is teaming with a person, ~the bot will work on a separate order and mainly help with prep~ both the player and bot will have their own orders and prepare dishes on their own.
 
 ### How things fit together
 #### Animation and Processing
