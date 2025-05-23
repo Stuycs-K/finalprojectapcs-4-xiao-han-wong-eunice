@@ -30,7 +30,7 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 | :----------:| :---------: | :----------: | :----------: |
 | Player      | N/A         | -name: String <br/> ~-location: Vector~ <br/> facing: int[] <br/> -possess: Object[] | +distanceFrom(Object): double <br/> +getName(): String <br/> +move(keyPressed): void <br/> +drop(Object): void <br/> +pickUp(Object): void <br/> +cook(Food): int <br/> +chop(Food): void <br/> +wash(Object): void|
 | Order       | N/A         | -name: String <br/> -ingredients: food[] <br/> -contents: food[] <br/> -procedure: Queue| +getName(): String <br/> +isComplete(): boolean |
-| Object      | Food <br/> Plate | <br/> -location: Vector      | TBA     |  
+| Plate      | N/A | -xComponent: int  <br/> -yComponent: int    |      |  
 | Food   | N/A   | -name: String <br/> -state: int <br/> -washTime: int <br/> -cookTime: int <br/> -chopTime: int | +getName(): String <br/> +changeState(): void <br/> +getWash(): int <br/> +getCook(): int <br/> +getChop(): int|
 | Appliances   | N/A   | -name: String <br/> -length: int <br/> -width: int| +getName(): String <br/> +animate(): void|
 
