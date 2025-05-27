@@ -5,25 +5,27 @@ PERIOD 4  <br/>
 Eunice Wong, Han Xiao  <br/>
 DUI  <br/>
 
-Overcooked is a multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be two teams: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots. There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate.
+Overcooked is a singular or multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be ~two~ one team and the player(s) will try to complete as many orders as possible. ~: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots.~ There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate.
 
 ### Critical Features (Minimum Viable Product)
-:x: Player Movement using WASD and IJKL  
+:x: Single player movement using WASD
+~:x: Player Movement using WASD and IJKL~  
 :x: Player Ability to Perform Tasks (pick up/drop/chop... etc.)  
 :x: Point Accumulation throughout Rounds  
 :x: Increasing Intensity (tasks) with Game Progression  
-:x: Bots that replicate Player Features  
+~:x: Bots that replicate Player Features~  
 :x: Working Game Timer  
 :x: Mid-game screens  
 :x: End screen   
 :x: Animation of Features Above in Processing  
 
 ### Extras
+:x: Second player movement and functionality using IJKL
 :x: Sliding Kitchen Counters/Settings  
 :x: Different Cuisines/Settings  
 
 # Project Design
-![Alt text](OvercookedUML.jpeg?raw=true "Title" ) 
+![Alt text](OvercookedUML.jpeg?raw=true "Title" )
 
 ### UML Chart
 | Class       | Subclasses | Instance Vars | Methods |
@@ -36,19 +38,19 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 
 
 #### Method Descriptions
-**getName(): String**   returns the name of the object<br/> 
-**+move(keyPressed): void** <br/> 
+**getName(): String**   returns the name of the object<br/>
+**+move(keyPressed): void** <br/>
 **+moveTo(): void** finds and goes the fastest route to complete task(bot only)<br/>
-**+drop(Object): void**   removes Object from Player's possession (instance variable list possess)<br/> 
-**+pickUp(Object): void** adds Object to Player's possession<br/> 
-**+cook(Food): int** modifies food state according to timer <br/> 
-**+chop(Food): void** modifies food state according to timer<br/> 
+**+drop(Object): void**   removes Object from Player's possession (instance variable list possess)<br/>
+**+pickUp(Object): void** adds Object to Player's possession<br/>
+**+cook(Food): int** modifies food state according to timer <br/>
+**+chop(Food): void** modifies food state according to timer<br/>
 **+wash(Object): void** modifies object state according to timer<br/>
 **+isComplete(): boolean** returns if the action done is completed <br/>
-**+changeState(): void** modifies the variable state<br/> 
-**+getWash(): int**   <br/> 
-**+getCook(): int**   <br/> 
-**+getChop(): int**    <br/>
+**+changeState(): void** modifies the variable state<br/>
+**+getWash(): int**   returns wash time<br/>
+**+getCook(): int**   returns cook time<br/>
+**+getChop(): int**    returns chop time<br/>
 **+animate(): void**   <br/>
 
 ##### Notes
@@ -66,18 +68,18 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 
 ### Algorithms
 ~How do bots perform actions? (maybe a queue of actions?)~  
-Two bots will work together on the same order unless an emergency occurs (ex. food is burning). A set queue of tasks will be assigned to each recipe for the bots to follow.  
-When a bot is teaming with a person, the bot will work on a separate order and mainly help with prep
+~Two bots will work together on the same order unless an emergency occurs (ex. food is burning). A set queue of tasks will be assigned to each recipe for the bots to follow.~
+~When a bot is teaming with a person, the bot will work on a separate order and mainly help with prep~
 
 ### How things fit together
 #### Animation and Processing
-- The screen will be divided into a x by x grid, each of the boxes will contain x pixels. 
-    - movement of a player or bot will only be animated once they have past a pixel(glitchy)
-- Specific location of appilances will be blocked off 
-- After game has ended all functions will be disabled and end scrren will show
+- The screen will be divided into a x by x grid, each of the boxes will contain x pixels.
+    - movement of a player ~or bot~ will only be animated once they have past a pixel(glitchy)
+- Specific location of appilances will be blocked off
+- After game has ended all functions will be disabled and end screen will show
 #### Gameplay
 - Completed orders will accumulate points, winner will be announced on the end screen
-- 
+-
 # Intended pacing:
 
 How you are breaking down the project and who is responsible for which parts.
