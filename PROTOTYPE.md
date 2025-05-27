@@ -25,6 +25,10 @@ Overcooked is a singular or multi-player game(max two players) that incorporates
 :x: Different Cuisines/Settings  
 
 # Project Design
+### Latest UML Diagram
+![Alt text](OvercookedUML2.0.jpeg?raw=true "Title" )
+
+### First UML Diagram
 ![Alt text](OvercookedUML.jpeg?raw=true "Title" )
 
 ### UML Chart
