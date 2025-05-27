@@ -23,7 +23,7 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
 :x: Different Cuisines/Settings  
 
 # Project Design
-![Alt text](OvercookedUML.pdf?raw=true "Title" ) 
+![Alt text](OvercookedUML.jpeg?raw=true "Title" ) 
 
 ### UML Chart
 | Class       | Subclasses | Instance Vars | Methods |
