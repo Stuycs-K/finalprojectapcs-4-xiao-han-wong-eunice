@@ -5,7 +5,7 @@ PERIOD 4  <br/>
 Eunice Wong, Han Xiao  <br/>
 DUI  <br/>
 
-Overcooked is a multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be two teams: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots. There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate.
+Overcooked is a singular or multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be ~two~ one team and the player(s) will try to complete as many orders as possible. ~: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots.~ There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate.
 
 ### Critical Features (Minimum Viable Product)
 :x: Player Movement using WASD and IJKL  
@@ -67,15 +67,15 @@ Overcooked is a multi-player game(max two players) that incorporates similar pla
   
 ### Algorithms
 ~How do bots perform actions? (maybe a queue of actions?)~  
-Two bots will work together on the same order unless an emergency occurs (ex. food is burning). A set queue of tasks will be assigned to each recipe for the bots to follow.  
-When a bot is teaming with a person, the bot will work on a separate order and mainly help with prep
+~Two bots will work together on the same order unless an emergency occurs (ex. food is burning). A set queue of tasks will be assigned to each recipe for the bots to follow.~
+~When a bot is teaming with a person, the bot will work on a separate order and mainly help with prep~
 
 ### How things fit together
 #### Animation and Processing
 - The screen will be divided into a x by x grid, each of the boxes will contain x pixels. 
-    - movement of a player or bot will only be animated once they have past a pixel(glitchy)
+    - movement of a player ~or bot~ will only be animated once they have past a pixel(glitchy)
 - Specific location of appilances will be blocked off 
-- After game has ended all functions will be disabled and end scrren will show
+- After game has ended all functions will be disabled and end screen will show
 #### Gameplay
 - Completed orders will accumulate points, winner will be announced on the end screen
 - 
