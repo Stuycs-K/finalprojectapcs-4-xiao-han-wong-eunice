@@ -1,4 +1,4 @@
-abstract class Order{
+abstract class Order extends Matter{
   FoodItem[] ingredients;
   FoodItem[] prepared;
   
@@ -25,3 +25,7 @@ abstract class Order{
     }
     return true;
   }
+  
+  abstract int timeLimit(){
+  }
+}

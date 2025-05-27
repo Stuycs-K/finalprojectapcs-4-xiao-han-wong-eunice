@@ -1,19 +1,18 @@
-abstract class FoodItem{
+abstract class FoodItem extends Matter{
   String name;
+  int raw;
+  int cooked;
+  int burnt;
   int state;
   // 0 = raw, 1 = washed, 2 = cooked, 3 = chopped
-  int washTime;
-  int cookTime;
-  int chopTime;
-  boolean chopped;
+  abstract int washTime;
+  abstract int cookTime;
+  abstract int chopTime;
+  abstract boolean chopped;
   
   FoodItem(String name){
     this.name = name;
     this.state = 0;
-  }
-  
-  String getName(){
-    return name;
   }
   
   abstract void changeState(){
