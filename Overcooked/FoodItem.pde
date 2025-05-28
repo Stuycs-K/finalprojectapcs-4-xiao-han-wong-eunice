@@ -1,8 +1,8 @@
-abstract class FoodItem extends Matter{
+abstract class FoodItem extends Droppable{
   String name;
-  int raw;
-  int cooked;
-  int burnt;
+  int raw = 0;
+  int cooked = 1;
+  int burnt = 2;
   int state;
   // 0 = raw, 1 = washed, 2 = cooked, 3 = chopped
   abstract int washTime;

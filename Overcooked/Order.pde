@@ -1,4 +1,4 @@
-abstract class Order extends Matter{
+abstract class Order extends Droppable{
   FoodItem[] ingredients;
   FoodItem[] prepared;
   
