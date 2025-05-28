@@ -1,4 +1,4 @@
-abstract class Order{
+abstract class Order implements Droppable{
   FoodItem[] ingredients;
   FoodItem[] prepared;
   
