@@ -1,17 +1,8 @@
-abstract class Matter{
-  abstract String name;
-  abstract float xCoord;
-  abstract float yCoord;
-  abstract boolean moveable;
+interface Matter{
   
-  String getName(){
-    return name;
-  }
+  String getName();
   
-  float getX(){
-    return xCoord;
-  }
+  float getX();
   
-  float getY(){
-    return yCoord;
-  }
+  float getY();
+}

@@ -1,27 +1,12 @@
-abstract class Droppable extends Matter{
-  abstract boolean sink;
-  abstract boolean belt;
-  abstract boolean board;
-  abstract boolean cooker;
-  abstract boolean stove;
+interface Droppable extends Matter{
   
-  boolean getSink(){
-    return sink;
-  }
+  boolean getSink();
   
-  boolean getBelt(){
-    return belt;
-  }
+  boolean getBelt();
   
-  boolean getBoard(){
-    return board;
-  }
+  boolean getBoard();
   
-  boolean getCooker(){
-    return cooker;
-  }
+  boolean getCooker();
   
-  boolean getStove(){
-    return stove;
-  }
+  boolean getStove();
 }
