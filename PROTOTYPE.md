@@ -7,6 +7,9 @@ DUI  <br/>
 
 Overcooked is a singular or multi-player game(max two players) that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingrdeints that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be ~two~ one team and the player(s) will try to complete as many orders as possible. ~: The players can choose to join the same team and compete against bots or join different teams (against each other) accompanied by bots.~ There will be a total of 5 rounds. Each round lasts 5 minutes, and points will accumulate.
 
+### Game Map/Interface
+![Alt text](overcookedMap.jpg?raw=true "Title" )
+
 ### Critical Features (Minimum Viable Product)
 :x: Single player movement using WASD  
 ~:x: Player Movement using WASD and IJKL~  

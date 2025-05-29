@@ -1,8 +1,13 @@
-class Player{
+class Player extends Matter{
   int[] facing;
   ArrayList<Matter> possess;
   
-  void move(keyPressed k){
+  Player(String name, float x, float y){
+    super(name, x, y, true);
+    facing = new int[]{0, -1};
+  }
+  
+  void move(String k){
   }
   
   void drop(Matter obj){

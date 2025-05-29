@@ -1,29 +1,41 @@
-abstract class FoodItem implements Droppable{
+abstract class FoodItem extends Matter implements Droppable{
   String name;
-  int state;
-  // 0 = raw, 1 = washed, 2 = cooked, 3 = chopped
   int raw = 0;
   int cooked = 1;
   int burnt = 2;
-  int washTime;
-  int cookTime;
-  int chopTime;
-  boolean chopped;
+  int state, washTime, cookTime, chopTime;
+  boolean chopped, washed;
   
-  FoodItem(String name){
+  FoodItem(String name, int wash, int cook, int chop, int x, int y){
+    super(name, x, y, true);
     this.name = name;
     this.state = 0;
+    washTime = wash;
+    cookTime = cook;
+    chopTime = chop;
+    washed = false;
+    chopped = false;
   }
   
   String getName(){
     return name;
   }
   
-  abstract void changeState(){
+  void changeState(String str){
+    if (str.equals("cooked")){
+      state = cooked;
+    }
+    else if (str.equals("burnt")){
+      state = burnt;
+    }
+  }
+  
+  void setWash(){
+    washed = !washed;
   }
   
   int getWash(){
-     return this.washtime;
+     return this.washTime;
   }
   
   int getCook(){
@@ -38,7 +50,7 @@ abstract class FoodItem implements Droppable{
     return this.chopped;
   }
   
-  abstract void display(float x, float y){
+  void display(float x, float y){
   }
   
   boolean sink(){
