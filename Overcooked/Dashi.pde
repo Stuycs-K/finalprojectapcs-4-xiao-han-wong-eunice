@@ -1,8 +1,15 @@
 class Dashi extends FoodItem{
-  int washTime = 0;
-  int cookTime = 5;
-  int chopTime = 0;
-  boolean chopped = false;
+  Dashi(float x, float y){
+    super("Dashi", 0, 5, 0, x, y);
+  }
+  boolean sink(){
+    return false;
+  }
+  boolean board(){
+    return false;
+  }
+}
   
-  void changeState(){
-    if 
+  
+  
+  

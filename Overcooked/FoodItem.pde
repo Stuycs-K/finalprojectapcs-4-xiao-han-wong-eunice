@@ -6,7 +6,7 @@ abstract class FoodItem extends Matter implements Droppable{
   int state, washTime, cookTime, chopTime;
   boolean chopped, washed;
   
-  FoodItem(String name, int wash, int cook, int chop, int x, int y){
+  FoodItem(String name, int wash, int cook, int chop, float x, float y){
     super(name, x, y, true);
     this.name = name;
     this.state = 0;

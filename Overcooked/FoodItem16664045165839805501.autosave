@@ -1,0 +1,42 @@
+abstract class FoodItem implements Droppable{
+  String name;
+  float xCoor;
+  float yCoor;
+  
+  int raw = 0;
+  int cooked = 1;
+  int burnt = 2;
+  int state;
+  // 0 = raw, 1 = washed, 2 = cooked, 3 = chopped
+  protected int washTime;
+  protected int cookTime;
+  protected int chopTime;
+  protected boolean chopped;
+  
+  FoodItem(String name){
+    this.name = name;
+    this.state = raw;
+  }
+  
+  abstract void changeState();
+  abstract void display(float x, float y);
+  
+  int getWash(){
+     return this.washtime;
+  }
+  
+  int getCook(){
+    return this.cookTime;
+  }
+  
+  int chopTime(){
+    return this.chopTime;
+  }
+  
+  boolean isChopped(){
+    return this.chopped;
+  }
+  
+    
+    
+  
