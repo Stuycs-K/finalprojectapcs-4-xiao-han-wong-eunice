@@ -23,21 +23,12 @@ class Player extends Matter{
   int wait = 5000;
 
   void cook(Matter obj){
-    startTime = -1;
-    if (obj.getCook() > 0){
-      if (startTime == -1){
-        startTime = millis();;
-      }
-      int elapsed = millis() - starTime;
-    
-      if(elapsed >= 5000 && elapsed <= 10000){
-        obj.changeState("cooked");
-        startTime = -1;
-      }
-      else if (elapsed > 10000){
-        obj.changeState("burnt");
-        startTime = -1;
-      }
+    startTime = millis();
+    if (obj.getCook() > 0 && millis() - startTime >= 5000 && millis() - startTime <= 10000){
+      obj.changeState("cooked");
+    }
+    else if (obj.getCook() > 0){
+      obj.changeState("burnt");
     }
   }
 
@@ -52,7 +43,5 @@ class Player extends Matter{
       obj.setChop();
     }
   }
-
-  
       
 }
