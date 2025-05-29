@@ -1,25 +1,41 @@
-abstract class FoodItem extends Matter{
+abstract class FoodItem extends Matter implements Droppable{
   String name;
-  int raw;
-  int cooked;
-  int burnt;
-  int state;
-  // 0 = raw, 1 = washed, 2 = cooked, 3 = chopped
-  abstract int washTime;
-  abstract int cookTime;
-  abstract int chopTime;
-  abstract boolean chopped;
+  int raw = 0;
+  int cooked = 1;
+  int burnt = 2;
+  int state, washTime, cookTime, chopTime;
+  boolean chopped, washed;
   
-  FoodItem(String name){
+  FoodItem(String name, int wash, int cook, int chop, float x, float y){
+    super(name, x, y, true);
     this.name = name;
     this.state = 0;
+    washTime = wash;
+    cookTime = cook;
+    chopTime = chop;
+    washed = false;
+    chopped = false;
   }
   
-  abstract void changeState(){
+  String getName(){
+    return name;
+  }
+  
+  void changeState(String str){
+    if (str.equals("cooked")){
+      state = cooked;
+    }
+    else if (str.equals("burnt")){
+      state = burnt;
+    }
+  }
+  
+  void setWash(){
+    washed = !washed;
   }
   
   int getWash(){
-     return this.washtime;
+     return this.washTime;
   }
   
   int getCook(){
@@ -34,8 +50,26 @@ abstract class FoodItem extends Matter{
     return this.chopped;
   }
   
-  abstract void display(float x, float y){
+  void display(float x, float y){
   }
+  
+  boolean sink(){
+    return true;
+  }
+  
+  boolean belt(){
+    return false;
+  }
+  
+  boolean board(){
+    return true;
+  }
+  
+  boolean stove(){
+    return true;
+  };
+  
+}
     
     
   
