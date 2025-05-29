@@ -1,12 +1,8 @@
-interface Droppable extends Matter{
+interface Droppable{
   
-  boolean getSink();
+  boolean sink();
+  boolean belt();
+  boolean board();
+  boolean stove();
   
-  boolean getBelt();
-  
-  boolean getBoard();
-  
-  boolean getCooker();
-  
-  boolean getStove();
 }

@@ -1,18 +1,20 @@
 class Player extends Matter{
   int[] facing;
-  ArrayList<Matter> possess;// players can only possess one item
+  ArrayList<Matter> possess;
   
-  void move(keyPressed movement){
-    if(movement == w){
-    }
-    if(movement == d){
-    }
-    if(movement == s){
-    }
-    if(movement == a){
-    }
+  Player(String name, float x, float y){
+    super(name, x, y, true);
+    facing = new int[]{0, -1};
   }
   
-  void drop(Droppable item){
-    if
+  void move(String k){
+  }
+  
+  void drop(Matter obj){
+    possess.remove(obj);
+  }
+  
+  void pickUp(Matter obj){
+    possess.add(obj);
+  }
 }

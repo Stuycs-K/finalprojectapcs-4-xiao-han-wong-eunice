@@ -1,8 +1,30 @@
-interface Matter{
+abstract class Matter{
+  private String name;
+  private float xCoord;
+  private float yCoord;
+  private boolean moveable;
   
-  String getName();
+  Matter(String name, float x, float y, boolean move){
+    this.name = name;
+    xCoord = x;
+    yCoord = y;
+    moveable = move;
+  }
   
-  float getX();
+  String getName(){
+    return name;
+  }
   
-  float getY();
+  float getX(){
+    return xCoord;
+  }
+  
+  float getY(){
+    return yCoord;
+  }
+  
+  String toString(){
+    return this.getName();
+  }
+  
 }

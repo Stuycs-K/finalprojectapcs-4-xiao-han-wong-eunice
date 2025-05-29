@@ -1,4 +1,4 @@
-abstract class Order extends Droppable{
+abstract class Order implements Droppable{
   FoodItem[] ingredients;
   FoodItem[] prepared;
   
@@ -26,6 +26,4 @@ abstract class Order extends Droppable{
     return true;
   }
   
-  abstract int timeLimit(){
-  }
 }
