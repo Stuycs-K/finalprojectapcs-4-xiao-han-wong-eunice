@@ -8,6 +8,7 @@ class Player extends Matter{
   }
   
   void move(String k){
+    
   }
   
   void drop(Matter obj){
@@ -17,4 +18,32 @@ class Player extends Matter{
   void pickUp(Matter obj){
     possess.add(obj);
   }
+  
+  int startTime;
+  int wait = 5000;
+
+  void cook(Matter obj){
+    startTime = millis();
+    if (obj.getCook() > 0 && millis() - startTime >= 5000 && millis() - startTime <= 10000){
+      obj.changeState("cooked");
+    }
+    else if (obj.getCook() > 0){
+      obj.changeState("burnt");
+    }
+  }
+
+  void wash(Matter obj){
+    if (obj.getWash() > 0){
+      obj.setWash();
+    }
+  }
+  
+  void chop(Matter obj){
+    if (obj.getChop() > 0){
+      obj.setChop();
+    }
+  }
+
+  
+      
 }
