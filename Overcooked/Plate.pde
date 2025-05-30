@@ -5,7 +5,7 @@ class Plate{
   
   int state;
   boolean hasFood;
-  Food[] foodItems;
+  FoodItem[] foodItems;
   
   void changeState(){
     if (state == clean){
