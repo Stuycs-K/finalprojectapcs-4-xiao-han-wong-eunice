@@ -22,27 +22,68 @@ class Player extends Matter{
   int startTime;
   int wait = 5000;
 
-  void cook(Matter obj){
-    startTime = millis();
-    if (obj.getCook() > 0 && millis() - startTime >= 5000 && millis() - startTime <= 10000){
-      obj.changeState("cooked");
-    }
-    else if (obj.getCook() > 0){
-      obj.changeState("burnt");
+  void cook(FoodItem obj){
+    startTime = -1;
+    if (obj.getCook() > 0){
+      if (startTime == -1){
+        startTime = millis();
+      }
+      int elapsed = millis() - startTime;
+    
+      if(elapsed >= 5000 && elapsed <= 10000){
+        obj.changeState("cooked");
+        startTime = -1;
+      }
+      else if (elapsed > 10000){
+        obj.changeState("burnt");
+        startTime = -1;
+      }
     }
   }
 
-  void wash(Matter obj){
+  void washFood(FoodItem obj){
+    startTime = -1;
     if (obj.getWash() > 0){
+      if(startTime == -1){
+        startTime = millis();
+      }
+    }
+    
+    int elapsed = millis() - startTime;
+    if(elapsed >= 50000){
       obj.setWash();
     }
   }
   
-  void chop(Matter obj){
-    if (obj.getChop() > 0){
+  void washPlate(Plate obj){
+    startTime = -1;
+    if(obj.getWash() > 0){
+      if(startTime == -1){
+        startTime = millis();
+      }
+    }
+    
+    int elapsed = millis() - startTime;
+    if(elapsed >= 50000){
+      obj.changeState();
+    }
+  }
+  
+  void chop(FoodItem obj){
+    startTime = -1;
+    if(obj.getChop() > 0){
+      if(startTime == -1){
+        startTime = millis();
+      }
+    }
+    
+    int elapsed = millis() - startTime;
+    if(elapsed >= 50000){
       obj.setChop();
     }
   }
+  
+
 
   
       
