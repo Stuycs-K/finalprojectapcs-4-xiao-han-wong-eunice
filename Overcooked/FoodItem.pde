@@ -28,6 +28,9 @@ abstract class FoodItem extends Matter implements Droppable{
     else if (str.equals("burnt")){
       state = burnt;
     }
+    else{
+      state = raw;
+    }
   }
   
   void setWash(){
