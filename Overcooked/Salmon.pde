@@ -3,6 +3,10 @@ class Salmon extends FoodItem{
     super("Salmon", 5, 0, 5, x, y);
   }
   
+  void display(float x, float y){
+    
+  }
+  
   boolean stove(){
     return false;
   }

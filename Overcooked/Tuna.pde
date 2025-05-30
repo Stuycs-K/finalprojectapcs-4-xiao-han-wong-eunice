@@ -1,7 +1,12 @@
 class Tuna extends FoodItem{
-  Tun(float x, float y ){
+  Tuna(float x, float y ){
     super("Tuna", 5, 0, 5, x, y);
   }
+  
+  void display(float x, float y){
+    
+  }
+  
   boolean stove(){
     return false;
   }

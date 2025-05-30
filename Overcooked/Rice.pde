@@ -3,6 +3,10 @@ class Rice extends FoodItem{
     super("Rice", 5, 5, 0, x, y);
   }
   
+  void display(float x, float y){
+    
+  }
+  
   boolean board(){
     return false;
   }
