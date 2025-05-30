@@ -8,6 +8,7 @@ class Player extends Matter{
   }
   
   void move(String k){
+    
   }
   
   void drop(Matter obj){
@@ -17,4 +18,73 @@ class Player extends Matter{
   void pickUp(Matter obj){
     possess.add(obj);
   }
+  
+  int startTime;
+  int wait = 5000;
+
+  void cook(FoodItem obj){
+    startTime = -1;
+    if (obj.getCook() > 0){
+      if (startTime == -1){
+        startTime = millis();
+      }
+      int elapsed = millis() - startTime;
+    
+      if(elapsed >= 5000 && elapsed <= 10000){
+        obj.changeState("cooked");
+        startTime = -1;
+      }
+      else if (elapsed > 10000){
+        obj.changeState("burnt");
+        startTime = -1;
+      }
+    }
+  }
+
+  void washFood(FoodItem obj){
+    startTime = -1;
+    if (obj.getWash() > 0){
+      if(startTime == -1){
+        startTime = millis();
+      }
+    }
+    
+    int elapsed = millis() - startTime;
+    if(elapsed >= 50000){
+      obj.setWash();
+    }
+  }
+  
+  void washPlate(Plate obj){
+    startTime = -1;
+    if(obj.getWash() > 0){
+      if(startTime == -1){
+        startTime = millis();
+      }
+    }
+    
+    int elapsed = millis() - startTime;
+    if(elapsed >= 50000){
+      obj.changeState();
+    }
+  }
+  
+  void chop(FoodItem obj){
+    startTime = -1;
+    if(obj.getChop() > 0){
+      if(startTime == -1){
+        startTime = millis();
+      }
+    }
+    
+    int elapsed = millis() - startTime;
+    if(elapsed >= 50000){
+      obj.setChop();
+    }
+  }
+  
+
+
+  
+      
 }

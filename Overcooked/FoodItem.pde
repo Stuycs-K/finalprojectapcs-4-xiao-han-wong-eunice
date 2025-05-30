@@ -6,7 +6,7 @@ abstract class FoodItem extends Matter implements Droppable{
   int state, washTime, cookTime, chopTime;
   boolean chopped, washed;
   
-  FoodItem(String name, int wash, int cook, int chop, int x, int y){
+  FoodItem(String name, int wash, int cook, int chop, float x, float y){
     super(name, x, y, true);
     this.name = name;
     this.state = 0;
@@ -34,6 +34,10 @@ abstract class FoodItem extends Matter implements Droppable{
     washed = !washed;
   }
   
+  void setChop(){
+    chopped = true;
+  }
+  
   int getWash(){
      return this.washTime;
   }
@@ -42,7 +46,7 @@ abstract class FoodItem extends Matter implements Droppable{
     return this.cookTime;
   }
   
-  int chopTime(){
+  int getChop(){
     return this.chopTime;
   }
   
