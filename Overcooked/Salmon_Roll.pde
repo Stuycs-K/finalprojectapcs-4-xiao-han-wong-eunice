@@ -1,8 +1,10 @@
-class TunaSashimi extends Order{
+class SalmonRoll extends Order{
   
-  TunaSashimi(){
-    super("Tuna Sashimi", new FoodItem[]{
-      new Tuna(0,0)
+  SalmonRoll(){
+    super("Salmon Roll", new FoodItem[]{
+      new Salmon(0,0),
+      new Seaweed(0,0),
+      new Rice(0,0)
     }, 0, 0);
     //cannot refer to an instance field need other solution
   }
