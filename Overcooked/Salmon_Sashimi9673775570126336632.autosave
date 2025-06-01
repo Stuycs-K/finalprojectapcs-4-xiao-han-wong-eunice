@@ -1,0 +1,11 @@
+class SalmonSashimi extends Order{
+  FoodItem[] ingredients;
+  FoodItem[] prepared;
+  FoodItem salmon = new Salmon(0, 0);
+  ArrayList ingredients = new ArrayList<FoodItem>();
+  ingredients.add(salmon);
+  
+  class SalmonSashimi{
+    super(ingredients);
+  }
+}
