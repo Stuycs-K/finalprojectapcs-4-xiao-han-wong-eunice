@@ -1,11 +1,12 @@
-abstract class Order extends Matter implements Droppable{
+abstract class Order implements Droppable{
   FoodItem[] ingredients;
   FoodItem[] prepared;
+  float prepareTime;
   
-  Order(String name, FoodItem[] ingredients, float x, float y){
-    super(name, x, y, true);
+  Order(FoodItem[] ingredients, float time){
     this.ingredients = ingredients;
     this.prepared = new FoodItem[ingredients.length];
+    prepareTime = time;
   }
   
   boolean addPreparedItem(FoodItem item){
@@ -26,7 +27,5 @@ abstract class Order extends Matter implements Droppable{
     }
     return true;
   }
-  
-  abstract void animate();
   
 }
