@@ -1,3 +1,6 @@
+Stove stove = new Stove();
+
+
 Player A = new Player("Bob", 900.0, 420.0);
 
 void keyPressed() {

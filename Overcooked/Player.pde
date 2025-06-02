@@ -9,13 +9,13 @@ class Player extends Matter{
   
   void move(String k){
     if (k.equals("w")){
-      setY(-20);
+      setY(-120);
     }
     if (k.equals("a")){
       setX(-120);
     }
     if (k.equals("s")){
-      setY(20);
+      setY(120);
     }
     if (k.equals("d")){
       setX(120);
