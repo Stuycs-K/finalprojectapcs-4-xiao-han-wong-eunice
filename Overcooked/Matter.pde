@@ -1,13 +1,13 @@
 abstract class Matter{
   private String name;
-  private float xCoord;
-  private float yCoord;
+  private float x;
+  private float y;
   private boolean moveable;  
   
   Matter(String name, float x, float y, boolean move){
     this.name = name;
-    xCoord = x;
-    yCoord = y;
+    this.x = x;
+    this.y = y;
     moveable = move;
   }
   
@@ -16,11 +16,19 @@ abstract class Matter{
   }
   
   float getX(){
-    return xCoord;
+    return x;
   }
   
   float getY(){
-    return yCoord;
+    return y;
+  }
+  
+  void setX(float X){
+    x += X;
+  }
+  
+  void setY(float Y){
+    y +=Y;
   }
   
   String toString(){
