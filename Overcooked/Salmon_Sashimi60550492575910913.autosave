@@ -1,12 +1,12 @@
 class SalmonSashimi extends Order{
   
   SalmonSashimi(){
-    super("Salmon Sashimi", new FoodItem[]{
-      new Salmon(0,0)
-    }, 0, 0);
+    super("Salmon Sashimi", new FoodItem[]{}, 0, 0);
+    Salmon salmon = new Salmon(0, 0);
+    this.addPreparedItem(salmon);
     //cannot refer to an instance field need other solution
   }
-   
+  
   boolean sink(){
     return false;
   }

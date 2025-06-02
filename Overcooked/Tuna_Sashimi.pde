@@ -1,8 +1,8 @@
-class SalmonSashimi extends Order{
+class TunaSashimi extends Order{
   
-  SalmonSashimi(){
-    super("Salmon Sashimi", new FoodItem[]{
-      new Salmon(0,0)
+  TunaSashimi(){
+    super("Tuna Sashimi", new FoodItem[]{
+      new Tuna(0,0)
     }, 0, 0);
     //cannot refer to an instance field need other solution
   }
@@ -17,7 +17,7 @@ class SalmonSashimi extends Order{
     return true;
   }
   boolean stove(){
-    return true;
+    return false;
   }
   
   void animate(){

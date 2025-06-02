@@ -8,7 +8,18 @@ class Player extends Matter{
   }
   
   void move(String k){
-    
+    if (k.equals("w")){
+      setY(-20);
+    }
+    if (k.equals("a")){
+      setX(-120);
+    }
+    if (k.equals("s")){
+      setY(20);
+    }
+    if (k.equals("d")){
+      setX(120);
+    }
   }
   
   void drop(Matter obj){
@@ -83,7 +94,12 @@ class Player extends Matter{
     }
   }
   
-
+  void display(){
+    stroke(0, 0, 0);
+    circle(getX(), getY(), 100);
+    circle(getX(), getY(), 100);
+    fill(188, 43, 43);
+  }
 
   
       
