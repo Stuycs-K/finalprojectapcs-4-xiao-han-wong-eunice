@@ -8,18 +8,19 @@ class Player extends Matter{
   }
   
   void move(String k){
-    if (k.equals("w")){
-      setY(-120);
-    }
-    if (k.equals("a")){
-      setX(-120);
-    }
-    if (k.equals("s")){
-      setY(120);
-    }
-    if (k.equals("d")){
-      setX(120);
-    }
+    //if (getX()
+      if (k.equals("w")){
+        setY(-120);
+      }
+      if (k.equals("a")){
+        setX(-120);
+      }
+      if (k.equals("s")){
+        setY(120);
+      }
+      if (k.equals("d")){
+        setX(120);
+      }
   }
   
   void drop(Matter obj){

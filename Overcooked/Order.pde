@@ -1,6 +1,7 @@
 abstract class Order extends Matter implements Droppable{
   FoodItem[] ingredients;
   FoodItem[] prepared;
+  int timePresent;
   
   Order(String name, FoodItem[] ingredients, float x, float y){
     super(name, x, y, true);
