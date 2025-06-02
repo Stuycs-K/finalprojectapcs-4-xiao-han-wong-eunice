@@ -61,7 +61,7 @@ abstract class FoodItem extends Matter implements Droppable{
   }
   
   boolean sink(){
-    return true;
+    return false;
   }
   
   boolean belt(){
@@ -69,11 +69,11 @@ abstract class FoodItem extends Matter implements Droppable{
   }
   
   boolean board(){
-    return true;
+    return false;
   }
   
   boolean stove(){
-    return true;
+    return false;
   };
   
 }

@@ -24,9 +24,7 @@ void newRound(){
   secPassed = 0;
 }
 
-while (round < 4){
- if (){}
-}
+
 
 void keyPressed() {
   if (key == 'w' || key == 'W'){
@@ -75,8 +73,6 @@ void draw(){
       square(x, y, 120);
     }
   }
-  
-  //for (int x = 
     
   //fill(214,191,161);
   fill(0, 76, 153);
