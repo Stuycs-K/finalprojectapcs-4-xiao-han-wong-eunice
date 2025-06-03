@@ -7,6 +7,13 @@ int minLapse = 5;
 int maxLapse = 8;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
+MatterManage manager = new MatterManage();
+
+//Objects
+Stove stove;
+Player A;
+Counter[] counters = new Counter[6];
+
 //one round lasts 60 seconds
 
 //OBJECTS
@@ -41,23 +48,35 @@ void newRound(){
 
 void keyPressed() {
   if (key == 'w' || key == 'W'){
-    A.move("w");
+    A.move("w",manager);
   }
   if (key == 'a' || key == 'A'){
-    A.move("a");
+    A.move("a",manager);
   }
   if (key == 'S' || key == 's'){
-    A.move("s");
+    A.move("s",manager);
   }
   if (key == 'd' || key == 'D'){
-    A.move("d");
+    A.move("d",manager);
   }
   
 }
 void setup(){
   size(1920, 1080);
   background(0, 76, 153);
-  
+  //OBJECTS
+  stove = new Stove(240, 240);
+  manager.add(stove);
+  println("Added stove. List now size: " + manager.allMatter.size());
+  A = new Player("Bob", 900.0, 420.0);
+  manager.add(A);
+  for(int x = 1; x < counters.length + 1; x ++){
+    counters[x - 1] = new Counter(x * 120, 840);
+    manager.add(counters[x-1]);
+  }
+  println("All Matter size: " + manager.allMatter.size());
+  manager.debugPrintAllMatter();
+
 }
 
 void draw(){
@@ -104,6 +123,12 @@ void draw(){
   
   rect(0.0, 0.0, 70, 40.0);
   fill(0, 76, 153);
+
+  for(Counter c : counters){
+    c.display();
+  }
+  stove.display();
+>>>>>>> a1a35b4d48138cefe563a12ac72fc428ac5d8154
 }
 
  
