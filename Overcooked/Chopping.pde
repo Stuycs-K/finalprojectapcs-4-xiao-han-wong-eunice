@@ -1,10 +1,18 @@
 class Chopping extends Matter{
-  Chopping(float x, float y, FoodItem item){
+  ArrayList<Matter> hasItem = new ArrayList<Matter>();
+  Chopping(float x, float y){
     super("chopping board", x, y, false);
-    if (item.getChop() > 0){
-      item.setChop();
-    }
   }
+  
+  void addItem(Matter item){
+    hasItem.add(item);
+  }
+  
+  void rmItem(Matter item){
+    hasItem.remove(item);
+  }
+  
+  void display(){}
   
   void animate(){
   }

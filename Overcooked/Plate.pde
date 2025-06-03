@@ -5,11 +5,11 @@ class Plate extends Matter implements Droppable{
   
   int state;
   boolean hasFood;
-  FoodItem[] foodItems;
+  ArrayList<FoodItem> foodItems = new ArrayList<FoodItem>();
   
-  Plate(){
+  Plate(float x, float y){
     //x and y vals to be changed
-    super("Plate", 0, 0, true);
+    super("Plate", x, y, true);
   }
   
   boolean sink(){
@@ -37,4 +37,9 @@ class Plate extends Matter implements Droppable{
   int getWash(){
     return washTime;
   }
+  
+  void addItem(FoodItem item){
+    foodItems.add(item);
+  }
+  
 }

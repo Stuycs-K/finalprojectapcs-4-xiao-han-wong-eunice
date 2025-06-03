@@ -1,13 +1,19 @@
+import java.util.ArrayList;
+
 int round = 1;
 int difficulty = 0;
 int secPassed = 0;
 int minLapse = 5;
 int maxLapse = 8;
 ArrayList<Order> orders = new ArrayList<Order>();
-
+ArrayList<Matter> appliances = new ArrayList<Matter>();
 //one round lasts 60 seconds
+
+//OBJECTS
 Stove stove = new Stove(240, 240);
 Player A = new Player("Bob", 900.0, 420.0);
+
+
 
 /*
 if (difficulty == 0){
@@ -24,9 +30,6 @@ void newRound(){
   secPassed = 0;
 }
 
-while (round < 4){
- if (){}
-}
 
 void keyPressed() {
   if (key == 'w' || key == 'W'){
@@ -59,7 +62,6 @@ void draw(){
     line(0, y, 1920, y);
   }
   */
-  
   rect(0.0, 0.0, 70, 40.0);
   
   for(int x = 120, bin = 0; x <= width - 240; x+=120){
@@ -82,6 +84,7 @@ void draw(){
   fill(0, 76, 153);
   //circle(x, y)
   A.display();
+  stove.display();
 }
 
  

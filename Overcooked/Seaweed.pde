@@ -3,10 +3,10 @@ class Seaweed extends FoodItem{
     super("Seaweed", 5, 5, 0, x, y);
   }
   
-  void display(float x, float y){
-    
-  }
+  void display(){
   
+  }
+    
   boolean chop(){
     return false;
   }

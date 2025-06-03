@@ -7,7 +7,16 @@ class Salmon extends FoodItem{
     
   }
   
-  boolean baord(){
+  boolean sink(){
+   return false; 
+  }
+  boolean belt(){
+    return false;
+  }
+  boolean board(){
+    return true;
+  }
+  boolean stove(){
     return true;
   }
 }
