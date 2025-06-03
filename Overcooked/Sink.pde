@@ -1,9 +1,6 @@
 class Sink extends Matter{
-  Sink(float x, float y, Matter item){
+  Sink(float x, float y){
     super("Sink", x, y, false);
-    if (item.getWash() > 0){
-      item.setWash();
-    }
   }
   
   void animate(){

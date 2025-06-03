@@ -14,6 +14,14 @@ class Dashi extends FoodItem{
     return false;
   }
   
+  boolean belt(){
+    return false;
+  }
+  
+  boolean stove(){
+    return true;
+  }
+  
 }
   
   

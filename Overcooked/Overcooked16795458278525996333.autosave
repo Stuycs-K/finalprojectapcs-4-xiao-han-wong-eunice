@@ -1,20 +1,13 @@
-import java.util.ArrayList;
-
 int round = 1;
 int difficulty = 0;
 int secPassed = 0;
 int minLapse = 5;
 int maxLapse = 8;
 ArrayList<Order> orders = new ArrayList<Order>();
-ArrayList<Matter> appliances = new ArrayList<Matter>();
-MatterManage manager = new MatterManage();
-
-//Objects
-Stove stove;
-Player A;
-Counter[] counters = new Counter[6];
 
 //one round lasts 60 seconds
+Stove stove = new Stove(240, 240);
+Player A = new Player("Bob", 900.0, 420.0);
 
 /*
 if (difficulty == 0){
@@ -32,37 +25,26 @@ void newRound(){
 }
 
 
+
 void keyPressed() {
   if (key == 'w' || key == 'W'){
-    A.move("w",manager);
+    A.move("w");
   }
   if (key == 'a' || key == 'A'){
-    A.move("a",manager);
+    A.move("a");
   }
   if (key == 'S' || key == 's'){
-    A.move("s",manager);
+    A.move("s");
   }
   if (key == 'd' || key == 'D'){
-    A.move("d",manager);
+    A.move("d");
   }
   
 }
 void setup(){
   size(1920, 1080);
   background(0, 76, 153);
-  //OBJECTS
-  stove = new Stove(240, 240);
-  manager.add(stove);
-  println("Added stove. List now size: " + manager.allMatter.size());
-  A = new Player("Bob", 900.0, 420.0);
-  manager.add(A);
-  for(int x = 1; x < counters.length + 1; x ++){
-    counters[x - 1] = new Counter(x * 120, 840);
-    manager.add(counters[x-1]);
-  }
-  println("All Matter size: " + manager.allMatter.size());
-  manager.debugPrintAllMatter();
-
+  
 }
 
 void draw(){
@@ -75,6 +57,7 @@ void draw(){
     line(0, y, 1920, y);
   }
   */
+  
   rect(0.0, 0.0, 70, 40.0);
   
   for(int x = 120, bin = 0; x <= width - 240; x+=120){
@@ -90,17 +73,11 @@ void draw(){
       square(x, y, 120);
     }
   }
-  
-  //for (int x = 
     
   //fill(214,191,161);
   fill(0, 76, 153);
   //circle(x, y)
   A.display();
-  for(Counter c : counters){
-    c.display();
-  }
-  stove.display();
 }
 
  

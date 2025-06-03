@@ -57,6 +57,10 @@ abstract class FoodItem extends Matter implements Droppable{
     return this.chopped;
   }
   
+  boolean isWashed(){
+    return washed;
+  }
+  
   void display(float x, float y){
   }
   
@@ -74,7 +78,11 @@ abstract class FoodItem extends Matter implements Droppable{
   
   boolean stove(){
     return false;
-  };
+  }
+  
+  int getState(){
+    return state;
+  }
   
 }
     

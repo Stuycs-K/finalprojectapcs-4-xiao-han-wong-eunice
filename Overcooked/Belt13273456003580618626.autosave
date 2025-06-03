@@ -1,0 +1,10 @@
+class Belt extends Matter{
+  Belt(float x, float y, Order make, Order[] list){
+    if(make 
+    super("Belt", x, y, false);
+    
+  }
+  
+  void animate(){
+  }
+}

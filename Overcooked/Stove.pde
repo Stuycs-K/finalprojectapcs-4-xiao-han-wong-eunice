@@ -1,11 +1,16 @@
 class Stove extends Matter{
-  Stove(float x, float y, FoodItem item){
+  Stove(float x, float y){
     super("Stove", x, y, false);
-    if(item.getCook() > 0){
-      item.changeState("cooked");
     }
-  }
   
   void animate(){
+  }
+  
+  void display(){
+    //fill(0);
+    //println(getX());
+    stroke(0, 0, 0);
+    square(getX(), getY(), 120);
+    
   }
 }

@@ -7,7 +7,16 @@ class Rice extends FoodItem{
     
   }
   
+  boolean sink(){
+   return false; 
+  }
+  boolean belt(){
+    return false;
+  }
   boolean board(){
     return false;
+  }
+  boolean stove(){
+    return true;
   }
 }

@@ -1,9 +1,8 @@
-class Belt extends Matter{
+class Counter extends Matter{
+
   ArrayList<Matter> hasItem = new ArrayList<Matter>();
-  
-  Belt(float x, float y){
-    super("Belt", x, y, false);
-    
+  Counter(float x, float y){
+    super("Counter", x, y, false);
   }
   
   void addItem(Matter item){
@@ -14,10 +13,9 @@ class Belt extends Matter{
     hasItem.remove(item);
   }
   
-  void animate(){
-  }
   
   void display(){
-  
+    stroke(0, 0, 0);
+    square(getX(), getY(), 120);
   }
 }

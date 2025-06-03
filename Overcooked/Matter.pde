@@ -2,7 +2,7 @@ abstract class Matter{
   private String name;
   private float x;
   private float y;
-  private boolean moveable;  
+  private boolean moveable;
   
   Matter(String name, float x, float y, boolean move){
     this.name = name;
@@ -21,6 +21,10 @@ abstract class Matter{
   
   float getY(){
     return y;
+  }
+  
+  boolean getMove(){
+    return moveable;
   }
   
   void setX(float X){
