@@ -7,8 +7,7 @@ class Stove extends Matter{
   }
   
   void display(){
-    //fill(0);
-    //println(getX());
+    fill(0);
     stroke(0, 0, 0);
     square(getX(), getY(), 120);
     

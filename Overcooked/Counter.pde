@@ -13,5 +13,9 @@ class Counter extends Matter{
     hasItem.remove(item);
   }
   
-  void display(){}
+  void display(){
+    stroke(0, 0, 0);
+    square(getX(), getY(), 120);
+    fill(234, 182, 118);
+  }
 }

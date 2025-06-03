@@ -10,7 +10,15 @@ ArrayList<Matter> appliances = new ArrayList<Matter>();
 //one round lasts 60 seconds
 
 //OBJECTS
-Stove stove = new Stove(240, 240);
+//Stove stove = new Stove(360, 360);
+
+Counter counter0 = new Counter(240, 120);
+Counter counter1 = new Counter(360, 120);
+Chopping board0 = new Chopping(480, 120);
+Chopping board1 = new Chopping (600, 120);
+Counter counter2 = new Counter(720, 120);
+Counter counter3 = new Counter(840, 120);
+
 Player A = new Player("Bob", 900.0, 420.0);
 
 
@@ -74,7 +82,17 @@ void draw(){
         fill(227,212,175);
         bin = 1;
       }
+      if((x == 120 && y == 120) || (x == width - 240 && y == 120)){
+        y+= 240;
+      }
+      if(x == 240 && y == 120){
+        y+=120;
+      }
       square(x, y, 120);
+      
+      if((x==120 && y == height - 480) || (x== width - 240 && y == height - 480)){
+        y +=240;
+      }
     }
   }
   
@@ -84,7 +102,13 @@ void draw(){
   fill(0, 76, 153);
   //circle(x, y)
   A.display();
-  stove.display();
+  //stove.display();
+  counter0.display();
+  counter1.display();
+  board0.display();
+  board1.display();
+  counter2.display();
+  counter3.display();
 }
 
  

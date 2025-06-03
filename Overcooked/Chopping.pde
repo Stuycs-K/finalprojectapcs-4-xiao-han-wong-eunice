@@ -12,7 +12,11 @@ class Chopping extends Matter{
     hasItem.remove(item);
   }
   
-  void display(){}
+  void display(){
+    stroke(0, 0, 0);
+    rect(getX(), getY(), 120, 70);
+    fill(234, 182, 118);
+  }
   
   void animate(){
   }
