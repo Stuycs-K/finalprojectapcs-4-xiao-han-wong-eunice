@@ -7,13 +7,12 @@ int minLapse = 5;
 int maxLapse = 8;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
+MatterManage manager = new MatterManage();
+
+//Objects
+Stove stove;
+Player A;
 //one round lasts 60 seconds
-
-//OBJECTS
-Stove stove = new Stove(240, 240);
-Player A = new Player("Bob", 900.0, 420.0);
-
-
 
 /*
 if (difficulty == 0){
@@ -33,23 +32,29 @@ void newRound(){
 
 void keyPressed() {
   if (key == 'w' || key == 'W'){
-    A.move("w");
+    A.move("w",manager);
   }
   if (key == 'a' || key == 'A'){
-    A.move("a");
+    A.move("a",manager);
   }
   if (key == 'S' || key == 's'){
-    A.move("s");
+    A.move("s",manager);
   }
   if (key == 'd' || key == 'D'){
-    A.move("d");
+    A.move("d",manager);
   }
   
 }
 void setup(){
   size(1920, 1080);
   background(0, 76, 153);
-  
+  //OBJECTS
+  stove = new Stove(240, 240);
+  manager.add(stove);
+
+  A = new Player("Bob", 900.0, 420.0);
+  manager.add(A);
+
 }
 
 void draw(){

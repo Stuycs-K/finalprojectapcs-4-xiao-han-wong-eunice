@@ -7,20 +7,30 @@ class Player extends Matter{
     facing = new int[]{0, -1};
   }
   
-  void move(String k){
+  void move(String k, MatterManage manager){
     //if (getX()
+    float dx = 0;
+    float dy = 0;
       if (k.equals("w")){
-        setY(-120);
+        dy = -120;
       }
       if (k.equals("a")){
-        setX(-120);
+        dx = -120;
       }
       if (k.equals("s")){
-        setY(120);
+        dy = 120;
       }
       if (k.equals("d")){
-        setX(120);
+        dx = 120;
       }
+    float newX = getX() + dx;
+    float newY = getY() + dy;
+    
+    Matter obstacle = manager.getMatterAt(newX, newY);
+    if(obstacle == null || obstacle.getMove()){
+       setX(dx);
+       setY(dy);
+    }
   }
   
   void drop(Matter obj){

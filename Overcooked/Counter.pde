@@ -13,5 +13,12 @@ class Counter extends Matter{
     hasItem.remove(item);
   }
   
-  void display(){}
+  
+  void display(){
+  for(int x = 0; x <= width; x+=120){
+    for(int y = 120 * 9; y <= height; y+=120){
+      square(x, y , 120);
+    }
+    }
+  }
 }
