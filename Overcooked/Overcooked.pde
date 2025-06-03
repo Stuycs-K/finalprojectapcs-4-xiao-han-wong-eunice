@@ -61,19 +61,9 @@ void setup(){
 }
 
 void draw(){
-  /*
-  for (int x = 60; x <= 1920; x+=60){
-    line (x, 0, x, 1080);
-    //square();
-  }
-  for (int y = 60; y <= 1080; y+=60){
-    line(0, y, 1920, y);
-  }
-  */
-  rect(0.0, 0.0, 70, 40.0);
   
   for(int x = 120, bin = 0; x <= width - 240; x+=120){
-    for(int y = 120; y <= height - 240; y+=120){
+    for(int y = 120; y <= height - 200; y+=120){
       if (bin == 1){
         fill(135,115,89);
         bin = 0;
@@ -85,10 +75,12 @@ void draw(){
       if((x == 120 && y == 120) || (x == width - 240 && y == 120)){
         y+= 240;
       }
-      if(x == 240 && y == 120){
+      if((x == 240 && y == 120) || (x == width - 360 && y == 120)){
         y+=120;
       }
-      square(x, y, 120);
+      if (!(x==240 && y == height - 240) && !(x==width - 360 && y == height - 240)){
+        square(x, y, 120);
+      }
       
       if((x==120 && y == height - 480) || (x== width - 240 && y == height - 480)){
         y +=240;
@@ -109,6 +101,9 @@ void draw(){
   board1.display();
   counter2.display();
   counter3.display();
+  
+  rect(0.0, 0.0, 70, 40.0);
+  fill(0, 76, 153);
 }
 
  

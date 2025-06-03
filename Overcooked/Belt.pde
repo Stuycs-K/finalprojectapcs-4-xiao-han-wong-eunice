@@ -18,6 +18,8 @@ class Belt extends Matter{
   }
   
   void display(){
-  
+    stroke(0, 0, 0);
+    rect(getX(), getY(), 240, 80);
+    fill(128,128,128);
   }
 }
