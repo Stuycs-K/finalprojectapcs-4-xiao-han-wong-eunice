@@ -12,6 +12,8 @@ MatterManage manager = new MatterManage();
 //Objects
 Stove stove;
 Player A;
+Counter[] counters = new Counter[6];
+
 //one round lasts 60 seconds
 
 /*
@@ -54,6 +56,10 @@ void setup(){
   println("Added stove. List now size: " + manager.allMatter.size());
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
+  for(int x = 1; x < counters.length + 1; x ++){
+    counters[x - 1] = new Counter(x * 120, 840);
+    manager.add(counters[x-1]);
+  }
   println("All Matter size: " + manager.allMatter.size());
   manager.debugPrintAllMatter();
 
@@ -91,6 +97,9 @@ void draw(){
   fill(0, 76, 153);
   //circle(x, y)
   A.display();
+  for(Counter c : counters){
+    c.display();
+  }
   stove.display();
 }
 
