@@ -15,10 +15,7 @@ class Counter extends Matter{
   
   
   void display(){
-  for(int x = 0; x <= width; x+=120){
-    for(int y = 120 * 9; y <= height; y+=120){
-      square(x, y , 120);
-    }
-    }
+    stroke(0, 0, 0);
+    square(getX(), getY(), 120);
   }
 }

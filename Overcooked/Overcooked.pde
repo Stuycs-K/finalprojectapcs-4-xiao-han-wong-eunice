@@ -51,9 +51,11 @@ void setup(){
   //OBJECTS
   stove = new Stove(240, 240);
   manager.add(stove);
-
+  println("Added stove. List now size: " + manager.allMatter.size());
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
+  println("All Matter size: " + manager.allMatter.size());
+  manager.debugPrintAllMatter();
 
 }
 

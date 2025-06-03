@@ -7,14 +7,22 @@ class MatterManage{
 
   Matter getMatterAt(float x, float y) {
     for (Matter m : allMatter) {
-      if (m.getX() == x && m.getY() == y){
+      println("Checking Matter: " + m + " at (" + m.getX() + ", " + m.getY() + ")");
+      if (m.getX() - x == -60 && m.getY() - y == -60) {
+        println("Found Matter: " + m);
         return m;
-     }
+      }
     }
    return null;
  }
  
-  ArrayList<Matter> getAll() {
-    return allMatter;
+ void debugPrintAllMatter() {
+   println("Matter list contents:");
+     for (Matter m : allMatter) {
+      println(m);
+     }
   }
+  /*ArrayList<Matter> getAll() {
+    return allMatter;
+  }*/
 }
