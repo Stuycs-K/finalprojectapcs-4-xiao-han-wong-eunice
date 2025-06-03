@@ -13,21 +13,18 @@ MatterManage manager = new MatterManage();
 Stove stove;
 Player A;
 Counter[] counters = new Counter[6];
+Counter counter1;
+Counter counter2;
+Counter counter3;
+Counter counter0;
+Chopping board0;
+Chopping board1;
+
 
 //one round lasts 60 seconds
 
 //OBJECTS
 //Stove stove = new Stove(360, 360);
-
-Counter counter0 = new Counter(240, 120);
-Counter counter1 = new Counter(360, 120);
-Chopping board0 = new Chopping(480, 120);
-Chopping board1 = new Chopping (600, 120);
-Counter counter2 = new Counter(720, 120);
-Counter counter3 = new Counter(840, 120);
-
-Player A = new Player("Bob", 900.0, 420.0);
-
 
 
 /*
@@ -45,6 +42,13 @@ void newRound(){
   secPassed = 0;
 }
 
+void victoryScreen(){
+  quad(400, 150, 1520, 100, 1480, 370, 450, 400);
+  stroke(
+  quad(450, 400, 1480, 370, 1500, 700, 425, 700);
+  quad(1500, 700, 425, 700, 450, 900, 1475, 900);
+  
+}
 
 void keyPressed() {
   if (key == 'w' || key == 'W'){
@@ -76,6 +80,12 @@ void setup(){
   }
   println("All Matter size: " + manager.allMatter.size());
   manager.debugPrintAllMatter();
+  counter0 = new Counter(240, 120);
+  counter1 = new Counter(360, 120);
+  board0 = new Chopping(480, 120);
+  board1 = new Chopping (600, 120);
+  counter2 = new Counter(720, 120);
+  counter3 = new Counter(840, 120);
 
 }
 
@@ -128,7 +138,7 @@ void draw(){
     c.display();
   }
   stove.display();
->>>>>>> a1a35b4d48138cefe563a12ac72fc428ac5d8154
+  victoryScreen();
 }
 
  
