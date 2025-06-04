@@ -65,22 +65,15 @@ void victoryScreen(){
   quad(265, 700, 290, 690, 295, 810, 275, 810);
   quad(275, 810, 295, 810, 270, 885, 260, 885);
   //crown
-  fill(255,212,82);
   beginShape();
-  vertex(50, 540);
-  bezierVertex(100, 490, 180, 450, 263, 449);
-  vertex(250, 420);
-  bezierVertex(165, 420, 85, 460, 40, 510);
+  fill(255,212,82);
+  vertex(50, 530);
+  bezierVertex(100, 470, 145, 445, 240, 445);
+  vertex(225, 395);
+  bezierVertex(140, 395, 95, 400,45, 470);
   endShape(CLOSE);
-  triangle(50, 540, 25, 460, 100, 480);
-  triangle(60, 490, 80, 410, 140, 450);
-  triangle(110, 480, 145, 380, 200, 430);
-  triangle(170, 450, 225, 380, 250, 420);
-  //face
-  fill(115, 69, 46);
-  rotate(radians(330));
-  rect(0, 600, 80, 20);
-  rotate(radians(30));
+  triangle(50,530, 10, 470, 95,470);
+  triangle(
   
   //3 stars
   star1 = createShape();
