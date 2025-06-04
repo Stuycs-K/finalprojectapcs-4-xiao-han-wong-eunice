@@ -49,9 +49,9 @@ void newRound(){
 void victoryScreen(){
   stroke(250);
   fill(239,231,217);
-  quad(400, 150, 1520, 100, 1480, 370, 450, 400);
+  quad(400, 150, 1520, 100, 1480, 400, 450, 400);
   fill(255,255,250);
-  quad(450, 400, 1480, 370, 1500, 700, 425, 700);
+  quad(450, 400, 1480, 400, 1500, 700, 425, 700);
   fill(239,231,217);
   quad(1500, 700, 425, 700, 450, 900, 1475, 900);
   noStroke();
@@ -66,18 +66,30 @@ void victoryScreen(){
   star1.beginShape();
   star1.stroke(128,128,128);
   star1.fill(128,128,128);
-  star1.vertex(700, 200);
-  star1.vertex(720, 240);
-  star1.vertex(760, 260);
-  star1.vertex(730, 280);
-  star1.vertex(740, 310);
-  star1.vertex(700, 295);
-  star1.vertex(660, 310);
-  star1.vertex(670, 280);
-  star1.vertex(640, 260);
-  star1.vertex(680,240);
+  star1.vertex(700, 170);
+  star1.vertex(730, 230);
+  star1.vertex(790, 235);
+  star1.vertex(740, 280);
+  star1.vertex(760, 340);
+  star1.vertex(700, 310);
+  star1.vertex(640, 340);
+  star1.vertex(660, 280);
+  star1.vertex(610, 235);
+  star1.vertex(670,230);
   star1.endShape(CLOSE);
-  
+  star2 = createShape();
+  star2.beginShape();
+  star2.vertex(960, 140);
+  star2.vertex(1000, 210);
+  star2.vertex(1070, 225);
+  star2.vertex(1010, 275);
+  star2.vertex(1040,350);
+  star2.vertex(960, 310);
+  star2.vertex(890, 350);
+  star2.vertex(920, 275);
+  star2.vertex(860, 225);
+  star2.vertex(930, 210);
+  shape(star2);
   shape(star1);
 }
 
