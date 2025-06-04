@@ -47,6 +47,7 @@ void newRound(){
 
 
 void victoryScreen(){
+  //score sheet
   stroke(250);
   fill(239,231,217);
   quad(400, 150, 1520, 100, 1480, 400, 450, 400);
@@ -54,14 +55,18 @@ void victoryScreen(){
   quad(450, 400, 1480, 400, 1500, 700, 425, 700);
   fill(239,231,217);
   quad(1500, 700, 425, 700, 450, 900, 1475, 900);
+  
+  //onion man
   noStroke();
   fill(154,97,71);
-  ellipse(200, 590, 340, 300);
-  quad(140, 700, 200, 700, 75, 800, 70, 780);
-  quad(75, 800, 90, 790, 135, 875, 120, 875);
-  quad(255, 700, 280, 690, 285, 810, 265, 810);
-  quad(265, 810, 285, 810, 260, 885, 250, 885);
-  fill(0);
+  ellipse(210, 590, 340, 300);
+  quad(150, 700, 210, 700, 85, 800, 80, 780);
+  quad(85, 800, 100, 790, 145, 875, 130, 875);
+  quad(265, 700, 290, 690, 295, 810, 275, 810);
+  quad(275, 810, 295, 810, 270, 885, 260, 885);
+  
+  
+  //3 stars
   star1 = createShape();
   star1.beginShape();
   star1.stroke(128,128,128);
@@ -79,18 +84,48 @@ void victoryScreen(){
   star1.endShape(CLOSE);
   star2 = createShape();
   star2.beginShape();
+  star2.stroke(128,128,128);
+  star2.fill(128,128,128);
   star2.vertex(960, 140);
   star2.vertex(1000, 210);
-  star2.vertex(1070, 225);
-  star2.vertex(1010, 275);
+  star2.vertex(1070, 215);
+  star2.vertex(1010, 270);
   star2.vertex(1040,350);
-  star2.vertex(960, 310);
+  star2.vertex(960, 315);
   star2.vertex(890, 350);
-  star2.vertex(920, 275);
-  star2.vertex(860, 225);
+  star2.vertex(920, 270);
+  star2.vertex(860, 215);
   star2.vertex(930, 210);
+  star2.endShape(CLOSE);
+  star3 = createShape();
+  star3.beginShape();
+  star3.stroke(128,128,128);
+  star3.fill(128,128,128);
+  star3.vertex(1220, 170);
+  star3.vertex(1250, 230);
+  star3.vertex(1310, 235);
+  star3.vertex(1260, 280);
+  star3.vertex(1280, 340);
+  star3.vertex(1220, 310);
+  star3.vertex(1160, 340);
+  star3.vertex(1180, 280);
+  star3.vertex(1130, 235);
+  star3.vertex(1190, 230);
+  star3.endShape(CLOSE);
+  shape(star3);
   shape(star2);
   shape(star1);
+  
+  //text
+  textSize(50);
+  fill(128,128,128);
+  text("380", 665, 380);
+  text("640", 925, 380);
+  text("480", 1185, 380);
+  textSize(75);
+  text("Orders Delivered x 10", 500, 500);
+  text("Orders Failed x 0", 500, 625);
+  text("TOTAL:", 500, 825);
 }
 
 void keyPressed() {
