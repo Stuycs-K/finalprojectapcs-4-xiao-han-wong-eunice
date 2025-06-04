@@ -1,10 +1,12 @@
 abstract class Order extends Matter implements Droppable{
   FoodItem[] ingredients;
+  int points;
   int timePresent;
   
-  Order(String name, FoodItem[] ingredients, float x, float y){
+  Order(String name, FoodItem[] ingredients, float x, float y, int pts){
     super(name, x, y, true);
     this.ingredients = ingredients;
+    points = pts;
   }
   
   boolean isComplete(ArrayList<FoodItem> prepared){

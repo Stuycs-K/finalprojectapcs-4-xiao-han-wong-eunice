@@ -5,7 +5,7 @@ class TunaRoll extends Order{
       new Tuna(0,0),
       new Seaweed(0,0),
       new Rice(0,0)
-    }, 0, 0);
+    }, 0, 0, 30);
     //cannot refer to an instance field need other solution
   }
    

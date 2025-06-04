@@ -26,15 +26,15 @@ class Player extends Matter{
     float newX = getX() + dx;
     float newY = getY() + dy;
     
-    println("Attempting move from (" + getX() + ", " + getY() + ") to (" + newX + ", " + newY + ")");
+    //println("Attempting move from (" + getX() + ", " + getY() + ") to (" + newX + ", " + newY + ")");
     
     Matter obstacle = manager.getMatterAt(newX, newY);
     if(obstacle == null){
-      println("No obstacle found, moving.");
+      //println("No obstacle found, moving.");
        setX(dx);
        setY(dy);
     }else {
-    println("Obstacle found: " + obstacle.getName() + ", move blocked.");
+    //println("Obstacle found: " + obstacle.getName() + ", move blocked.");
     }
   }
   

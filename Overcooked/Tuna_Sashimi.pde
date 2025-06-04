@@ -3,7 +3,7 @@ class TunaSashimi extends Order{
   TunaSashimi(){
     super("Tuna Sashimi", new FoodItem[]{
       new Tuna(0,0)
-    }, 0, 0);
+    }, 0, 0, 15);
     //cannot refer to an instance field need other solution
   }
    
