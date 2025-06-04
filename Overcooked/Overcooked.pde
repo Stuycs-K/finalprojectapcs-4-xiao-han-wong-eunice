@@ -58,12 +58,18 @@ void victoryScreen(){
   
   //onion man
   noStroke();
-  fill(154,97,71);
-  ellipse(210, 590, 340, 300);
+  fill(74,57,41);
   quad(150, 700, 210, 700, 85, 800, 80, 780);
   quad(85, 800, 100, 790, 145, 875, 130, 875);
   quad(265, 700, 290, 690, 295, 810, 275, 810);
   quad(275, 810, 295, 810, 270, 885, 260, 885);
+  fill(142,81,36);
+  ellipse(210, 590, 340, 300);
+  //staff
+  fill(128,128,128);
+  rotate(radians(15));
+  rect(530, 380, 20, 400);
+  rotate(radians(345));
   //crown
   fill(255,212,82);
   beginShape();
@@ -77,10 +83,21 @@ void victoryScreen(){
   triangle(110, 480, 145, 380, 200, 430);
   triangle(170, 450, 225, 380, 250, 420);
   //face
-  fill(115, 69, 46);
-  rotate(radians(330));
-  rect(0, 600, 80, 20);
-  rotate(radians(30));
+  fill(87,34,3);
+  rotate(radians(-15));
+  rect(-10, 530, 80, 20);//left eyebrow
+  fill(122,56,30);
+  ellipse(100, 590, 40, 60);//nose
+  fill(0);
+  ellipse(30, 570, 30, 10);//left eye
+  rotate(radians(375));
+  rotate(radians(10));
+  ellipse(400, 470, 30, 10);//right eye
+  fill(87,34,3);
+  rect(360, 430, 80, 20);//right eyebrow
+  rotate(radians(350));
+  
+  
   
   //3 stars
   star1 = createShape();
