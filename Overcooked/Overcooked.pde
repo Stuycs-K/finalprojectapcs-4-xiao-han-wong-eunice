@@ -58,18 +58,34 @@ void victoryScreen(){
   
   //onion man
   noStroke();
-  fill(74,57,41);
-  quad(150, 700, 210, 700, 85, 800, 80, 780);
+  fill(65, 53, 41);
+  quad(150, 700, 210, 700, 85, 800, 80, 780);//legs
   quad(85, 800, 100, 790, 145, 875, 130, 875);
   quad(265, 700, 290, 690, 295, 810, 275, 810);
   quad(275, 810, 295, 810, 270, 885, 260, 885);
+  fill(84, 23, 22);
+  quad(130,875,145,875, 150, 890, 125, 890);//shoes
+  quad(260, 885, 270, 885, 300, 915, 250, 915);
+  fill(135, 91, 54);
+  quad(360, 630, 410, 620, 415, 635, 360, 650);//arm
+  quad(70, 660, 45, 710, 50, 735, 80, 675);
+  quad(50, 735, 10, 660, 25, 660, 55, 705);
+  fill(132, 65, 23);
+  ellipse(400, 610, 35, 20);
+  ellipse(20, 650, 32,20);
   fill(142,81,36);
   ellipse(210, 590, 340, 300);
+  
   //staff
   fill(128,128,128);
   rotate(radians(15));
   rect(530, 380, 20, 400);
+  rect(520, 370, 40, 10);
+  fill(205,144,19);
+  beginShape();
+  bezierVertex(
   rotate(radians(345));
+  
   //crown
   fill(255,212,82);
   beginShape();
@@ -82,6 +98,20 @@ void victoryScreen(){
   triangle(60, 490, 80, 410, 140, 450);
   triangle(110, 480, 145, 380, 200, 430);
   triangle(170, 450, 225, 380, 250, 420);
+  
+  //mustache
+  fill(87,34,3);
+  beginShape();
+  vertex(250,540);
+  bezierVertex(200, 530, 180, 590, 120, 580);
+  bezierVertex(150, 620, 220, 630, 255, 580);
+  endShape(CLOSE);
+  beginShape();
+  vertex(250, 540);
+  bezierVertex(300, 520, 320, 570, 370, 545);
+  bezierVertex(340, 610, 300, 610, 250, 580);
+  endShape(CLOSE);
+  
   //face
   fill(87,34,3);
   rotate(radians(-15));
@@ -96,6 +126,7 @@ void victoryScreen(){
   fill(87,34,3);
   rect(360, 430, 80, 20);//right eyebrow
   rotate(radians(350));
+  
   
   
   
