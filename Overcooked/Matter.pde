@@ -39,4 +39,6 @@ abstract class Matter{
     return this.getName();
   }
   
+  abstract void display();
+  
 }

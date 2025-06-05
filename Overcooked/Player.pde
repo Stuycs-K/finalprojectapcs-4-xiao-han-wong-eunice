@@ -1,6 +1,6 @@
 class Player extends Matter{
   int[] facing;
-  ArrayList<Matter> possess;
+  ArrayList<Matter> possess = new ArrayList<Matter>();
   
   Player(String name, float x, float y){
     super(name, x, y, true);
@@ -110,11 +110,17 @@ class Player extends Matter{
     }
   }
   
+  
+  
   void display(){
     stroke(0, 0, 0);
     circle(getX(), getY(), 100);
     circle(getX(), getY(), 100);
     fill(188, 43, 43);
+    
+    if (possess.size() > 0){
+      possess.get(0).display();
+    }
   }
 
   

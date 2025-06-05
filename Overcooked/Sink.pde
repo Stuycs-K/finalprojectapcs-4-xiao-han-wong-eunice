@@ -5,4 +5,8 @@ class Sink extends Matter{
   
   void animate(){
   }
+  
+  void display(){
+  
+  }
 }

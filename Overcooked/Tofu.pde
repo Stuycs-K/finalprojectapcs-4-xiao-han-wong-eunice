@@ -7,4 +7,8 @@ class Tofu extends FoodItem{
     
   }
   
+  void display(){
+  
+  }
+  
 }

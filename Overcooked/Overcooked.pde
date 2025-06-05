@@ -10,7 +10,8 @@ ArrayList<Order> menu = new ArrayList<Order>();
 //Objects
 Stove stove;
 Player A;
-Counter[] counters = new Counter[9];
+//Counter[] counters = new Counter[9];
+ArrayList<Counter> counters = new ArrayList<Counter>();
 
 Counter counter1;
 Counter counter2;
@@ -40,7 +41,7 @@ void setEasy(){
   minLapse = 10;
   maxLapse = 16;
   
-  menu.add(new SalmonSashimi());
+  //menu.add(new SalmonSashimi());
   
 }
 
@@ -88,6 +89,9 @@ void keyPressed() {
   if (key == 'd' || key == 'D'){
     A.move("d",manager);
   }
+  if (key == 'r' || key == 'R'){
+    A.move("d",manager);
+  }
   
 }
 void setup(){
@@ -100,9 +104,9 @@ void setup(){
   //println("Added stove. List now size: " + manager.allMatter.size());
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
-  for(int x = 0; x < counters.length - 5; x++){
-    counters[x] = new Counter(x * 120 + 360, 840);
-    //manager.add(counters[x]);
+  for(int x = 0; x < 4; x++){
+    counters.add(new Counter(x * 120 + 360, 840));
+    manager.add(counters.get(counters.size() - 1));
   }
   //println("All Matter size: " + manager.allMatter.size());
   manager.debugPrintAllMatter();
@@ -114,8 +118,12 @@ void setup(){
   counter2 = new Counter(840, 120);
   counter3 = new Counter(960, 120);
   
-  counters.add(counter0);
-  
+  manager.add(counter0);
+  manager.add(counter1);
+  manager.add(counter2);
+  manager.add(counter3);
+  manager.add(board0);
+  manager.add(board1);
   
 }
 
@@ -151,9 +159,17 @@ void draw(){
   counter2.display();
   counter3.display();
   
-  
-  rect(0.0, 0.0, 70, 40.0);
+  /*  Testing for orders
+  rect(0, 0.0, 160, 110.0);
+  fill(220, 220, 220);
+  rect(160, 0.0, 160, 110.0);
   fill(0, 76, 153);
+  fill(0, 0, 0);
+  textSize(20);
+  text("Miso Soup", 35, 100);
+  text("TUNA ROLL", 180, 100);
+  */
+  
 
 
   for(Counter c : counters){

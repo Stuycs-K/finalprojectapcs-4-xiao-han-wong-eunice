@@ -1,11 +1,11 @@
 class MisoSoup extends Order{
   
-  MisoSoup(){
+  MisoSoup(float x, float y){
     super("Miso Soup", new FoodItem[]{
       new Seaweed(0,0),
       new Dashi(0,0),
       new Tofu(0,0)
-    }, 0, 0, 40);
+    }, x, y, 40);
     //cannot refer to an instance field need other solution
   }
    
@@ -22,6 +22,13 @@ class MisoSoup extends Order{
     return true;
   }
   
-  void animate(){
+  void display(){
+    fill(220, 220, 220);
+    rect(getX(), getY(), 160, 110.0);
+    fill(0, 0, 0);
+    textSize(20);
+    text("Miso Soup", 35, 100);
   }
+  
+  
 }

@@ -22,6 +22,10 @@ class Dashi extends FoodItem{
     return true;
   }
   
+  void display(){
+  
+  }
+  
 }
   
   

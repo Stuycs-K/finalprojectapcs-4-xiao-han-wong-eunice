@@ -22,4 +22,12 @@ class TunaSashimi extends Order{
   
   void animate(){
   }
+  
+  void display(){
+    fill(220, 220, 220);
+    rect(getX(), getY(), 160, 110.0);
+    fill(0, 0, 0);
+    textSize(20);
+    text("Tuna Sashimi", getX() + 20, getY() + 100);
+  }
 }
