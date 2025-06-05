@@ -25,6 +25,10 @@ class Plate extends Matter implements Droppable{
     return false;
   }
   
+  boolean trash(){
+    return false;
+  }
+  
   void changeState(){
     if (state == clean){
       state = dirty;

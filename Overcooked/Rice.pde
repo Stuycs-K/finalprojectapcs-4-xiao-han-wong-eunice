@@ -3,9 +3,11 @@ class Rice extends FoodItem{
     super("Rice", 5, 5, 0, x, y);
   }
   
+  /*
   void display(float x, float y){
     
   }
+  */
   
   boolean sink(){
    return false; 
@@ -20,7 +22,15 @@ class Rice extends FoodItem{
     return true;
   }
   
+  boolean trash(){
+    return true;
+  }
+  
   void display(){
   
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Rice(X, Y);
   }
 }

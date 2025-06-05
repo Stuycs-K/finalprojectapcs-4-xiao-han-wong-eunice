@@ -1,12 +1,11 @@
 import java.util.ArrayList;
 
 int round = 1;
-int difficulty = 0;
-int secPassed, minLapse, maxLapse, oneStar, twoStar, threeStar;
+int difficulty, secPassed, minLapse, maxLapse;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
 MatterManage manager = new MatterManage();
-ArrayList<Order> menu;
+ArrayList<Order> menu = new ArrayList<Order>();
 
 //Objects
 Stove stove;
@@ -14,8 +13,12 @@ Player A;
 //Counter[] counters = new Counter[9];
 ArrayList<Counter> counters = new ArrayList<Counter>();
 
-Counter counter1, counter2, counter3, counter0;
-Chopping board0, board1;
+Counter counter1;
+Counter counter2;
+Counter counter3;
+Counter counter0;
+Chopping board0;
+Chopping board1;
 
 
 //one round lasts 60 seconds
@@ -37,17 +40,11 @@ void setEasy(){
   difficulty = 0;
   minLapse = 10;
   maxLapse = 16;
-  oneStar = 50;
-  twoStar = 75;
-  threeStar = 100;
   
-  menu = new ArrayList<Order>();
-  menu.add(new SalmonSashimi(0, 0));
-  menu.add(new SalmonSashimi(0, 0));
-  menu.add(new SalmonRoll(0, 0));
-  menu.add(new TunaSashimi(0, 0));
-  menu.add(new TunaSashimi(0, 0));
-  menu.add(new TunaRoll(0, 0));
+  
+  
+  //menu.add(new SalmonSashimi());
+  
 }
 
 void setMed(){
@@ -55,18 +52,6 @@ void setMed(){
   difficulty = 1;
   minLapse = 9;
   maxLapse = 14;
-  oneStar = 105;
-  twoStar = 130;
-  threeStar = 160;
-  
-  menu = new ArrayList<Order>();
-  menu.add(new SalmonRoll(0, 0));
-  menu.add(new SalmonSashimi(0, 0));
-  menu.add(new SalmonRoll(0, 0));
-  menu.add(new TunaRoll(0, 0));
-  menu.add(new TunaSashimi(0, 0));
-  menu.add(new TunaRoll(0, 0));
-  menu.add(new MisoSoup(0, 0));
 }
 
 void setHard(){
@@ -74,19 +59,8 @@ void setHard(){
   difficulty = 2;
   minLapse = 6;
   maxLapse = 11;
-  oneStar = 130;
-  twoStar = 145;
-  threeStar = 200;
   
-  menu = new ArrayList<Order>();
-  menu.add(new SalmonSashimi(0, 0));
-  menu.add(new SalmonRoll(0, 0));
-  menu.add(new TunaRoll(0, 0));
-  menu.add(new TunaSashimi(0, 0));
-  menu.add(new TunaRoll(0, 0));
-  menu.add(new MisoSoup(0, 0));
-  menu.add(new MisoSoup(0, 0));
-  menu.add(new MisoSoup(0, 0));
+  
 }
 
 void newRound(){
@@ -94,8 +68,6 @@ void newRound(){
   difficulty++;
   round++;
   secPassed = 0;
-  
-  menu = new ArrayList<Order>();
 }
 
 void victoryScreen(){
@@ -154,9 +126,6 @@ void setup(){
   manager.add(counter3);
   manager.add(board0);
   manager.add(board1);
-  
-  setEasy();
-  
   
 }
 

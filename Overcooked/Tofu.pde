@@ -11,4 +11,12 @@ class Tofu extends FoodItem{
   
   }
   
+  boolean trash(){
+    return true;
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Tofu(X, Y);
+  }
+  
 }

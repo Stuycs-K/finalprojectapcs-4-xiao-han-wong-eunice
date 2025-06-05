@@ -19,6 +19,10 @@ class MisoSoup extends Order{
     return false;
   }
   boolean stove(){
+    return false;
+  }
+  
+  boolean trash(){
     return true;
   }
   

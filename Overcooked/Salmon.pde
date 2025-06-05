@@ -19,4 +19,12 @@ class Salmon extends FoodItem{
   boolean stove(){
     return true;
   }
+  
+  boolean trash(){
+    return true;
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Salmon(X, Y);
+  }
 }

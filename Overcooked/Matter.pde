@@ -35,6 +35,14 @@ abstract class Matter{
     y +=Y;
   }
   
+  void modX(float X){
+    x += X;
+  }
+  
+  void modY(float Y){
+    y += Y;
+  }
+  
   String toString(){
     return this.getName();
   }

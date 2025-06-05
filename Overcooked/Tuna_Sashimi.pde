@@ -1,9 +1,9 @@
 class TunaSashimi extends Order{
   
-  TunaSashimi(){
+  TunaSashimi(float x, float y){
     super("Tuna Sashimi", new FoodItem[]{
       new Tuna(0,0)
-    }, 0, 0, 15);
+    }, x, y, 15);
     //cannot refer to an instance field need other solution
   }
    

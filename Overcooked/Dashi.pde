@@ -22,8 +22,16 @@ class Dashi extends FoodItem{
     return true;
   }
   
+  boolean trash(){
+    return true;
+  }
+  
   void display(){
   
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Dashi(X, Y);
   }
   
 }

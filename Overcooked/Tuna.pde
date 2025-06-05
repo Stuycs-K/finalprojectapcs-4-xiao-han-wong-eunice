@@ -11,4 +11,12 @@ class Tuna extends FoodItem{
     return false;
   }
   
+  boolean trash(){
+    return true;
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Tuna(X, Y);
+  }
+  
 }

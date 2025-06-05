@@ -10,4 +10,12 @@ class Seaweed extends FoodItem{
   boolean chop(){
     return false;
   }
+  
+  boolean trash(){
+    return true;
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Seaweed(X, Y);
+  }
 }
