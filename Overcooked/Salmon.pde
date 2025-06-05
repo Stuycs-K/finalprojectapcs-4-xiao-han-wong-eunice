@@ -3,7 +3,7 @@ class Salmon extends FoodItem{
     super("Salmon", 5, 5, 5, x, y);
   }
   
-  void display(float x, float y){
+  void display(){
     
   }
   

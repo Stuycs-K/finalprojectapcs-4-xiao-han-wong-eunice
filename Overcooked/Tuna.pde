@@ -3,11 +3,12 @@ class Tuna extends FoodItem{
     super("Tuna", 5, 0, 5, x, y);
   }
   
-  void display(float x, float y){
-    
+  void display(){
+    rect(getX(), getY(), 160, 110.0);
   }
   
   boolean stove(){
     return false;
   }
+  
 }

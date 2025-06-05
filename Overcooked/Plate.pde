@@ -42,4 +42,11 @@ class Plate extends Matter implements Droppable{
     foodItems.add(item);
   }
   
+  void display(){
+    stroke(0, 0, 0);
+    circle(getX(), getY(), 100);
+    circle(getX(), getY(), 100);
+    fill(255, 255, 255);
+  }
+  
 }

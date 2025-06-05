@@ -1,6 +1,6 @@
 class Player extends Matter{
   int[] facing;
-  ArrayList<Matter> possess;
+  ArrayList<Matter> possess = new ArrayList<Matter>();
   
   Player(String name, float x, float y){
     super(name, x, y, true);
@@ -26,15 +26,15 @@ class Player extends Matter{
     float newX = getX() + dx;
     float newY = getY() + dy;
     
-    println("Attempting move from (" + getX() + ", " + getY() + ") to (" + newX + ", " + newY + ")");
+    //println("Attempting move from (" + getX() + ", " + getY() + ") to (" + newX + ", " + newY + ")");
     
     Matter obstacle = manager.getMatterAt(newX, newY);
     if(obstacle == null){
-      println("No obstacle found, moving.");
+      //println("No obstacle found, moving.");
        setX(dx);
        setY(dy);
     }else {
-    println("Obstacle found: " + obstacle.getName() + ", move blocked.");
+    //println("Obstacle found: " + obstacle.getName() + ", move blocked.");
     }
   }
   
@@ -110,11 +110,17 @@ class Player extends Matter{
     }
   }
   
+  
+  
   void display(){
     stroke(0, 0, 0);
     circle(getX(), getY(), 100);
     circle(getX(), getY(), 100);
     fill(188, 43, 43);
+    
+    if (possess.size() > 0){
+      possess.get(0).display();
+    }
   }
 
   

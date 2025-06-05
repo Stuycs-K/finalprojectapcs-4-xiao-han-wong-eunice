@@ -19,4 +19,8 @@ class Rice extends FoodItem{
   boolean stove(){
     return true;
   }
+  
+  void display(){
+  
+  }
 }
