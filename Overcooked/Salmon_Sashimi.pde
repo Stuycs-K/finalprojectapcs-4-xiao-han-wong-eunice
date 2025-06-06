@@ -1,12 +1,23 @@
 class SalmonSashimi extends Order{
   
-  SalmonSashimi(){
+  SalmonSashimi(float x, float y){
     super("Salmon Sashimi", new FoodItem[]{
       new Salmon(0,0)
-    }, 0, 0);
-    //cannot refer to an instance field need other solution
+    }, x, y, 15);
   }
   
   void animate(){
+  }
+  
+  void display(){
+    fill(220, 220, 220);
+    rect(getX(), getY(), 160, 110.0);
+    fill(0, 0, 0);
+    textSize(20);
+    text("Salmon Sashimi", getX() + 8, getY() + 100);
+  }
+  
+  Matter copy(float X, float Y){
+    return new SalmonSashimi(X, Y);
   }
 }

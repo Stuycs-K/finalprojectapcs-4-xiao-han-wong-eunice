@@ -1,10 +1,12 @@
 class Player extends Matter{
-  int[] facing;
-  ArrayList<Matter> possess;
+  int[] dir;
+  float[] facing;
+  ArrayList<Matter> possess = new ArrayList<Matter>();
   
   Player(String name, float x, float y){
     super(name, x, y, true);
-    facing = new int[]{0, -1};
+    facing = new float[]{0, -1};
+    dir = new int[]{0, -1};
   }
   
   void move(String k, MatterManage manager){
@@ -13,30 +15,59 @@ class Player extends Matter{
     float dy = 0;
       if (k.equals("w")){
         dy = -120;
+        dir = new int[]{0, -1};
+        facing = new float[]{getX(), getY() + dy*2};
       }
       if (k.equals("a")){
         dx = -120;
+        dir = new int[]{-1, 0};
+        facing = new float[]{getX() + dx*2, getY()};
       }
       if (k.equals("s")){
         dy = 120;
+        dir = new int[]{0, 1};
+        facing = new float[]{getX()+dx*2, getY()};
       }
       if (k.equals("d")){
         dx = 120;
+        dir = new int[]{1, 0};
+      }
+      if (k.equals("r")){
+        //dx = 120;
       }
     float newX = getX() + dx;
     float newY = getY() + dy;
     
-    println("Attempting move from (" + getX() + ", " + getY() + ") to (" + newX + ", " + newY + ")");
+    //println("Attempting move from (" + getX() + ", " + getY() + ") to (" + newX + ", " + newY + ")");
     
     Matter obstacle = manager.getMatterAt(newX, newY);
     if(obstacle == null){
-      println("No obstacle found, moving.");
+      //println("No obstacle found, moving.");
        setX(dx);
        setY(dy);
     }else {
-    println("Obstacle found: " + obstacle.getName() + ", move blocked.");
+    //println("Obstacle found: " + obstacle.getName() + ", move blocked.");
     }
   }
+  
+  void facingRay(){
+    fill(255, 255, 255);
+    tint(255, 127);
+    if (dir[0] == 0 && dir[1] == -1){
+      quad(this.getX() + 10, this.getY() - 20, this.getX() - 10, this.getY() - 20, this.getX() - 50, this.getY() -80, this.getX() + 50, this.getY() - 80);
+    }
+    if (dir[0] == -1 && dir[1] == 0){
+      quad(this.getX() - 10, this.getY() - 10, this.getX() - 10, this.getY() + 10, this.getX() - 80, this.getY() +50, this.getX() - 80, this.getY() - 50);
+    }
+    if (dir[0] == 1 && dir[1] == 0){
+      quad(this.getX() + 10, this.getY() - 10, this.getX() + 10, this.getY() + 10, this.getX() + 80, this.getY() +50, this.getX() + 80, this.getY() - 50);
+    }
+    if (dir[0] == 0 && dir[1] == 1){
+      quad(this.getX() + 10, this.getY() + 20, this.getX() - 10, this.getY() + 20, this.getX() - 50, this.getY() +80, this.getX() + 50, this.getY() + 80);
+    }
+    
+  }
+  
   
   void drop(Matter obj){
     possess.remove(obj);
@@ -44,6 +75,8 @@ class Player extends Matter{
   
   void pickUp(Matter obj){
     possess.add(obj);
+    obj.modX(this.getX());
+    obj.modY(this.getY());
   }
   
   int startTime;
@@ -110,13 +143,35 @@ class Player extends Matter{
     }
   }
   
+  
+  
   void display(){
     stroke(0, 0, 0);
     circle(getX(), getY(), 100);
     circle(getX(), getY(), 100);
     fill(188, 43, 43);
+    
+    if (possess.size() > 0){
+      possess.get(0).display();
+    }
+  }
+  
+  Matter copy(float X, float Y){
+    return new Player("player2",X, Y);
   }
 
+  boolean handsFull(){
+    if (possess.size() > 0){
+      return true;
+    }
+    return false;
+  }
   
+  Matter getItem(){
+    if (possess.size() > 0){
+      return possess.get(0);
+    }
+    return null;
+  }
       
 }

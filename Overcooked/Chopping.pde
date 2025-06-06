@@ -13,11 +13,16 @@ class Chopping extends Matter{
   }
   
   void display(){
+    fill(234, 182, 118);
     stroke(0, 0, 0);
     rect(getX(), getY(), 120, 70);
     fill(234, 182, 118);
   }
   
   void animate(){
+  }
+  
+  Matter copy(float x, float y){
+    return new Chopping(0,0);
   }
 }

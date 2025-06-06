@@ -84,6 +84,9 @@ abstract class FoodItem extends Matter implements Droppable{
     return state;
   }
   
+  abstract FoodItem copy(float x, float y);
+  
+  
 }
     
     
