@@ -148,7 +148,7 @@ class Player extends Matter{
   void display(){
     stroke(0, 0, 0);
     circle(getX(), getY(), 100);
-    circle(getX(), getY(), 100);
+    //circle(getX(), getY(), 100);
     fill(188, 43, 43);
     
     if (possess.size() > 0){
