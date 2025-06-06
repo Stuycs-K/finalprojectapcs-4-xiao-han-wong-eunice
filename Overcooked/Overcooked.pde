@@ -12,7 +12,7 @@ ArrayList<Order> menu;
 PShape star1;
 PShape star2;
 PShape star3;
-Stove stove;
+//Stove stove;
 Player A;
 //Counter[] counters = new Counter[9];
 ArrayList<Counter> counters = new ArrayList<Counter>();
