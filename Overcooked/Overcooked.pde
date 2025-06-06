@@ -212,6 +212,12 @@ void draw(){
   trash.display();
   A.facingRay();
   
+  //displays holding item
+  if (A.handsFull()){
+    A.getItem().modX(A.getX());
+    A.getItem().modY(A.getY());
+  }
+  
   //quad(100, 100, 200, 100, 100, 300, 10, 300);
   
   /*  Testing for orders
