@@ -154,6 +154,13 @@ void setup(){
   belt2 = new Belt(1320, 120);
   trash = new TrashCan(1440, 120);
   
+  /*
+  //Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
+  Plate plate1 = new Plate(0,0);
+  Plates = Inventory(plate1, 10, 1080.0, 120.0);
+  SalmonFish = Inventory(new Salmon(0,0), 10, 1080.0, 120.0);
+  */
+  
   manager.add(counter0);
   manager.add(counter1);
   manager.add(counter2);

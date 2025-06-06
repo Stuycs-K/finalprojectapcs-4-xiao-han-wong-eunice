@@ -1,10 +1,11 @@
 class Player extends Matter{
-  int[] facing;
+  int[] dir;
+  float[] facing;
   ArrayList<Matter> possess = new ArrayList<Matter>();
   
   Player(String name, float x, float y){
     super(name, x, y, true);
-    facing = new int[]{0, -1};
+    facing = new float[]{0, -1};
   }
   
   void move(String k, MatterManage manager){
@@ -13,15 +14,22 @@ class Player extends Matter{
     float dy = 0;
       if (k.equals("w")){
         dy = -120;
+        dir = new int[]{0, -1};
+        facing = new float[]{getX(), getY() + dy*2};
       }
       if (k.equals("a")){
         dx = -120;
+        dir = new int[]{-1, 0};
+        facing = new float[]{getX() + dx*2, getY()};
       }
       if (k.equals("s")){
         dy = 120;
+        dir = new int[]{0, 1};
+        facing = new float[]{getX()+dx*2, getY()};
       }
       if (k.equals("d")){
         dx = 120;
+        dir = new int[]{-1, 0};
       }
       if (k.equals("r")){
         //dx = 120;
@@ -41,6 +49,10 @@ class Player extends Matter{
     }
   }
   
+  void facingRay(){
+    
+  }
+  
   
   void drop(Matter obj){
     possess.remove(obj);
@@ -48,6 +60,8 @@ class Player extends Matter{
   
   void pickUp(Matter obj){
     possess.add(obj);
+    obj.modX(this.getX());
+    obj.modY(this.getY());
   }
   
   int startTime;
