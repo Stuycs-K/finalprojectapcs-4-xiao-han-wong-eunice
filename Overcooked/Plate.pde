@@ -48,8 +48,8 @@ class Plate extends Matter implements Droppable{
   
   void display(){
     stroke(0, 0, 0);
-    circle(getX(), getY(), 100);
-    circle(getX(), getY(), 100);
+    circle(getX() + 60, getY()+60, 100);
+    //circle(getX(), getY(), 100);
     fill(255, 255, 255);
   }
   
