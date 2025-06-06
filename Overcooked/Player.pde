@@ -6,6 +6,7 @@ class Player extends Matter{
   Player(String name, float x, float y){
     super(name, x, y, true);
     facing = new float[]{0, -1};
+    dir = new int[]{0, -1};
   }
   
   void move(String k, MatterManage manager){
@@ -29,7 +30,7 @@ class Player extends Matter{
       }
       if (k.equals("d")){
         dx = 120;
-        dir = new int[]{-1, 0};
+        dir = new int[]{1, 0};
       }
       if (k.equals("r")){
         //dx = 120;
@@ -50,6 +51,20 @@ class Player extends Matter{
   }
   
   void facingRay(){
+    fill(255, 255, 255);
+    tint(255, 127);
+    if (dir[0] == 0 && dir[1] == -1){
+      quad(this.getX() + 10, this.getY() - 20, this.getX() - 10, this.getY() - 20, this.getX() - 50, this.getY() -80, this.getX() + 50, this.getY() - 80);
+    }
+    if (dir[0] == -1 && dir[1] == 0){
+      quad(this.getX() - 10, this.getY() - 10, this.getX() - 10, this.getY() + 10, this.getX() - 80, this.getY() +50, this.getX() - 80, this.getY() - 50);
+    }
+    if (dir[0] == 1 && dir[1] == 0){
+      quad(this.getX() + 10, this.getY() - 10, this.getX() + 10, this.getY() + 10, this.getX() + 80, this.getY() +50, this.getX() + 80, this.getY() - 50);
+    }
+    if (dir[0] == 0 && dir[1] == 1){
+      quad(this.getX() + 10, this.getY() + 20, this.getX() - 10, this.getY() + 20, this.getX() - 50, this.getY() +80, this.getX() + 50, this.getY() + 80);
+    }
     
   }
   
