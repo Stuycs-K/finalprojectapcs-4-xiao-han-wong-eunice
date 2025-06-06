@@ -210,6 +210,9 @@ void draw(){
   belt1.display();
   belt2.display();
   trash.display();
+  A.facingRay();
+  
+  //quad(100, 100, 200, 100, 100, 300, 10, 300);
   
   /*  Testing for orders
   rect(0, 0.0, 160, 110.0);
