@@ -160,6 +160,18 @@ class Player extends Matter{
     return new Player("player2",X, Y);
   }
 
+  boolean handsFull(){
+    if (possess.size() > 0){
+      return true;
+    }
+    return false;
+  }
   
+  Matter getItem(){
+    if (possess.size() > 0){
+      return possess.get(0);
+    }
+    return null;
+  }
       
 }
