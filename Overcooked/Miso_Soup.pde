@@ -34,5 +34,9 @@ class MisoSoup extends Order{
     text("Miso Soup", 35, 100);
   }
   
+  Matter copy(float X, float Y){
+    return new MisoSoup(X, Y);
+  }
+  
   
 }

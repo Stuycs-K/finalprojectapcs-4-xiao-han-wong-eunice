@@ -34,4 +34,8 @@ class TunaRoll extends Order{
     textSize(20);
     text("TUNA ROLL", getX() + 30, getY() + 100);
   }
+  
+  Matter copy(float X, float Y){
+    return new TunaRoll(X, Y);
+  }
 }

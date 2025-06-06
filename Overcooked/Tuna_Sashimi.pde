@@ -30,4 +30,8 @@ class TunaSashimi extends Order{
     textSize(20);
     text("Tuna Sashimi", getX() + 20, getY() + 100);
   }
+  
+  Matter copy(float X, float Y){
+    return new TunaSashimi(X, Y);
+  }
 }

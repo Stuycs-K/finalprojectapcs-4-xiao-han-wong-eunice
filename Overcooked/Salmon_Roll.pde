@@ -19,4 +19,8 @@ class SalmonRoll extends Order{
     textSize(20);
     text("Salmon Roll", getX() + 20, getY() + 100);
   }
+  
+  Matter copy(float X, float Y){
+    return new Miso(X, Y);
+  }
 }

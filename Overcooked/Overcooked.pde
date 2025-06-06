@@ -16,7 +16,10 @@ ArrayList<Counter> counters = new ArrayList<Counter>();
 
 Counter counter1, counter2, counter3, counter0;
 Chopping board0, board1;
-
+Belt belt1, belt2;
+TrashCan trash;
+Stove stove1, stove2, stove3;
+Inventory Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
 
 //one round lasts 60 seconds
 
@@ -120,7 +123,7 @@ void keyPressed() {
     A.move("d",manager);
   }
   if (key == 'r' || key == 'R'){
-    A.move("d",manager);
+    A.move("r",manager);
   }
   
 }
@@ -129,8 +132,8 @@ void setup(){
   background(0, 76, 153);
   //OBJECTS
   
-  stove = new Stove(240, 240);
-  manager.add(stove);
+  //stove = new Stove(240, 240);
+  //manager.add(stove);
   //println("Added stove. List now size: " + manager.allMatter.size());
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
@@ -147,6 +150,9 @@ void setup(){
   board1 = new Chopping (720, 120);
   counter2 = new Counter(840, 120);
   counter3 = new Counter(960, 120);
+  belt1 = new Belt(1200, 120);
+  belt2 = new Belt(1320, 120);
+  trash = new TrashCan(1440, 120);
   
   manager.add(counter0);
   manager.add(counter1);
@@ -154,6 +160,9 @@ void setup(){
   manager.add(counter3);
   manager.add(board0);
   manager.add(board1);
+  manager.add(belt1);
+  manager.add(belt2);
+  manager.add(trash);
   
   setEasy();
   
@@ -191,6 +200,9 @@ void draw(){
   board1.display();
   counter2.display();
   counter3.display();
+  belt1.display();
+  belt2.display();
+  trash.display();
   
   /*  Testing for orders
   rect(0, 0.0, 160, 110.0);
@@ -209,7 +221,7 @@ void draw(){
     c.display();
   }
   
-  stove.display();
+  //stove.display();
   //victoryScreen();
 }
 

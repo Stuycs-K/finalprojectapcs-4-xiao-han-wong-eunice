@@ -19,4 +19,9 @@ class Counter extends Matter{
     square(getX(), getY(), 120);
     fill(233, 166, 88);
   }
+  
+  Matter copy(float x, float y){
+    return new Counter(0,0);
+  }
+  
 }

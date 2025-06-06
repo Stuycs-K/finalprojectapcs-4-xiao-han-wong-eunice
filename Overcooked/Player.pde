@@ -23,6 +23,9 @@ class Player extends Matter{
       if (k.equals("d")){
         dx = 120;
       }
+      if (k.equals("r")){
+        //dx = 120;
+      }
     float newX = getX() + dx;
     float newY = getY() + dy;
     
@@ -37,6 +40,7 @@ class Player extends Matter{
     //println("Obstacle found: " + obstacle.getName() + ", move blocked.");
     }
   }
+  
   
   void drop(Matter obj){
     possess.remove(obj);
@@ -121,6 +125,10 @@ class Player extends Matter{
     if (possess.size() > 0){
       possess.get(0).display();
     }
+  }
+  
+  Matter copy(float X, float Y){
+    return new Player("player2",X, Y);
   }
 
   

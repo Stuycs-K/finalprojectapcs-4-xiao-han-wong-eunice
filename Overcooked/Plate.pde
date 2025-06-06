@@ -53,4 +53,8 @@ class Plate extends Matter implements Droppable{
     fill(255, 255, 255);
   }
   
+  Matter copy(float X, float Y){
+    return new Plate(X, Y);
+  }
+  
 }

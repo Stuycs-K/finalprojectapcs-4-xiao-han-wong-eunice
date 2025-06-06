@@ -21,4 +21,8 @@ class Chopping extends Matter{
   
   void animate(){
   }
+  
+  Matter copy(float x, float y){
+    return new Chopping(0,0);
+  }
 }

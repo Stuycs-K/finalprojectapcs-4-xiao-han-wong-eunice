@@ -16,4 +16,8 @@ class SalmonSashimi extends Order{
     textSize(20);
     text("Salmon Sashimi", getX() + 8, getY() + 100);
   }
+  
+  Matter copy(float X, float Y){
+    return new SalmonSashimi(X, Y);
+  }
 }
