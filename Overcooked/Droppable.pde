@@ -4,5 +4,6 @@ interface Droppable{
   boolean belt();
   boolean board();
   boolean stove();
+  boolean trash();
   
 }

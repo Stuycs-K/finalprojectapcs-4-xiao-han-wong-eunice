@@ -25,6 +25,10 @@ class Plate extends Matter implements Droppable{
     return false;
   }
   
+  boolean trash(){
+    return false;
+  }
+  
   void changeState(){
     if (state == clean){
       state = dirty;
@@ -47,6 +51,10 @@ class Plate extends Matter implements Droppable{
     circle(getX(), getY(), 100);
     circle(getX(), getY(), 100);
     fill(255, 255, 255);
+  }
+  
+  Matter copy(float X, float Y){
+    return new Plate(X, Y);
   }
   
 }

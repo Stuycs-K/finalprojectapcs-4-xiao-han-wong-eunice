@@ -1,4 +1,4 @@
-abstract class Order extends Matter implements Droppable{
+abstract class Order extends Matter{
   FoodItem[] ingredients;
   int points;
   int timePresent;
@@ -32,6 +32,7 @@ abstract class Order extends Matter implements Droppable{
     return false;
   }
   
+  /*
   boolean sink(){
    return false; 
   }
@@ -44,7 +45,7 @@ abstract class Order extends Matter implements Droppable{
   boolean stove(){
     return false;
   }
-  
+  */
   
   //abstract void animate();
   

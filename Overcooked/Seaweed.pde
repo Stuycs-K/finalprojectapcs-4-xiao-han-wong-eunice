@@ -4,10 +4,20 @@ class Seaweed extends FoodItem{
   }
   
   void display(){
-  
+    fill(0, 0, 0);
+    textSize(20);
+    text("Seaweed", getX() + 20, getY() + 50);
   }
     
   boolean chop(){
     return false;
+  }
+  
+  boolean trash(){
+    return true;
+  }
+  
+  FoodItem copy(float X, float Y){
+    return new Seaweed(X, Y);
   }
 }

@@ -15,6 +15,10 @@ abstract class Matter{
     return name;
   }
   
+  void setName(String newName){
+    name = newName;
+  }
+  
   float getX(){
     return x;
   }
@@ -35,10 +39,19 @@ abstract class Matter{
     y +=Y;
   }
   
+  void modX(float X){
+    x += X;
+  }
+  
+  void modY(float Y){
+    y += Y;
+  }
+  
   String toString(){
     return this.getName();
   }
   
   abstract void display();
+  abstract Matter copy(float X, float Y);
   
 }

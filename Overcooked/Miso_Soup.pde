@@ -19,6 +19,10 @@ class MisoSoup extends Order{
     return false;
   }
   boolean stove(){
+    return false;
+  }
+  
+  boolean trash(){
     return true;
   }
   
@@ -28,6 +32,10 @@ class MisoSoup extends Order{
     fill(0, 0, 0);
     textSize(20);
     text("Miso Soup", 35, 100);
+  }
+  
+  Matter copy(float X, float Y){
+    return new MisoSoup(X, Y);
   }
   
   
