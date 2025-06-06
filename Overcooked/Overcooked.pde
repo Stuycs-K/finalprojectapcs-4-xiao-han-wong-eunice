@@ -71,7 +71,7 @@ void victoryScreen(){
   quad(70, 660, 45, 710, 50, 735, 80, 675);
   quad(50, 735, 10, 660, 25, 660, 55, 705);
   fill(132, 65, 23);
-  ellipse(400, 610, 35, 20);
+  ellipse(400, 612, 35, 20);
   ellipse(20, 650, 32,20);
   fill(142,81,36);
   ellipse(210, 590, 340, 300);
@@ -83,7 +83,14 @@ void victoryScreen(){
   rect(520, 370, 40, 10);
   fill(205,144,19);
   beginShape();
-  bezierVertex(
+  vertex(523,375);
+  bezierVertex(525,375, 500, 355, 535, 330);
+  vertex(532, 315);
+  vertex(542, 320);
+  vertex(552, 315);
+  vertex(550, 328);
+  bezierVertex(560, 340, 578, 355, 557, 375);
+  endShape(CLOSE);
   rotate(radians(345));
   
   //crown
@@ -97,7 +104,7 @@ void victoryScreen(){
   triangle(50, 540, 25, 460, 100, 480);
   triangle(60, 490, 80, 410, 140, 450);
   triangle(110, 480, 145, 380, 200, 430);
-  triangle(170, 450, 225, 380, 250, 420);
+  triangle(170, 450, 230, 380, 250, 420);
   
   //mustache
   fill(87,34,3);
