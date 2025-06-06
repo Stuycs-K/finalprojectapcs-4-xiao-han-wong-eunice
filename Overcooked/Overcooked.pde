@@ -47,6 +47,12 @@ void newRound(){
 
 
 void victoryScreen(){
+  background(130,184,220);
+  noStroke();
+  fill(78,189,208);
+  rect(0, 40, 1000, 120);
+  fill(61,113,150);
+  rect(0,160, 1000, 10);
   //score sheet
   stroke(250);
   fill(239,231,217);
@@ -60,7 +66,7 @@ void victoryScreen(){
   noStroke();
   fill(65, 53, 41);
   quad(150, 700, 210, 700, 85, 800, 80, 780);//legs
-  quad(85, 800, 100, 790, 145, 875, 130, 875);
+  quad(85, 800, 100, 780, 145, 875, 130, 875);
   quad(265, 700, 290, 690, 295, 810, 275, 810);
   quad(275, 810, 295, 810, 270, 885, 260, 885);
   fill(84, 23, 22);
@@ -94,7 +100,7 @@ void victoryScreen(){
   rotate(radians(345));
   
   //crown
-  fill(255,212,82);
+  fill(205,144,19);
   beginShape();
   vertex(50, 540);
   bezierVertex(100, 490, 180, 450, 263, 449);
