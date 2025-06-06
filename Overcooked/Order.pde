@@ -1,10 +1,12 @@
-abstract class Order extends Matter implements Droppable{
+abstract class Order extends Matter{
   FoodItem[] ingredients;
+  int points;
   int timePresent;
   
-  Order(String name, FoodItem[] ingredients, float x, float y){
+  Order(String name, FoodItem[] ingredients, float x, float y, int pts){
     super(name, x, y, true);
     this.ingredients = ingredients;
+    points = pts;
   }
   
   boolean isComplete(ArrayList<FoodItem> prepared){
@@ -30,6 +32,7 @@ abstract class Order extends Matter implements Droppable{
     return false;
   }
   
+  /*
   boolean sink(){
    return false; 
   }
@@ -42,9 +45,9 @@ abstract class Order extends Matter implements Droppable{
   boolean stove(){
     return false;
   }
+  */
   
-  
-  abstract void animate();
+  //abstract void animate();
   
   
   

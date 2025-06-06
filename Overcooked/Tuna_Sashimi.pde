@@ -1,9 +1,9 @@
 class TunaSashimi extends Order{
   
-  TunaSashimi(){
+  TunaSashimi(float x, float y){
     super("Tuna Sashimi", new FoodItem[]{
       new Tuna(0,0)
-    }, 0, 0);
+    }, x, y, 15);
     //cannot refer to an instance field need other solution
   }
    
@@ -21,5 +21,17 @@ class TunaSashimi extends Order{
   }
   
   void animate(){
+  }
+  
+  void display(){
+    fill(220, 220, 220);
+    rect(getX(), getY(), 160, 110.0);
+    fill(0, 0, 0);
+    textSize(20);
+    text("Tuna Sashimi", getX() + 20, getY() + 100);
+  }
+  
+  Matter copy(float X, float Y){
+    return new TunaSashimi(X, Y);
   }
 }

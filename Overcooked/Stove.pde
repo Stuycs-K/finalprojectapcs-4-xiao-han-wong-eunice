@@ -12,4 +12,8 @@ class Stove extends Matter{
     square(getX(), getY(), 120);
     
   }
+  
+  Matter copy(float X, float Y){
+    return new Stove(X, Y);
+  }
 }

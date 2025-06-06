@@ -1,20 +1,14 @@
-class Dashi extends FoodItem{
-  Dashi(float x, float y){
-    super("Dashi", 0, 5, 0, x, y);
+class Miso extends FoodItem{
+  Miso(float X, float Y){
+      super("Miso", 5, 5, 5, X, Y);
   }
-  
-  void display(float x, float y){
-    
-  }
-  
   boolean sink(){
     return false;
   }
-  boolean board(){
+  boolean belt(){
     return false;
   }
-  
-  boolean belt(){
+  boolean board(){
     return false;
   }
   
@@ -31,11 +25,6 @@ class Dashi extends FoodItem{
   }
   
   FoodItem copy(float X, float Y){
-    return new Dashi(X, Y);
+    return new Miso(X, Y);
   }
-  
 }
-  
-  
-  
-  
