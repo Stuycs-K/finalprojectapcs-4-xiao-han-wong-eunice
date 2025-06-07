@@ -106,7 +106,7 @@ void newRound(){
 
 
 void victoryScreen(){
-  background(130,184,220);
+  //background(130,184,220);
   noStroke();
   fill(78,189,208);
   rect(0, 40, 1000, 120);
@@ -200,8 +200,6 @@ void victoryScreen(){
   rotate(radians(350));
   
   
-  
-  
   //3 stars
   star1 = createShape();
   star1.beginShape();
@@ -262,6 +260,29 @@ void victoryScreen(){
   text("Orders Delivered x 10", 500, 500);
   text("Orders Failed x 0", 500, 625);
   text("TOTAL:", 500, 825);
+  fill(225, 225, 225);
+  textSize(100);
+  text("PLAYER 1", 40, 130);
+  
+  //dog
+  fill(96,60,36);
+  beginShape();//face
+  vertex(1610, 660);
+  bezierVertex(1710, 640, 1750, 720, 1750, 760);
+  vertex(1740, 790);
+  bezierVertex(1690, 820, 1620, 820, 1595, 790);
+  vertex(1580, 785);
+  bezierVertex(1550, 770, 1560, 700, 1580, 670);
+  endShape(CLOSE);
+  //collar
+  beginShape();
+  vertex(1580,785);
+  bezierVertex(1595,790, 1620, 820, 1690, 820);
+  vertex(1685, 815);
+  vertex(1695, 820);
+  bezierVertex(1690,840, 1620, 840, 1595, 810);
+  vertex(1590, 800);
+  endShape(CLOSE);
 }
 
 void keyPressed() {
@@ -332,7 +353,7 @@ void setup(){
 }
 
 void draw(){
-  
+  stroke(0);
   for(int x = 120, bin = 0; x <= width - 240; x+=120){
     for(int y = 120; y <= height - 200; y+=120){
        fill(123, 82, 54);
@@ -351,6 +372,7 @@ void draw(){
       }
     }
   }
+  noStroke();
   
     
   fill(0, 76, 153);

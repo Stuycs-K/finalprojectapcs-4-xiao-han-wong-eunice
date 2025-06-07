@@ -4,6 +4,23 @@ class Stove extends Matter{
     }
   
   void animate(){
+    float startTime = millis();
+    float elapsedTime = millis() - startTime;
+    while(elapsedTime <= 5000){
+      if(elapsedTime < 1000){
+        circle(getX() + 30, getY() - 20, 60);
+      }
+      if(elapsedTime < 2000){
+        circle(getX() + 100, getY() - 50, 40);
+      }else if(elapsedTime < 3000){
+        circle(getX() + 40, getY() - 40, 30);
+      }else if(elapsedTime < 4000){
+        circle(getX() + 70, getY() - 70, 30);
+      }else if(elapsedTime < 5000){
+        circle(getX() + 60, getY() - 100, 20);
+      }
+      elapsedTime = millis() - startTime;
+    }
   }
   
   void display(){

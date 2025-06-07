@@ -1,3 +1,4 @@
+import java.util.Arrays;
 class Player extends Matter{
   int[] dir;
   float[] facing;
@@ -8,7 +9,14 @@ class Player extends Matter{
     facing = new float[]{0, -1};
     dir = new int[]{0, -1};
   }
+  float faceX(){
+    return facing[0];
+  }
   
+  float faceY(){
+    return facing[1];
+  }
+        
   void move(String k, MatterManage manager){
     //if (getX()
     float dx = 0;
@@ -16,21 +24,27 @@ class Player extends Matter{
       if (k.equals("w")){
         dy = -120;
         dir = new int[]{0, -1};
-        facing = new float[]{getX(), getY() + dy*2};
+        facing = new float[]{getX() - 60, getY() + dy*2 + 60};
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("a")){
         dx = -120;
         dir = new int[]{-1, 0};
-        facing = new float[]{getX() + dx*2, getY()};
+        facing = new float[]{getX() + dx*2 - 60, getY() + 60};
+        Arrays.toString(facing);
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("s")){
         dy = 120;
         dir = new int[]{0, 1};
-        facing = new float[]{getX()+dx*2, getY()};
+        facing = new float[]{getX()- 60, getY() + dy*2 + 60};
+        Arrays.toString(facing);
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("d")){
         dx = 120;
         dir = new int[]{1, 0};
+        facing = new float[]{getX() + dx*2 - 60, getY() + 60};
       }
       if (k.equals("r")){
         //dx = 120;
