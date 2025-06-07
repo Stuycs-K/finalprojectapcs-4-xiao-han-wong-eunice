@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 int round = 1;
 int difficulty = 0;
-int secPassed, minLapse, maxLapse, oneStar, twoStar, threeStar;
+int secPassed, minLapse, maxLapse, oneStar, twoStar, threeStar, ordersDelivered;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
 MatterManage manager = new MatterManage();
@@ -22,7 +22,7 @@ Chopping board0, board1;
 Belt belt1, belt2;
 TrashCan trash;
 Stove stove1, stove2, stove3;
-Inventory Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
+Inventory Plates, SalmonFish, TunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
 
 //one round lasts 60 seconds
 
@@ -30,15 +30,8 @@ Inventory Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
 //Stove stove = new Stove(360, 360);
 
 
-/*
-if (difficulty == 0){
-  //change min and max lapse between orders
-}
-if (difficulty == 1){}
-if (difficulty == 2){}
-*/
-
 void setEasy(){
+  ordersDelivered = 0;
   secPassed = 0;
   difficulty = 0;
   minLapse = 10;
@@ -46,6 +39,7 @@ void setEasy(){
   oneStar = 50;
   twoStar = 75;
   threeStar = 100;
+  
   
   menu = new ArrayList<Order>();
   menu.add(new SalmonSashimi(0, 0));
@@ -57,6 +51,7 @@ void setEasy(){
 }
 
 void setMed(){
+  ordersDelivered = 0;
   secPassed = 0;
   difficulty = 1;
   minLapse = 9;
@@ -76,6 +71,7 @@ void setMed(){
 }
 
 void setHard(){
+  ordersDelivered = 0;
   secPassed = 0;
   difficulty = 2;
   minLapse = 6;
@@ -330,12 +326,21 @@ void setup(){
   belt2 = new Belt(1320, 120);
   trash = new TrashCan(1440, 120);
   
-  /*
   //Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
   Plate plate1 = new Plate(0,0);
-  Plates = Inventory(plate1, 10, 1080.0, 120.0);
-  SalmonFish = Inventory(new Salmon(0,0), 10, 1080.0, 120.0);
+  Plates = new Inventory(plate1, 10, 1080.0, 120.0);
+  
+  //change coords
+  /*
+  SalmonFish = new Inventory(new Salmon(0,0), 10, 1080.0, 120.0);
+  TunaFish = new Inventory(new Tuna(0,0), 10, 1080.0, 120.0);
+  Tofu = new Inventory(new Tofu(0,0), 10, 1080.0, 120.0);
+  Dashi = new Inventory(new Dashi(0,0), 10, 1080.0, 120.0);
+  Seaweed = new Inventory(new Seaweed(0,0), 10, 1080.0, 120.0);
+  Miso = new Inventory(new Miso(0,0), 10, 1080.0, 120.0);
+  Rice = new Inventory(new Rice(0,0), 10, 1080.0, 120.0);
   */
+  
   
   manager.add(counter0);
   manager.add(counter1);
@@ -346,6 +351,7 @@ void setup(){
   manager.add(belt1);
   manager.add(belt2);
   manager.add(trash);
+  manager.add(Plates);
   
   setEasy();
   
@@ -388,6 +394,8 @@ void draw(){
   belt2.display();
   trash.display();
   A.facingRay();
+  Plates.display();
+  
   
   //displays holding item
   if (A.handsFull()){
