@@ -31,7 +31,7 @@ class MisoSoup extends Order{
     rect(getX(), getY(), 160, 110.0);
     fill(0, 0, 0);
     textSize(20);
-    text("Miso Soup", 35, 100);
+    text("Miso Soup", getX()+35, getY()+100);
   }
   
   Matter copy(float X, float Y){
