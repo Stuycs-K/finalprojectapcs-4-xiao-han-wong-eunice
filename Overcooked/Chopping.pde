@@ -1,4 +1,4 @@
-class Chopping extends Matter{
+class Chopping extends Matter implements Animatable{
   ArrayList<Matter> hasItem = new ArrayList<Matter>();
   Chopping(float x, float y){
     super("chopping board", x, y, false);
@@ -17,6 +17,9 @@ class Chopping extends Matter{
     stroke(0, 0, 0);
     rect(getX(), getY(), 120, 70);
     fill(234, 182, 118);
+  }
+  
+  void start(){
   }
   
   void animate(){

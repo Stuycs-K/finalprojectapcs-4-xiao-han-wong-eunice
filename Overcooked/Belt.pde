@@ -14,9 +14,6 @@ class Belt extends Matter{
     hasItem.remove(item);
   }
   
-  void animate(){
-  }
-  
   void display(){
     fill(200, 200, 200);
     rect(getX(), getY(), 120, 120);

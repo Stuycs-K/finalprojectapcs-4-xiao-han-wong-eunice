@@ -27,8 +27,7 @@ Inventory Plates, SalmonFish, TunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
 //one round lasts 60 seconds
 
 //OBJECTS
-//Stove stove = new Stove(360, 360);
-
+Stove stove = new Stove(360, 360);
 
 void setEasy(){
   ordersDelivered = 0;
@@ -272,9 +271,9 @@ void victoryScreen(){
   fill(96,60,36);
   beginShape();//face
   vertex(1610, 660);
-  bezierVertex(1710, 640, 1750, 720, 1750, 760);
+  bezierVertex(1710, 640, 1750, 720, 1740, 760);
   vertex(1740, 790);
-  bezierVertex(1690, 820, 1620, 820, 1595, 790);
+  bezierVertex(1680, 820, 1620, 820, 1595, 790);
   vertex(1580, 785);
   bezierVertex(1550, 770, 1560, 700, 1580, 680);
   endShape(CLOSE);
@@ -318,6 +317,8 @@ void victoryScreen(){
   circle(1570, 740, 20);
   //nose
   quad(1580, 730, 1630, 730, 1625, 755, 1585, 755);
+  //smile
+  arc(1600, 770, 30, 10, 0, PI);
 }
 
 void keyPressed() {
@@ -335,6 +336,13 @@ void keyPressed() {
   }
   if (key == 'r' || key == 'R'){
     A.move("r",manager);
+  }
+  if (key == 'e' || key == 'E'){
+    Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
+    println("matter in front is " + matterInFront);
+    if(matterInFront != null && matterInFront instanceof Animatable){
+      ((Animatable)matterInFront).start();
+    }
   }
   
 }
@@ -391,6 +399,7 @@ void setup(){
   manager.add(belt2);
   manager.add(trash);
   manager.add(Plates);
+  manager.add(stove);
   
   setEasy();
   
@@ -461,8 +470,8 @@ void draw(){
     c.display();
   }
   
-  //stove.display();
-  victoryScreen();
+  stove.display();
+  //victoryScreen();
 }
 
  
