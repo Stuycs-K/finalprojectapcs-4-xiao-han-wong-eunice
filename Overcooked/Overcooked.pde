@@ -26,8 +26,6 @@ Inventory Plates, SalmonFish, TunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
 
 //one round lasts 60 seconds
 
-//OBJECTS
-Stove stove = new Stove(360, 360);
 
 void setEasy(){
   ordersDelivered = 0;
@@ -346,22 +344,32 @@ void keyPressed() {
   }
   
 }
+
+void progressBar(){
+
+}
+
+void timerDisplay(){
+  fill(0, 0, 0);
+  rect(1710, 950, 170, 70);
+  
+}
+
 void setup(){
   size(1920, 1080);
   background(0, 76, 153);
-  //OBJECTS
-  
-  //stove = new Stove(240, 240);
-  //manager.add(stove);
-  //println("Added stove. List now size: " + manager.allMatter.size());
+
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
   for(int x = 0; x < 4; x++){
     counters.add(new Counter(x * 120 + 360, 840));
     manager.add(counters.get(counters.size() - 1));
   }
-  //println("All Matter size: " + manager.allMatter.size());
   manager.debugPrintAllMatter();
+  
+  stove1 = new Stove(840, 840);
+  stove2 = new Stove(960, 840);
+  stove3 = new Stove(1080, 840);
   
   counter0 = new Counter(480, 120);
   counter1 = new Counter(360, 120);
@@ -373,7 +381,6 @@ void setup(){
   belt2 = new Belt(1320, 120);
   trash = new TrashCan(1440, 120);
   
-  //Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
   Plate plate1 = new Plate(0,0);
   Plates = new Inventory(plate1, 10, 1080.0, 120.0);
   Dashi = new Inventory(new Dashi(0,0), 200, 1080.0, 480.0);
@@ -381,11 +388,8 @@ void setup(){
   SalmonFish = new Inventory(new Salmon(0,0), 200, 840.0, 480.0);
   TunaFish = new Inventory(new Tuna(0,0), 200, 720.0, 480.0);
   Tofu = new Inventory(new Tofu(0,0), 200, 600.0, 480.0);
-  
   Rice = new Inventory(new Rice(0,0), 200, 1200.0, 480.0);
   Seaweed = new Inventory(new Seaweed(0,0), 20, 1440.0, 840.0);
-  
-  
   
   manager.add(counter0);
   manager.add(counter1);
@@ -397,7 +401,9 @@ void setup(){
   manager.add(belt2);
   manager.add(trash);
   manager.add(Plates);
-  manager.add(stove);
+  manager.add(stove1);
+  manager.add(stove2);
+  manager.add(stove3);
   manager.add(Dashi);
   manager.add(Miso);
   manager.add(SalmonFish);
@@ -408,7 +414,7 @@ void setup(){
 
   
   setEasy();
-  
+  timerDisplay();
   
 }
 
@@ -484,7 +490,9 @@ void draw(){
     c.display();
   }
   
-  stove.display();
+  stove1.display();
+  stove2.display();
+  stove3.display();
   //victoryScreen();
 }
 

@@ -35,7 +35,8 @@ class Stove extends Matter{
     square(getX(), getY(), 120);
     fill(189, 148, 104);
     rotate(radians(-25));
-    rect(245, 550, 50, 10);
+    //rect(245, 550, 50, 10);
+    rect(getX(), getY(), 50, 10);
     rotate(radians(385));
     fill(98, 98, 126);
     circle(int(getX() + 60), int(getY() + 60), 100);
