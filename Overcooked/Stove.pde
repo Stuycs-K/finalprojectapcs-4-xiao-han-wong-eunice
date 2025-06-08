@@ -1,4 +1,4 @@
-class Stove extends Matter{
+class Stove extends Matter implements Animatable{
   float startTime = -1;
   Stove(float x, float y){
     super("Stove", x, y, false);
@@ -12,11 +12,12 @@ class Stove extends Matter{
   void animate(){
     float elapsedTime = millis() - startTime;
     noStroke();
-    fill(100, 150, 255);
+    fill(225, 225, 225, 100);
+    if(getAnimating() == true){
       if(elapsedTime < 1000){
         circle(getX() + 30, getY() - 20, 60);
       }
-      if(elapsedTime < 2000){
+      else if(elapsedTime < 2000){
         circle(getX() + 100, getY() - 50, 40);
       }else if(elapsedTime < 3000){
         circle(getX() + 40, getY() - 40, 30);
@@ -26,6 +27,7 @@ class Stove extends Matter{
         circle(getX() + 60, getY() - 100, 20);
       }else{
         this.setanimation();
+      }
     }
   }
   
