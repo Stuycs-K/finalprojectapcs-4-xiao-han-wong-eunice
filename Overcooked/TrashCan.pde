@@ -1,6 +1,12 @@
-class TrashCan extends Matter{
+class TrashCan extends Matter implements Animatable{
   TrashCan(float x, float y){
     super("Trash Can", x, y, false);
+  }
+  
+  void start(){
+  }
+  
+  void animate(){
   }
   
   void display(){

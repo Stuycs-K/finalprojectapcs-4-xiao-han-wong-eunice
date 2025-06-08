@@ -1,12 +1,18 @@
 class Stove extends Matter{
+  float startTime = -1;
   Stove(float x, float y){
     super("Stove", x, y, false);
     }
   
+  void start(){
+    startTime = millis();
+    this.setanimation();
+  }
+    
   void animate(){
-    float startTime = millis();
     float elapsedTime = millis() - startTime;
-    while(elapsedTime <= 5000){
+    noStroke();
+    fill(100, 150, 255);
       if(elapsedTime < 1000){
         circle(getX() + 30, getY() - 20, 60);
       }
@@ -18,8 +24,8 @@ class Stove extends Matter{
         circle(getX() + 70, getY() - 70, 30);
       }else if(elapsedTime < 5000){
         circle(getX() + 60, getY() - 100, 20);
-      }
-      elapsedTime = millis() - startTime;
+      }else{
+        this.setanimation();
     }
   }
   

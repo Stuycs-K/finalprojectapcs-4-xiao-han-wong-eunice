@@ -3,6 +3,7 @@ abstract class Matter{
   private float x;
   private float y;
   private boolean moveable;
+  private boolean animating;
   
   Matter(String name, float x, float y, boolean move){
     this.name = name;
@@ -29,6 +30,14 @@ abstract class Matter{
   
   boolean getMove(){
     return moveable;
+  }
+  
+  boolean getAnimating(){
+    return animating;
+  }
+  
+  void setanimation(){
+    animating = !animating;
   }
   
   void setX(float X){
