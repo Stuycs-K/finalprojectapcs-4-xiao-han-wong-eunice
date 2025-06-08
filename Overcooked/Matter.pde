@@ -49,15 +49,19 @@ abstract class Matter{
   }
   
   void modX(float X){
-    x += X;
+    x = X;
   }
   
   void modY(float Y){
-    y += Y;
+    y = Y;
   }
   
   String toString(){
     return this.getName();
+  }
+  
+  Matter getItem(){
+    return this;
   }
   
   abstract void display();

@@ -32,6 +32,18 @@ abstract class Order extends Matter{
     return false;
   }
   
+  int getScoreValue(){
+    if(this.getName().equals("Miso Soup")){
+      return 25;
+    }
+    if(this.getName().equals("Salmon Roll") || this.getName().equals("Tuna Roll")){
+      return 20;
+    }else{
+      return 10;
+    }
+  }
+    
+  
   /*
   boolean sink(){
    return false; 

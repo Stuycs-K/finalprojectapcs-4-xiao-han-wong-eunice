@@ -26,30 +26,47 @@ class Player extends Matter{
         dy = -120;
         dir = new int[]{0, -1};
         facing = new float[]{getX(), getY() + dy};
-        println("now facing " + Arrays.toString(facing));
+        //println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("a")){
         dx = -120;
         dir = new int[]{-1, 0};
         facing = new float[]{getX() + dx, getY()};
         Arrays.toString(facing);
-        println("now facing " + Arrays.toString(facing));
+        //println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("s")){
         dy = 120;
         dir = new int[]{0, 1};
-        facing = new float[]{getX(), getY() + dy};
+        facing = new float[]{getX()-60, getY() + 60};
         Arrays.toString(facing);
-        println("now facing " + Arrays.toString(facing));
+        //println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("d")){
         dx = 120;
         dir = new int[]{1, 0};
         facing = new float[]{getX() + dx, getY()};
-        println("now facing " + Arrays.toString(facing));
+        //println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("r")){
-        //dx = 120;
+        if(!handsFull()){
+          println("hands not full");
+          Matter thing = manager.getMovableMatter(faceX(), faceY());
+          println(thing);
+          println("at: "+getX()+", "+getY());
+          println("facing: "+facing[0] +", "+facing[1]);
+          if (thing != null){
+              pickUp(thing);
+              println("picked up item: "+thing);
+              
+          }
+        }
+        else{
+          println("dropped item: "+getItem());
+          drop();
+
+        }
+        
       }
     float newX = getX() + dx;
     float newY = getY() + dy;
@@ -87,6 +104,10 @@ class Player extends Matter{
   
   void drop(Matter obj){
     possess.remove(obj);
+  }
+  
+  void drop(){
+    possess.remove(0);
   }
   
   void pickUp(Matter obj){
