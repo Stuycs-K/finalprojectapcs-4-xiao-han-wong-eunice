@@ -2,11 +2,14 @@ import java.util.ArrayList;
 
 int round = 1;
 int difficulty = 0;
-int secPassed, minLapse, maxLapse, oneStar, twoStar, threeStar, ordersDelivered;
+int secPassed, minLapse, maxLapse, ordersDelivered, ordersFailed;
+String oneStar, twoStar, threeStar;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
 MatterManage manager = new MatterManage();
 ArrayList<Order> menu;
+ArrayList<Float> locations = new ArrayList<Float>();
+ArrayList<Matter> objects = new ArrayList<Matter>();
 
 //Objects
 PShape star1;
@@ -21,23 +24,23 @@ Counter counter1, counter2, counter3, counter0;
 Chopping board0, board1;
 Belt belt1, belt2;
 TrashCan trash;
-Stove stove1, stove2, stove3;
-Inventory Plates, SalmonFish, TunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
+Stove stove, stove1, stove2, stove3;
+Inventory Plates, SalmonFish, TunaFish, Tofu, Dashi, Seaweed, Seaweed2, Miso, Rice;
+Sink sink1, sink2;
 
 //one round lasts 60 seconds
 
-//OBJECTS
-Stove stove = new Stove(360, 360);
 
 void setEasy(){
   ordersDelivered = 0;
+  ordersFailed = 0;
   secPassed = 0;
   difficulty = 0;
   minLapse = 10;
   maxLapse = 16;
-  oneStar = 50;
-  twoStar = 75;
-  threeStar = 100;
+  oneStar = "50";
+  twoStar = "75";
+  threeStar = "100";
   
   
   menu = new ArrayList<Order>();
@@ -51,13 +54,14 @@ void setEasy(){
 
 void setMed(){
   ordersDelivered = 0;
+  ordersFailed = 0;
   secPassed = 0;
   difficulty = 1;
   minLapse = 9;
   maxLapse = 14;
-  oneStar = 105;
-  twoStar = 130;
-  threeStar = 160;
+  oneStar = "105";
+  twoStar = "130";
+  threeStar = "160";
   
   menu = new ArrayList<Order>();
   menu.add(new SalmonRoll(0, 0));
@@ -71,13 +75,14 @@ void setMed(){
 
 void setHard(){
   ordersDelivered = 0;
+  ordersFailed = 0;
   secPassed = 0;
   difficulty = 2;
   minLapse = 6;
   maxLapse = 11;
-  oneStar = 130;
-  twoStar = 145;
-  threeStar = 200;
+  oneStar = "130";
+  twoStar = "145";
+  threeStar = "200";
   
   menu = new ArrayList<Order>();
   menu.add(new SalmonSashimi(0, 0));
@@ -250,11 +255,11 @@ void victoryScreen(){
   //text
   textSize(50);
   fill(128,128,128);
-  text("380", 665, 380);
-  text("640", 925, 380);
-  text("480", 1185, 380);
+  text(oneStar, 665, 380);
+  text(twoStar, 925, 380);
+  text(threeStar, 1185, 380);
   textSize(75);
-  text("Orders Delivered x 10", 500, 500);
+  text("Orders Delivered x " + ordersDelivered, 500, 500);
   text("Orders Failed x 0", 500, 625);
   text("TOTAL:", 500, 825);
   fill(225, 225, 225);
@@ -339,7 +344,7 @@ void keyPressed() {
   }
   if (key == 'e' || key == 'E'){
     Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
-    println("matter in front is " + matterInFront);
+    //println("matter in front is " + matterInFront);
     if(matterInFront.getName().equals("Belt") && A.handsFull()){
       Matter heldFood = A.getItem();
       if (matterInFront instanceof Counter) {
@@ -405,22 +410,33 @@ void keyPressed() {
         
   
 }
+
+void progressBar(){
+
+}
+
+void timerDisplay(){
+  fill(0, 0, 0);
+  rect(1710, 950, 170, 70);
+  
+}
+
 void setup(){
   size(1920, 1080);
   background(0, 76, 153);
-  //OBJECTS
-  
-  //stove = new Stove(240, 240);
-  //manager.add(stove);
-  //println("Added stove. List now size: " + manager.allMatter.size());
+
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
   for(int x = 0; x < 4; x++){
     counters.add(new Counter(x * 120 + 360, 840));
     manager.add(counters.get(counters.size() - 1));
   }
-  //println("All Matter size: " + manager.allMatter.size());
   manager.debugPrintAllMatter();
+  
+  stove = new Stove(360, 360);
+  stove1 = new Stove(840, 840);
+  stove2 = new Stove(960, 840);
+  stove3 = new Stove(1080, 840);
   
   counter0 = new Counter(480, 120);
   counter1 = new Counter(360, 120);
@@ -431,8 +447,9 @@ void setup(){
   belt1 = new Belt(1200, 120);
   belt2 = new Belt(1320, 120);
   trash = new TrashCan(1440, 120);
+  sink1 = new Sink(1680, 360);
+  sink2 = new Sink(1680, 480);
   
-  //Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
   Plate plate1 = new Plate(0,0);
   Plates = new Inventory(plate1, 10, 1080.0, 120.0);
   Dashi = new Inventory(new Dashi(0,0), 200, 1080.0, 480.0);
@@ -440,11 +457,9 @@ void setup(){
   SalmonFish = new Inventory(new Salmon(0,0), 200, 840.0, 480.0);
   TunaFish = new Inventory(new Tuna(0,0), 200, 720.0, 480.0);
   Tofu = new Inventory(new Tofu(0,0), 200, 600.0, 480.0);
-  
   Rice = new Inventory(new Rice(0,0), 200, 1200.0, 480.0);
-  Seaweed = new Inventory(new Seaweed(0,0), 20, 1440.0, 840.0);
-  
-  
+  Seaweed = new Inventory(new Seaweed(0,0), 200, 1440.0, 840.0);
+  Seaweed2 = new Inventory(new Seaweed(0,0), 200, 480.0, 480.0);;
   
   manager.add(counter0);
   manager.add(counter1);
@@ -456,7 +471,9 @@ void setup(){
   manager.add(belt2);
   manager.add(trash);
   manager.add(Plates);
-  manager.add(stove);
+  manager.add(stove1);
+  manager.add(stove2);
+  manager.add(stove3);
   manager.add(Dashi);
   manager.add(Miso);
   manager.add(SalmonFish);
@@ -464,10 +481,13 @@ void setup(){
   manager.add(Tofu);
   manager.add(Rice);
   manager.add(Seaweed);
+  manager.add(Seaweed2);
+  manager.add(sink1);
+  manager.add(sink2);
 
   
   setEasy();
-  
+  timerDisplay();
   
 }
 
@@ -516,6 +536,9 @@ void draw(){
   Tofu.display();
   Rice.display();
   Seaweed.display();
+  Seaweed2.display();
+  sink1.display();
+  sink2.display();
   
   
   //displays holding item
@@ -545,6 +568,12 @@ void draw(){
   
   stove.animate();
   stove.display();
+  stove1.display();
+  stove2.display();
+  stove3.display();
+  
+  
+//>>>>>>> Han-Xiao
   //victoryScreen();
 }
 
