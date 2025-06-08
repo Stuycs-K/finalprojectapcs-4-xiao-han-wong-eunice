@@ -153,17 +153,15 @@ void setup(){
   //Plates, SalmonFish, tunaFish, Tofu, Dashi, Seaweed, Miso, Rice;
   Plate plate1 = new Plate(0,0);
   Plates = new Inventory(plate1, 10, 1080.0, 120.0);
+  Dashi = new Inventory(new Dashi(0,0), 200, 1080.0, 480.0);
+  Miso = new Inventory(new Miso(0,0), 200, 960.0, 480.0);
+  SalmonFish = new Inventory(new Salmon(0,0), 200, 840.0, 480.0);
+  TunaFish = new Inventory(new Tuna(0,0), 200, 720.0, 480.0);
+  Tofu = new Inventory(new Tofu(0,0), 200, 600.0, 480.0);
   
-  //change coords
-  /*
-  SalmonFish = new Inventory(new Salmon(0,0), 10, 1080.0, 120.0);
-  TunaFish = new Inventory(new Tuna(0,0), 10, 1080.0, 120.0);
-  Tofu = new Inventory(new Tofu(0,0), 10, 1080.0, 120.0);
-  Dashi = new Inventory(new Dashi(0,0), 10, 1080.0, 120.0);
-  Seaweed = new Inventory(new Seaweed(0,0), 10, 1080.0, 120.0);
-  Miso = new Inventory(new Miso(0,0), 10, 1080.0, 120.0);
-  Rice = new Inventory(new Rice(0,0), 10, 1080.0, 120.0);
-  */
+  Rice = new Inventory(new Rice(0,0), 200, 1200.0, 480.0);
+  Seaweed = new Inventory(new Seaweed(0,0), 20, 1440.0, 840.0);
+  
   
   
   manager.add(counter0);
@@ -176,6 +174,15 @@ void setup(){
   manager.add(belt2);
   manager.add(trash);
   manager.add(Plates);
+  manager.add(Dashi);
+  manager.add(Miso);
+  manager.add(SalmonFish);
+  manager.add(TunaFish);
+  manager.add(Tofu);
+  manager.add(Rice);
+  //manager.add(Rice);
+  manager.add(Seaweed);
+
   
   setEasy();
   
@@ -206,6 +213,7 @@ void draw(){
     
   fill(0, 76, 153);
   
+  
   A.display();
   counter0.display();
   counter1.display();
@@ -218,6 +226,13 @@ void draw(){
   trash.display();
   A.facingRay();
   Plates.display();
+  Dashi.display();
+  Miso.display();
+  SalmonFish.display();
+  TunaFish.display();
+  Tofu.display();
+  Rice.display();
+  Seaweed.display();
   
   
   //displays holding item
