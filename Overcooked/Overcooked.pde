@@ -341,7 +341,9 @@ void keyPressed() {
     Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
     println("matter in front is " + matterInFront);
     if(matterInFront != null && matterInFront instanceof Animatable){
+      println(matterInFront + " is animating");
       ((Animatable)matterInFront).start();
+      ((Animatable)matterInFront).animate();
     }
   }
   
@@ -470,6 +472,7 @@ void draw(){
     c.display();
   }
   
+  stove.animate();
   stove.display();
   //victoryScreen();
 }
