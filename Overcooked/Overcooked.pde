@@ -394,6 +394,12 @@ void keyPressed() {
         }
       }
     }
+    if(matterInFront.getName().equals("Inventory") && !A.handsFull()){
+      Matter food = (Matter)((Inventory)matterInFront).remove();
+      if (food instanceof FoodItem) {
+        A.pickUp(food);
+      }
+    }
     
 }
         

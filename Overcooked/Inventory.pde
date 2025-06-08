@@ -8,8 +8,8 @@ class Inventory extends Matter{
     }
   }
 
-  void remove(){
-    inventory.remove(0);
+  Matter remove(){
+    return inventory.remove(0);
   }
   
   void display(){
