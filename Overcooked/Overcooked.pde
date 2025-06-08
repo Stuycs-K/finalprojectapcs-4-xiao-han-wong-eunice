@@ -340,11 +340,6 @@ void keyPressed() {
   if (key == 'e' || key == 'E'){
     Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
     println("matter in front is " + matterInFront);
-    if(matterInFront != null && matterInFront instanceof Animatable){
-      println(matterInFront + " is animating");
-      ((Animatable)matterInFront).start();
-      ((Animatable)matterInFront).animate();
-    }
     if(matterInFront.getName().equals("Belt") && A.handsFull()){
       Matter heldFood = A.getItem();
       if (matterInFront instanceof Counter) {
@@ -376,7 +371,7 @@ void keyPressed() {
       if (A.handsFull() && !counter.isEmpty()) {
         counter.addItem(heldFood);
         A.drop(heldFood);
-      } else if (!A.handsFull() && !counter.isEmpty()) {
+      }else if (!A.handsFull() && !counter.isEmpty()) {
         Matter removedItem = counter.rmItem();
         if (removedItem != null) {
           A.pickUp((FoodItem) removedItem);
@@ -384,6 +379,23 @@ void keyPressed() {
       }
     }
   }
+    if(matterInFront.getName().equals("Trash Can") && A.handsFull()){
+      Matter heldFood = A.getItem();
+      A.drop(heldFood);
+    }
+    if(matterInFront.getName().equals("Stove") && A.handsFull()){
+      Matter heldFood = A.getItem();
+      if (heldFood != null && heldFood instanceof FoodItem) {
+        FoodItem food = (FoodItem) heldFood;
+        if (food.getState() == 0 && food.stove()) {
+          if (matterInFront instanceof Animatable) {
+            ((Animatable) matterInFront).start();
+          }
+        }
+      }
+    }
+    
+}
         
   
 }
