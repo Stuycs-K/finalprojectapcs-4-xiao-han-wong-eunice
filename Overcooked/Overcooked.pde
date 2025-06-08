@@ -102,8 +102,10 @@ void newRound(){
 
 
 void victoryScreen(){
-  //background(130,184,220);
+  background(130,184,220);
   noStroke();
+  fill(164, 206, 230);
+  rect(0, 915, 1920, 165);
   fill(78,189,208);
   rect(0, 40, 1000, 120);
   fill(61,113,150);
@@ -261,6 +263,12 @@ void victoryScreen(){
   text("PLAYER 1", 40, 130);
   
   //dog
+  //left ear
+  beginShape();
+  fill(159, 115, 70);
+  vertex(1610, 660);
+  bezierVertex(1520, 630, 1560, 690, 1580, 700);
+  endShape(CLOSE);
   fill(96,60,36);
   beginShape();//face
   vertex(1610, 660);
@@ -268,17 +276,48 @@ void victoryScreen(){
   vertex(1740, 790);
   bezierVertex(1690, 820, 1620, 820, 1595, 790);
   vertex(1580, 785);
-  bezierVertex(1550, 770, 1560, 700, 1580, 670);
+  bezierVertex(1550, 770, 1560, 700, 1580, 680);
+  endShape(CLOSE);
+  //legs
+  quad(1800, 890, 1790, 915, 1760, 915, 1760, 890);
+  fill(63, 31, 18);
+  quad(1720, 870, 1740, 890, 1730, 915, 1710, 915);
+  fill(96,60,36);
+  quad(1680, 870, 1720, 890, 1710, 915, 1670, 915);
+  quad(1630, 720, 1650, 720, 1660, 915, 1620, 915);
+  //body
+  fill(96,60,36);
+  beginShape();
+  vertex(1740, 790);
+  bezierVertex(1800, 820, 1820, 850, 1800, 890);
+  bezierVertex(1680, 890, 1625, 890, 1610, 810);
   endShape(CLOSE);
   //collar
+  fill(85, 116, 171);
   beginShape();
-  vertex(1580,785);
-  bezierVertex(1595,790, 1620, 820, 1690, 820);
-  vertex(1685, 815);
-  vertex(1695, 820);
-  bezierVertex(1690,840, 1620, 840, 1595, 810);
-  vertex(1590, 800);
+  vertex(1610,803);
+  bezierVertex(1595,790, 1620, 830, 1740, 790);
+  bezierVertex(1740,820, 1620, 830, 1600, 810);
+  vertex(1605, 800);
   endShape(CLOSE);
+  //right ears
+  fill(159, 115, 70);
+  beginShape();
+  vertex(1640,678);
+  bezierVertex(1660, 630, 1740, 685, 1700, 700);
+  endShape(CLOSE);
+  //eyebrows
+  fill(74, 54, 30);
+  rotate(radians(15));
+  rect(1685, 290, 40, 20);
+  rotate(radians(345));
+  rotate(radians(-15));
+  rect(1380, 1120, 50, 20);
+  rotate(radians(375));
+  circle(1660, 730, 30);
+  circle(1570, 740, 20);
+  //nose
+  quad(1580, 730, 1630, 730, 1625, 755, 1585, 755);
 }
 
 void keyPressed() {
@@ -423,7 +462,7 @@ void draw(){
   }
   
   //stove.display();
-  //victoryScreen();
+  victoryScreen();
 }
 
  

@@ -9,6 +9,7 @@ class Player extends Matter{
     facing = new float[]{0, -1};
     dir = new int[]{0, -1};
   }
+  
   float faceX(){
     return facing[0];
   }
