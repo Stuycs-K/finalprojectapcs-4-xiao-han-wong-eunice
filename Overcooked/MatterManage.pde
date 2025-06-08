@@ -7,9 +7,9 @@ class MatterManage{
 
   Matter getMatterAt(float x, float y) {
     for (Matter m : allMatter) {
-      //println("Checking Matter: " + m + " at (" + m.getX() + ", " + m.getY() + ")");
+      println("Checking Matter: " + m + " at (" + m.getX() + ", " + m.getY() + ")");
       if (m.getX() - x == -60 && m.getY() - y == -60) {
-        //println("Found Matter: " + m);
+        println("Found Matter: " + m);
         return m;
       }
     }
@@ -38,7 +38,7 @@ class MatterManage{
       //println(m);
      }
   }
-  /*ArrayList<Matter> getAll() {
+  ArrayList<Matter> getAll() {
     return allMatter;
-  }*/
+  }
 }
