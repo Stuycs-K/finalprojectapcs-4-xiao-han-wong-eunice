@@ -26,27 +26,27 @@ class Player extends Matter{
         dy = -120;
         dir = new int[]{0, -1};
         facing = new float[]{getX(), getY() + dy};
-        //println("now facing " + Arrays.toString(facing));
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("a")){
         dx = -120;
         dir = new int[]{-1, 0};
         facing = new float[]{getX() + dx, getY()};
         Arrays.toString(facing);
-        //println("now facing " + Arrays.toString(facing));
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("s")){
         dy = 120;
         dir = new int[]{0, 1};
-        facing = new float[]{getX()-60, getY() + 60};
+        facing = new float[]{getX(), getY() + dy};
         Arrays.toString(facing);
-        //println("now facing " + Arrays.toString(facing));
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("d")){
         dx = 120;
         dir = new int[]{1, 0};
         facing = new float[]{getX() + dx, getY()};
-        //println("now facing " + Arrays.toString(facing));
+        println("now facing " + Arrays.toString(facing));
       }
       if (k.equals("r")){
         if(!handsFull()){

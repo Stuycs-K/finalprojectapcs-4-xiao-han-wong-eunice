@@ -21,6 +21,10 @@ class Counter extends Matter{
     stroke(0, 0, 0);
     square(getX(), getY(), 120);
     fill(233, 166, 88);
+    if (!hasItem.isEmpty()) {
+      Matter onCounter = hasItem.get(0); 
+      text(onCounter.getName(), getX() , getY()); 
+    }
   }
   
   boolean isEmpty(){

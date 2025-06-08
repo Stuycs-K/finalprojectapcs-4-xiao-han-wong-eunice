@@ -6,7 +6,7 @@ int currentScore = 0;
 int startTime = -1;
 boolean timerRunning = false;
 int totalTime = 60000;
-int secLeft, minLapse, maxLapse, ordersDelivered, ordersFailed;
+int secPassed, secLeft, minLapse, maxLapse, ordersDelivered, ordersFailed;
 String oneStar, twoStar, threeStar;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
@@ -384,9 +384,6 @@ void keyPressed() {
     println("matter in front is " + matterInFront);
     if(matterInFront.getName().equals("Belt") && A.handsFull()){
       Matter heldFood = A.getItem();
-      if (matterInFront instanceof Counter) {
-        ((Counter) matterInFront).addItem(heldFood);
-      }
       ArrayList<FoodItem> preparedList = new ArrayList<FoodItem>();
       if (heldFood instanceof FoodItem) {
         preparedList.add((FoodItem) heldFood);
@@ -401,24 +398,48 @@ void keyPressed() {
         }
       }
     }
-    if(matterInFront.getName().equals("chopping board") && A.handsFull()){
-      Matter heldFood = A.getItem();
-      if(!((FoodItem)heldFood).isChopped() && ((FoodItem)heldFood).board()){
-        A.chop((FoodItem)heldFood);
+    if(matterInFront.getName().equals("chopping board")){
+      if(matterInFront instanceof Chopping){
+        Chopping board = (Chopping) matterInFront;
+        Matter heldFood = A.getItem();
+        if(A.handsFull() && !((FoodItem)heldFood).isChopped() && ((FoodItem)heldFood).board() && board.isEmpty()){
+          board.addItem(heldFood);
+          A.drop(heldFood);
+          A.chop((FoodItem)heldFood);
+        }
+        if(!A.handsFull() && !board.isEmpty()){
+          Matter removedItem = board.rmItem();
+          A.pickUp((FoodItem) removedItem);
+        }
       }
     }
     if(matterInFront.getName().equals("Counter")){
       if (matterInFront instanceof Counter) {
         Counter counter = (Counter) matterInFront;
         Matter heldFood = A.getItem();
-      if (A.handsFull() && !counter.isEmpty()) {
+      if (A.handsFull() && counter.isEmpty()) {
+        /*if(counter.isEmpty()){
+          println(heldFood + " has been placed");
+        }*/
         counter.addItem(heldFood);
         A.drop(heldFood);
+        /*counter.display();
+        if(!A.handsFull()){
+          println("player has dropped food");
+        }*/
       }else if (!A.handsFull() && !counter.isEmpty()) {
+        //println("About to remove item from counter...");
         Matter removedItem = counter.rmItem();
-        if (removedItem != null) {
+        counter.rmItem();
+        //println("Removed: " + removedItem);
           A.pickUp((FoodItem) removedItem);
-        }
+          /*println("A now holding: " + A.getItem());
+          println("Counter is empty? " + counter.isEmpty());
+          println("A hands full? " + A.handsFull());*/
+          //counter.display();
+          /*if(counter.isEmpty() && A.handsFull()){
+          println(removedItem + " has been picked up");
+          }*/
       }
     }
   }
@@ -535,6 +556,7 @@ void setup(){
 }
 
 void draw(){
+  background(225);
   stroke(0);
   for(int x = 120, bin = 0; x <= width - 240; x+=120){
     for(int y = 120; y <= height - 200; y+=120){
@@ -582,7 +604,7 @@ void draw(){
   Seaweed2.display();
   sink1.display();
   sink2.display();
-
+  
   
   if (timerRunning){
     int secPassed = millis() - startTime;
@@ -619,8 +641,8 @@ void draw(){
     c.display();
   }
   
-  stove.animate();
-  stove.display();
+  //stove.animate();
+  //stove.display();
   stove1.display();
   stove2.display();
   stove3.display();
