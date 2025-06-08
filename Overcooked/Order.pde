@@ -10,7 +10,9 @@ abstract class Order extends Matter{
   }
   
   boolean isComplete(ArrayList<FoodItem> prepared){
-    for(int i = 0; i < ingredients.length; i++){
+    ArrayList<FoodItem> preparedCopy = new ArrayList<>(prepared);
+    for(int i = 0; i < ingredients.length; i++){  
+      boolean matched = false;
       for(int j = 0; j < prepared.size(); j++){
         //if the prepared contains an object of the same class
         FoodItem item = prepared.get(j);
@@ -19,17 +21,17 @@ abstract class Order extends Matter{
           boolean sameChopped = ingredients[i].isChopped() == item.isChopped();
           boolean sameWashed = ingredients[i].isWashed() == item.isWashed();
            if (sameState && sameChopped && sameWashed){
-             prepared.remove(j);
-             j--;
+             preparedCopy.remove(j);
+             matched = true;
+             break;
            }
         }
       }
+      if(!matched){
+        return false;
+      }
     }
-    
-    if (prepared.size() == 0){
-      return true;
-    }
-    return false;
+    return true;
   }
   
   int getScoreValue(){

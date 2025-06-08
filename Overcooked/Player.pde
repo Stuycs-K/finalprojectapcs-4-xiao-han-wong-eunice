@@ -210,5 +210,9 @@ class Player extends Matter{
     }
     return null;
   }
+  
+  ArrayList<Matter> getPossess(){
+    return this.possess;
+  }
       
 }

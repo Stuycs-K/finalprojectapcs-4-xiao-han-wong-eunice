@@ -3,7 +3,10 @@ import java.util.ArrayList;
 int round = 1;
 int difficulty = 0;
 int currentScore = 0;
-int secPassed, minLapse, maxLapse, ordersDelivered, ordersFailed;
+int startTime = -1;
+boolean timerRunning = false;
+int totalTime = 60000;
+int secLeft, minLapse, maxLapse, ordersDelivered, ordersFailed;
 String oneStar, twoStar, threeStar;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
@@ -460,6 +463,8 @@ void timerDisplay(){
 
 void setup(){
   size(1920, 1080);
+  startTime = millis();
+  timerRunning = true;
   background(0, 76, 153);
 
   A = new Player("Bob", 900.0, 420.0);
@@ -470,7 +475,7 @@ void setup(){
   }
   manager.debugPrintAllMatter();
   
-  stove = new Stove(360, 360);
+  //stove = new Stove(360, 360);
   stove1 = new Stove(840, 840);
   stove2 = new Stove(960, 840);
   stove3 = new Stove(1080, 840);
@@ -508,7 +513,7 @@ void setup(){
   manager.add(belt2);
   manager.add(trash);
   manager.add(Plates);
-  manager.add(stove);
+  //manager.add(stove);
   manager.add(stove1);
   manager.add(stove2);
   manager.add(stove3);
@@ -577,7 +582,17 @@ void draw(){
   Seaweed2.display();
   sink1.display();
   sink2.display();
+
   
+  if (timerRunning){
+    int secPassed = millis() - startTime;
+    secLeft = totalTime - secPassed;
+    if(secLeft <= 0){
+      secLeft = 0;
+      timerRunning = false;
+      victoryScreen();
+    }
+  }
   
   //displays holding item
   if (A.handsFull()){
