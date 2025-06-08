@@ -4,13 +4,13 @@ This document must be updated daily every time you finish a work session.
 
 ## Eunice Wong
 
-### 2025-05-16 - Brainstorming
+### 2025-05-16 - Brainstorming(40 min)
 Talked about in class what were the possible options.
 
-### 2025-05-18 - Prototype
+### 2025-05-18 - Prototype(30 min)
 Worked together to write the basics of how our game would work and what to be expected
 
-### 2025-05-19 && 2025-05-20 - Continued Brainstorming
+### 2025-05-19 && 2025-05-20 - Continued Brainstorming(40 min)
 After laying out possible options started to think what were the necessary classes and what things we might run into while coding.
 
 ### 2025-05-23 - Edited Prototype.mD started basic coding (40 min)
@@ -71,17 +71,29 @@ Continued on receipes
       - added 3 stars in the middle that will turn yellow only if certain points are reaches
 
 ### 2025-06-04 - Onion Man(120 min)
-
+  - finished the onion man's crown and worked on the facial features
 
 ### 2025-06-05 - Onion Man(100 min)
-
+  - added the reamining parts of his attributes
+      - mustache
+      - shoes
+      - arms
+        
 ### 2025-05-06 - Onion Man + animation(100 min)
+  - added the onion man's staff
+  - made a pan for the display of a stove
 
 ### 2025-06-07 - Tested facing + dog(180 min)
 Created the animation for stove but couldn't tell why the method wasn't working. Added print debugging statements to figure out the problem.
-Started on the dog features
+Finished dog features
+  - head
+  - ears
+  - eyes
+  - mouth
+  - legs
+
 ### 2025-06-08 - Animation(120)
-Created and tested a
+Figured out why the animation did not work. 
 
 
 
