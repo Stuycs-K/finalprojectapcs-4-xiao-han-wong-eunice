@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 int round = 1;
 int difficulty = 0;
+int currentScore = 0;
 int secPassed, minLapse, maxLapse, ordersDelivered, ordersFailed;
 String oneStar, twoStar, threeStar;
 ArrayList<Order> orders = new ArrayList<Order>();
@@ -102,6 +103,24 @@ void newRound(){
   secPassed = 0;
   
   menu = new ArrayList<Order>();
+}
+
+int getStarsEarned(){
+  int score = currentScore;
+  int oneStarInt = Integer.parseInt(oneStar);
+  int twoStarInt = Integer.parseInt(twoStar);
+  int threeStarInt = Integer.parseInt(threeStar);
+  if(score >= threeStarInt){
+    return 3;
+  }
+  else if(score >= twoStarInt){
+    return 2;
+  }
+  else if(score >= oneStarInt){
+    return 1;
+  }else{
+    return 0;
+  }
 }
 
 
@@ -248,10 +267,25 @@ void victoryScreen(){
   star3.vertex(1130, 235);
   star3.vertex(1190, 230);
   star3.endShape(CLOSE);
+  
+  int starsEarned = getStarsEarned();
+  if(starsEarned >= 1){
+    star1.setFill(color(225,215,0));
+  }
+
+  if (starsEarned >= 2) {
+    star2.setFill(color(255, 215, 0));
+  }
+
+  if (starsEarned >= 3) {
+    star3.setFill(color(255, 215, 0));
+  } 
+
   shape(star3);
   shape(star2);
   shape(star1);
-  
+
+    
   //text
   textSize(50);
   fill(128,128,128);
@@ -344,7 +378,7 @@ void keyPressed() {
   }
   if (key == 'e' || key == 'E'){
     Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
-    //println("matter in front is " + matterInFront);
+    println("matter in front is " + matterInFront);
     if(matterInFront.getName().equals("Belt") && A.handsFull()){
       Matter heldFood = A.getItem();
       if (matterInFront instanceof Counter) {
@@ -358,7 +392,8 @@ void keyPressed() {
         Order order = orders.get(i);
         if (order.isComplete(preparedList)) {
             orders.remove(i);
-            //add points
+            ordersDelivered++;
+            currentScore += order.getScoreValue();
             break;
         }
       }
@@ -400,13 +435,15 @@ void keyPressed() {
       }
     }
     if(matterInFront.getName().equals("Inventory") && !A.handsFull()){
-      Matter food = (Matter)((Inventory)matterInFront).remove();
-      if (food instanceof FoodItem) {
-        A.pickUp(food);
+      Inventory inv = (Inventory) matterInFront;
+      if (inv.inventory.size() > 0) {          // avoid removing from empty inventory
+        Matter food = inv.remove();
+        if (food instanceof FoodItem) {
+            A.pickUp(food);
+        }
       }
-    }
-    
-}
+    } 
+  }
         
   
 }
@@ -471,6 +508,7 @@ void setup(){
   manager.add(belt2);
   manager.add(trash);
   manager.add(Plates);
+  manager.add(stove);
   manager.add(stove1);
   manager.add(stove2);
   manager.add(stove3);

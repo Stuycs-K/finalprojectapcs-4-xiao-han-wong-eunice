@@ -13,7 +13,10 @@ class Inventory extends Matter{
   }
   
   Matter getItem(){
-    return inventory.get(0);
+    if (inventory.size() > 0) {
+      return inventory.get(0);
+    }
+    return null;
   }
   
   void display(){
