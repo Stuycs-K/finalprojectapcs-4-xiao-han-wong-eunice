@@ -9,8 +9,11 @@ class Counter extends Matter{
     hasItem.add(item);
   }
   
-  void rmItem(Matter item){
-    hasItem.remove(item);
+  Matter rmItem(){
+    if (!hasItem.isEmpty()) {
+      return hasItem.remove(0);
+    }
+    return null;
   }
   
   void display(){
@@ -18,6 +21,10 @@ class Counter extends Matter{
     stroke(0, 0, 0);
     square(getX(), getY(), 120);
     fill(233, 166, 88);
+  }
+  
+  boolean isEmpty(){
+    return hasItem.isEmpty();
   }
   
   Matter copy(float x, float y){
