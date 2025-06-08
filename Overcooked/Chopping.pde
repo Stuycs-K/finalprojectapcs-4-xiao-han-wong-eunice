@@ -4,6 +4,11 @@ class Chopping extends Matter {
     super("chopping board", x, y, false);
   }
   
+   void colorName(){
+    fill(225,0,0);
+    text(this.getName(), getX(), getY());
+  }
+  
   void addItem(Matter item){
     hasItem.add(item);
   }
@@ -20,12 +25,10 @@ class Chopping extends Matter {
     stroke(0, 0, 0);
     rect(getX(), getY(), 120, 70);
     fill(234, 182, 118);
-    if(!this.isEmpty()){
+    if(!hasItem.isEmpty()){
       Matter onBoard = hasItem.get(0);
-      PFont zigBlack;
-      zigBlack = loadFont("Ziggurat-Black-32.vlw");
-      textFont(zigBlack);
-      text(onBoard.getName(), getX(), getY());
+      text("chopped " + onBoard.getName(), getX(), getY());
+      colorName();
     }
   }
   

@@ -2,6 +2,7 @@ import java.util.Arrays;
 class Player extends Matter{
   int[] dir;
   float[] facing;
+  int startTime = -1;
   ArrayList<Matter> possess = new ArrayList<Matter>();
   
   Player(String name, float x, float y){
@@ -116,11 +117,9 @@ class Player extends Matter{
     obj.modY(this.getY());
   }
   
-  int startTime;
   int wait = 5000;
 
   void cook(FoodItem obj){
-    startTime = -1;
     if (obj.getCook() > 0){
       if (startTime == -1){
         startTime = millis();
@@ -139,7 +138,6 @@ class Player extends Matter{
   }
 
   void washFood(FoodItem obj){
-    startTime = -1;
     if (obj.getWash() > 0){
       if(startTime == -1){
         startTime = millis();
@@ -153,7 +151,6 @@ class Player extends Matter{
   }
   
   void washPlate(Plate obj){
-    startTime = -1;
     if(obj.getWash() > 0){
       if(startTime == -1){
         startTime = millis();
@@ -167,16 +164,17 @@ class Player extends Matter{
   }
   
   void chop(FoodItem obj){
-    startTime = -1;
     if(obj.getChop() > 0){
       if(startTime == -1){
         startTime = millis();
       }
     }
-    
-    int elapsed = millis() - startTime;
-    if(elapsed >= 50000){
-      obj.setChop();
+    if(startTime != -1){
+      int elapsed = millis() - startTime;
+      if(elapsed >= 50000){
+        obj.setChop();
+        startTime = -1;
+      }
     }
   }
   

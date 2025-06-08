@@ -402,17 +402,27 @@ void keyPressed() {
       if(matterInFront instanceof Chopping){
         Chopping board = (Chopping) matterInFront;
         Matter heldFood = A.getItem();
-        if(A.handsFull() && !((FoodItem)heldFood).isChopped() && ((FoodItem)heldFood).board() && board.isEmpty()){
-          board.addItem(heldFood);
-          A.drop(heldFood);
-          A.chop((FoodItem)heldFood);
+        if(A.handsFull() && board.isEmpty()) {
+            board.addItem(heldFood);
+            A.drop(heldFood);
+            A.chop((FoodItem)heldFood);
+            /*println("Hands full? " + A.handsFull());
+            println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
+            println("HeldFood can be chopped on board? " + ((FoodItem)heldFood).board());
+            println("Board is empty? " + board.isEmpty());
+            */
         }
-        if(!A.handsFull() && !board.isEmpty()){
+        else if(!A.handsFull() && !board.isEmpty()){
+          //println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
           Matter removedItem = board.rmItem();
-          A.pickUp((FoodItem) removedItem);
+          if (removedItem instanceof FoodItem) {
+            A.pickUp((FoodItem) removedItem);
+            println("HeldFood is chopped? " + ((FoodItem)removedItem).isChopped());
+          }
         }
       }
     }
+    
     if(matterInFront.getName().equals("Counter")){
       if (matterInFront instanceof Counter) {
         Counter counter = (Counter) matterInFront;
