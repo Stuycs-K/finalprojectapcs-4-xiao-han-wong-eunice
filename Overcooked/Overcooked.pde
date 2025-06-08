@@ -345,7 +345,46 @@ void keyPressed() {
       ((Animatable)matterInFront).start();
       ((Animatable)matterInFront).animate();
     }
+    if(matterInFront.getName().equals("Belt") && A.handsFull()){
+      Matter heldFood = A.getItem();
+      if (matterInFront instanceof Counter) {
+        ((Counter) matterInFront).addItem(heldFood);
+      }
+      ArrayList<FoodItem> preparedList = new ArrayList<FoodItem>();
+      if (heldFood instanceof FoodItem) {
+        preparedList.add((FoodItem) heldFood);
+      }
+      for (int i = 0; i < orders.size(); i++) {
+        Order order = orders.get(i);
+        if (order.isComplete(preparedList)) {
+            orders.remove(i);
+            //add points
+            break;
+        }
+      }
+    }
+    if(matterInFront.getName().equals("chopping board") && A.handsFull()){
+      Matter heldFood = A.getItem();
+      if(!((FoodItem)heldFood).isChopped() && ((FoodItem)heldFood).board()){
+        A.chop((FoodItem)heldFood);
+      }
+    }
+    if(matterInFront.getName().equals("Counter")){
+      if (matterInFront instanceof Counter) {
+        Counter counter = (Counter) matterInFront;
+        Matter heldFood = A.getItem();
+      if (A.handsFull() && !counter.isEmpty()) {
+        counter.addItem(heldFood);
+        A.drop(heldFood);
+      } else if (!A.handsFull() && !counter.isEmpty()) {
+        Matter removedItem = counter.rmItem();
+        if (removedItem != null) {
+          A.pickUp((FoodItem) removedItem);
+        }
+      }
+    }
   }
+        
   
 }
 void setup(){
