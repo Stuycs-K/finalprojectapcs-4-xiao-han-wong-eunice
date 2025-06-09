@@ -28,6 +28,18 @@ class Plate extends Matter implements Droppable{
   boolean trash(){
     return false;
   }
+
+  int getState(){
+    return state;
+  }
+  
+  boolean isWashed(){
+    if(state == clean){
+      return true;
+    }else{
+      return false;
+    }
+  }
   
   void changeState(){
     if (state == clean){

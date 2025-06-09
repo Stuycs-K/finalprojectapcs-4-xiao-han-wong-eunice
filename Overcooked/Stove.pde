@@ -1,8 +1,20 @@
 class Stove extends Matter implements Animatable{
+  ArrayList<Matter> hasItem = new ArrayList<Matter>();
   float startTime = -1;
   Stove(float x, float y){
     super("Stove", x, y, false);
     }
+  
+  void addItem(Matter item){
+    hasItem.add(item);
+  }
+  
+  Matter rmItem(){
+    if (!hasItem.isEmpty()) {
+      return hasItem.remove(0);
+    }
+    return null;
+  }
   
   void start(){
     startTime = millis();
@@ -49,4 +61,9 @@ class Stove extends Matter implements Animatable{
   Matter copy(float X, float Y){
     return new Stove(X, Y);
   }
+  
+  boolean isEmpty(){
+    return hasItem.isEmpty();
+  }
+  
 }

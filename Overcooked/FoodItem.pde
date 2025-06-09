@@ -34,12 +34,13 @@ abstract class FoodItem extends Matter implements Droppable{
   }
   
   void setWash(){
-    washed = !washed;
+    washed = true;
   }
   
   void setChop(){
     chopped = true;
   }
+  
   
   int getWash(){
      return this.washTime;

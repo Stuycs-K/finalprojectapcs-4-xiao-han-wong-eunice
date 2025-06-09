@@ -1,6 +1,18 @@
 class Sink extends Matter implements Animatable{
+  ArrayList<Matter> hasItem = new ArrayList<Matter>();
   Sink(float x, float y){
     super("Sink", x, y, false);
+  }
+  
+  void addItem(Matter item){
+    hasItem.add(item);
+  }
+  
+  Matter rmItem(){
+    if (!hasItem.isEmpty()) {
+      return hasItem.remove(0);
+    }
+    return null;
   }
   
   void start(){
@@ -18,4 +30,9 @@ class Sink extends Matter implements Animatable{
   Matter copy(float X, float Y){
     return new Sink(X, Y);
   }
+  
+  boolean isEmpty(){
+    return hasItem.isEmpty();
+  }
+  
 }

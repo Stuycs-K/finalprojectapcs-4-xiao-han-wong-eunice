@@ -6,6 +6,12 @@ class Salmon extends FoodItem{
   void display(){
     fill(0, 0, 0);
     textSize(20);
+    if(this.isChopped()){
+      fill(236, 64, 122);
+    }
+    if(this.getState() == 1){
+      fill(230, 74, 25);
+    }
     text("Salmon", getX() + 20, getY() + 50);
   }
   
