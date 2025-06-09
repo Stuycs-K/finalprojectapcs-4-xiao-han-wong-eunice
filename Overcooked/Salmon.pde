@@ -1,16 +1,19 @@
 class Salmon extends FoodItem{
   Salmon(float x, float y){
-    super("Salmon", 5, 5, 5, x, y);
+    super("Salmon", 5, 0, 5, x, y);
   }
   
   void display(){
     fill(0, 0, 0);
     textSize(20);
-    if(this.isChopped()){
-      fill(236, 64, 122);
+    if(this.isChopped() && this.isWashed()){
+      fill(13, 71, 161);//blue
     }
-    if(this.getState() == 1){
-      fill(230, 74, 25);
+    else if(this.isWashed()){
+      fill(77, 208, 225);//teal
+    }
+    else if(this.chopped){
+      fill(236, 64, 122);//red
     }
     text("Salmon", getX() + 20, getY() + 50);
   }
