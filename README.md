@@ -31,6 +31,7 @@ How to Make Food
       - ingredients : tuna, rice, seaweed
   - Miso Soup
       - ingredients : miso, seaweed, dashi, tofu
+  
 Preparing Ingredients
   - before putting things together ingredients must be prepped
       - Dashi: cooked
