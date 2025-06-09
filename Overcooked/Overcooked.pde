@@ -36,6 +36,7 @@ void setEasy(){
   ordersFailed = 0;
   secPassed = 0;
   difficulty = 0;
+  
   minLapse = 10;
   maxLapse = 16;
   oneStar = "50";
@@ -342,6 +343,8 @@ void keyPressed() {
   if (key == 'r' || key == 'R'){
     A.move("r",manager);
   }
+  
+  /*
   if (key == 'e' || key == 'E'){
     Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
     //println("matter in front is " + matterInFront);
@@ -377,7 +380,7 @@ void keyPressed() {
         counter.addItem(heldFood);
         A.drop(heldFood);
       }else if (!A.handsFull() && !counter.isEmpty()) {
-        Matter removedItem = counter.rmItem();
+        Matter removedItem = counter.`1    1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ();
         if (removedItem != null) {
           A.pickUp((FoodItem) removedItem);
         }
@@ -406,7 +409,7 @@ void keyPressed() {
       }
     }
     
-}
+}*/
         
   
 }
@@ -428,38 +431,40 @@ void setup(){
   A = new Player("Bob", 900.0, 420.0);
   manager.add(A);
   for(int x = 0; x < 4; x++){
-    counters.add(new Counter(x * 120 + 360, 840));
+    counters.add(new Counter(x * 120 + 420, 900));
     manager.add(counters.get(counters.size() - 1));
   }
   manager.debugPrintAllMatter();
   
-  stove = new Stove(360, 360);
-  stove1 = new Stove(840, 840);
-  stove2 = new Stove(960, 840);
-  stove3 = new Stove(1080, 840);
+  stove = new Stove(1260, 900);
+  stove1 = new Stove(900, 900);
+  stove2 = new Stove(1020, 900);
+  stove3 = new Stove(1140, 900);
   
-  counter0 = new Counter(480, 120);
-  counter1 = new Counter(360, 120);
-  board0 = new Chopping(600, 120);
-  board1 = new Chopping (720, 120);
-  counter2 = new Counter(840, 120);
-  counter3 = new Counter(960, 120);
-  belt1 = new Belt(1200, 120);
-  belt2 = new Belt(1320, 120);
-  trash = new TrashCan(1440, 120);
-  sink1 = new Sink(1680, 360);
-  sink2 = new Sink(1680, 480);
+  counter0 = new Counter(540, 180);
+  counter1 = new Counter(420, 180);
+  board0 = new Chopping(660, 180);
+  board1 = new Chopping (780, 180);
+  counter2 = new Counter(900, 180);
+  counter3 = new Counter(1020, 180);
+  belt1 = new Belt(1260, 180);
+  belt2 = new Belt(1380, 180);
+  trash = new TrashCan(1500, 180);
+  sink1 = new Sink(1740, 420);
+  sink2 = new Sink(1740, 540);
   
   Plate plate1 = new Plate(0,0);
-  Plates = new Inventory(plate1, 10, 1080.0, 120.0);
-  Dashi = new Inventory(new Dashi(0,0), 200, 1080.0, 480.0);
-  Miso = new Inventory(new Miso(0,0), 200, 960.0, 480.0);
-  SalmonFish = new Inventory(new Salmon(0,0), 200, 840.0, 480.0);
-  TunaFish = new Inventory(new Tuna(0,0), 200, 720.0, 480.0);
-  Tofu = new Inventory(new Tofu(0,0), 200, 600.0, 480.0);
-  Rice = new Inventory(new Rice(0,0), 200, 1200.0, 480.0);
-  Seaweed = new Inventory(new Seaweed(0,0), 200, 1440.0, 840.0);
-  Seaweed2 = new Inventory(new Seaweed(0,0), 200, 480.0, 480.0);;
+  Plates = new Inventory(plate1, 10, 1140.0, 180.0);
+  Dashi = new Inventory(new Dashi(0,0), 200, 1140.0, 540.0);
+  Miso = new Inventory(new Miso(0,0), 200, 1020.0, 540.0);
+  SalmonFish = new Inventory(new Salmon(0,0), 200, 900.0, 540.0);
+  TunaFish = new Inventory(new Tuna(0,0), 200, 780.0, 540.0);
+  Tofu = new Inventory(new Tofu(0,0), 200, 660.0,540.0);
+  Rice = new Inventory(new Rice(0,0), 200, 1260.0, 540.0);
+  
+  Seaweed = new Inventory(new Seaweed(0,0), 200, 1500.0, 900.0);
+  
+  Seaweed2 = new Inventory(new Seaweed(0,0), 200, 540.0, 540.0);;
   
   manager.add(counter0);
   manager.add(counter1);
@@ -484,6 +489,7 @@ void setup(){
   manager.add(Seaweed2);
   manager.add(sink1);
   manager.add(sink2);
+  manager.add(stove);
 
   
   setEasy();
@@ -539,6 +545,7 @@ void draw(){
   Seaweed2.display();
   sink1.display();
   sink2.display();
+  stove.display();
   
   
   //displays holding item
@@ -566,14 +573,19 @@ void draw(){
     c.display();
   }
   
-  stove.animate();
-  stove.display();
+  //stove.animate();
+  //stove.display();
   stove1.display();
   stove2.display();
   stove3.display();
   
+  for (Matter m : manager.allMatter) {
+        if (m != A && !A.possess.contains(m)) {
+            m.display();
+        }
+    }
   
-//>>>>>>> Han-Xiao
+  
   //victoryScreen();
 }
 

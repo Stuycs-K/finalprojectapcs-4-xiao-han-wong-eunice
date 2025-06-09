@@ -16,11 +16,11 @@ class Belt extends Matter{
   
   void display(){
     fill(200, 200, 200);
-    rect(getX(), getY(), 120, 120);
+    rect(getX()-60, getY()-60, 120, 120);
     fill(200, 200, 200);
     fill(0, 0, 0);
     textSize(20);
-    text("Belt", getX() + 20, getY() + 50);
+    text("Belt", getX()-20, getY() + 20);
   }
   
   Matter copy(float x, float y){

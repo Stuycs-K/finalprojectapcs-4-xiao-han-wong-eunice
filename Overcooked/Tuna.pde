@@ -6,7 +6,7 @@ class Tuna extends FoodItem{
   void display(){
     fill(0, 0, 0);
     textSize(20);
-    text("Tuna", getX() + 20, getY() + 50);
+    text("Tuna", getX() - 20, getY() + 50);
   }
   
   boolean stove(){
