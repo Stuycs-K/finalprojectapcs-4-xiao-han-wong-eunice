@@ -23,7 +23,7 @@ class Miso extends FoodItem{
   void display(){
     fill(0, 0, 0);
     textSize(20);
-    text("Miso", getX() + 35, getY()+50);
+    text("Miso", getX() - 20, getY()+50);
   }
   
   FoodItem copy(float X, float Y){

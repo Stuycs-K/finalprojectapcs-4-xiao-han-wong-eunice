@@ -8,25 +8,37 @@ class MatterManage{
   Matter getMatterAt(float x, float y) {
     for (Matter m : allMatter) {
       //println("Checking Matter: " + m + " at (" + m.getX() + ", " + m.getY() + ")");
-      if (m.getX() - x == -60 && m.getY() - y == -60) {
+      if (m.getX() == x && m.getY() == y) {
         //println("Found Matter: " + m);
         return m;
       }
     }
+   //println("no matter at: " + x + ", "+y);
    return null;
  }
  
  Matter getMovableMatter(float x, float y){
    for (Matter m : allMatter) {
       //println("Checking Matter: " + m + " at (" + m.getX() + ", " + m.getY() + ")");
-      println(m);
-      println(m.getMove());
-      if ((m.getX() == x && m.getY() == y && m.getMove())) {
-        //println("Found Matter: " + m);
-        return m;
-      }
-      else if((m.toString().equals("Inventory"))){
-        return m.getItem();
+      //println(m);
+      //println(m.getMove());
+        if (m.getX() == x && m.getY() == y && !m.toString().equals("Player")){
+          return m;
+        }
+      
+    }
+   println("no moveable matter at: " + x + ", "+y);
+   return null;
+ }
+ 
+ Matter getNonMovableMatter(float x, float y){
+   for (Matter m : allMatter) {
+      if (!m.getMove()){
+        println("found nonmoveable matter: "+m);
+        if (m.getX() == x && m.getY() == y){
+          println("nonmoveable matter holds: "+m.getItem());
+          return m.getItem();
+        }
       }
     }
    return null;

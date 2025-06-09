@@ -3,10 +3,12 @@ class Player extends Matter{
   int[] dir;
   float[] facing;
   ArrayList<Matter> possess = new ArrayList<Matter>();
+  String previousKey = "w";
+  boolean obst = false;
   
   Player(String name, float x, float y){
-    super(name, x, y, true);
-    facing = new float[]{0, -1};
+    super("Player", x, y, true);
+    facing = new float[]{x, y - 120};
     dir = new int[]{0, -1};
   }
   
@@ -17,7 +19,7 @@ class Player extends Matter{
   float faceY(){
     return facing[1];
   }
-        
+  
   void move(String k, MatterManage manager){
     //if (getX()
     float dx = 0;
@@ -25,47 +27,146 @@ class Player extends Matter{
       if (k.equals("w")){
         dy = -120;
         dir = new int[]{0, -1};
-        facing = new float[]{getX(), getY() + dy};
-        //println("now facing " + Arrays.toString(facing));
+        if(previousKey.equals("d")){
+           facing = new float[]{getX() - 120, getY() + dy};
+        }
+        else if(previousKey.equals("a")){
+           facing = new float[]{getX()+240, getY() + dy -120};
+        }
+        else if(previousKey.equals("s")){
+           facing = new float[]{getX(), getY() + dy -120};
+        }
+        else if (obst == false){
+           facing = new float[]{getX(), getY() +dy};
+        }
+        println("now facing " + Arrays.toString(facing));
+        previousKey = "w";
       }
+      
       if (k.equals("a")){
         dx = -120;
         dir = new int[]{-1, 0};
-        facing = new float[]{getX() + dx, getY()};
+        if(previousKey.equals("w")){
+           facing = new float[]{getX() +  dx, getY() + 120};
+        }
+        else if(previousKey.equals("s")){
+           facing = new float[]{getX()+dx, getY() - 120};
+        }
+        else if(previousKey.equals("d")){
+           facing = new float[]{getX() + dx , getY()};
+        }
+        else if (obst == false){
+           facing = new float[]{getX() + dx, getY()};
+        }
+        //facing = new float[]{getX() + dx - 60, getY() - 60};
         Arrays.toString(facing);
-        //println("now facing " + Arrays.toString(facing));
+        println("now facing " + Arrays.toString(facing));
+        previousKey = "a";
       }
       if (k.equals("s")){
         dy = 120;
         dir = new int[]{0, 1};
-        facing = new float[]{getX()-60, getY() + 60};
+        if(previousKey.equals("w")){
+           facing = new float[]{getX(), getY() + dy + 120};
+        }
+        else if(previousKey.equals("a")){
+           facing = new float[]{getX() + 120, getY() + dy};
+        }
+        else if(previousKey.equals("d")){
+           facing = new float[]{getX(), getY() + dy};
+        }
+        else if (obst == false){
+           facing = new float[]{getX(), getY() + dy};
+        }
         Arrays.toString(facing);
-        //println("now facing " + Arrays.toString(facing));
+        println("now facing " + Arrays.toString(facing));
+        previousKey = "s";
       }
       if (k.equals("d")){
         dx = 120;
         dir = new int[]{1, 0};
-        facing = new float[]{getX() + dx, getY()};
-        //println("now facing " + Arrays.toString(facing));
+        if(previousKey.equals("w")){
+           facing = new float[]{getX() + dx + 120, getY() + 120};
+           println("now facing: "+faceX() +", "+faceY());
+        }
+        else if(previousKey.equals("a")){
+           facing = new float[]{getX() + dx, getY()};
+           println("now facing: "+faceX() +", "+faceY());
+        }
+        else if(previousKey.equals("s")){
+           facing = new float[]{getX() + dx, getY() - 120};
+           println("now facing: "+faceX() +", "+faceY());
+        }
+        else if (obst == false){
+           facing = new float[]{getX() + dx, getY()};
+           println("now facing: "+faceX() +", "+faceY());
+        }
+        println("now facing " + Arrays.toString(facing));
+        previousKey = "d";
       }
       if (k.equals("r")){
+        Matter thing;
         if(!handsFull()){
           println("hands not full");
-          Matter thing = manager.getMovableMatter(faceX(), faceY());
-          println(thing);
+          println("facing: "+faceX() +", "+faceY());
           println("at: "+getX()+", "+getY());
-          println("facing: "+facing[0] +", "+facing[1]);
-          if (thing != null){
+          thing = manager.getMovableMatter(this.faceX(), this.faceY());
+          
+          
+          Matter thingAt = manager.getMovableMatter(this.getX(), this.getY());
+          println("at: "+getX()+", "+getY());
+          //println("facing: "+facing[0] +", "+facing[1]);
+          if (thingAt != null){
+            print("picking up thing");
+            println(thingAt);
+            println(thingAt + " at: "+thingAt.getX() +", "+ thingAt.getY());
+              pickUp(thingAt);
+              println("picked up item: "+thingAt);
+          }
+          else if (thing != null){
+            println("trying to pick up");
+            println(thing);
+            println(thing + " at: "+thing.getX() +", "+ thing.getY());
+            if (!thing.getMove() && thing.hasItem()){
+              pickUp(thing.getItem());
+              println("picked up contained item: "+thing.getItem());
+              thing.rmItem();
+            }
+            
+            else if (thing.getMove()){
               pickUp(thing);
               println("picked up item: "+thing);
-              
-          }
+            }
+          
+        }
         }
         else{
-          println("dropped item: "+getItem());
-          drop();
-
-        }
+          Matter holding = possess.get(0);
+          println("currently possess: "+holding);
+          thing = manager.getMovableMatter(this.faceX(), this.faceY());
+          println("currently facing: "+thing);
+          println("currently facing: "+this.faceX() +", "+this.faceY());
+          // || (thing.toString().equals("Stove")) || (thing.toString().equals("chopping board"))
+          //println("this is a counter: "+thing.toString().equals("Counter"));
+          if(thing != null){
+            if (((thing.toString().equals("Counter") || thing.toString().equals("Stove")) || thing.toString().equals("chopping board")) && !thing.hasItem()){
+              println("dropped and stored item: "+getItem());
+              rmPossess();
+              thing.addItem(holding);
+            }
+          
+            else if (!thing.toString().equals("Inventory") && !thing.hasItem()){
+              println("dropped item: "+getItem());
+              //thing.addItem(holding);
+              dropFacing();    
+            }
+            }
+          }
+        
+        
+        //if (handsFull()){
+          
+        //}
         
       }
     float newX = getX() + dx;
@@ -77,9 +178,13 @@ class Player extends Matter{
     if(obstacle == null){
       //println("No obstacle found, moving.");
        setX(dx);
+       println("new x: " + getX());
        setY(dy);
+       println("new y: " + getY());
+       obst = false;
     }else {
     //println("Obstacle found: " + obstacle.getName() + ", move blocked.");
+    obst = true;
     }
   }
   
@@ -104,16 +209,36 @@ class Player extends Matter{
   
   void drop(Matter obj){
     possess.remove(obj);
+    
+    obj.modX(facing[0]);
+    obj.modY(facing[1]);
   }
   
-  void drop(){
+  void dropFacing() {
+    if (!handsFull()) return;
+    
+    Matter heldItem = possess.get(0);
+    heldItem.modX(facing[0]); 
+    heldItem.modY(facing[1]); 
+    
+    if (!manager.allMatter.contains(heldItem)) {
+        manager.add(heldItem);
+    }
+    
+    possess.remove(0);
+    println("Dropped at: " + facing[0] + ", " + facing[1]);
+}
+  
+  void rmPossess(){
     possess.remove(0);
   }
   
   void pickUp(Matter obj){
-    possess.add(obj);
-    obj.modX(this.getX());
-    obj.modY(this.getY());
+    if (obj.getMove()){
+      possess.add(obj);
+      obj.modX(this.getX());
+      obj.modY(this.getY());
+    }
   }
   
   int startTime;

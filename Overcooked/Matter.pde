@@ -64,6 +64,16 @@ abstract class Matter{
     return this;
   }
   
+  boolean hasItem(){
+    return false;
+  }
+  
+  void addItem(Matter item){
+  }
+  
+  void rmItem(){
+  }
+  
   abstract void display();
   abstract Matter copy(float X, float Y);
   

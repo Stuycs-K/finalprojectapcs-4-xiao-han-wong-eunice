@@ -6,20 +6,36 @@ class Chopping extends Matter {
   
   void addItem(Matter item){
     hasItem.add(item);
+    item.modX(this.getX());
+    println("modified X of "+item);
+    item.modY(this.getY());
+    println("modified Y of "+item);
+    item.display();
   }
   
-  void rmItem(Matter item){
-    hasItem.remove(item);
+  void rmItem(){
+    hasItem.remove(0);
   }
   
   void display(){
     fill(234, 182, 118);
     stroke(0, 0, 0);
-    rect(getX(), getY(), 120, 70);
+    rect(getX()-60, getY()-60, 120, 70);
     fill(234, 182, 118);
   }
   
   Matter copy(float x, float y){
     return new Chopping(0,0);
+  }
+  
+  Matter getItem(){
+    return hasItem.get(0);
+  }
+  
+  boolean hasItem(){
+    if (hasItem.size() > 0){
+      return true;
+    }
+    return false;
   }
 }
