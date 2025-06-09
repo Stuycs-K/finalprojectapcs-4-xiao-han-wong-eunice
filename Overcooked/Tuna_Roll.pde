@@ -38,4 +38,8 @@ class TunaRoll extends Order{
   Matter copy(float X, float Y){
     return new TunaRoll(X, Y);
   }
+  
+  String toString(){
+    return "Tuna Roll: Seaweed, Chopped Tuna, Cooked Rice";
+  }
 }

@@ -20,4 +20,8 @@ class SalmonSashimi extends Order{
   Matter copy(float X, float Y){
     return new SalmonSashimi(X, Y);
   }
+  
+  String toString(){
+    return "Salmon Sashimi: Chopped Salmon";
+  }
 }

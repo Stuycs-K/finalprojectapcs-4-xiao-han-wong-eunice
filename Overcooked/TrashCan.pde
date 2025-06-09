@@ -12,7 +12,7 @@ class TrashCan extends Matter implements Animatable{
   void display(){
     fill(0, 0, 0);
     textSize(20);
-    text("Trash", getX()-20, getY() + 20);
+    text("Trash", getX() + 20, getY() + 50);
   }
   
   Matter copy(float X, float Y){

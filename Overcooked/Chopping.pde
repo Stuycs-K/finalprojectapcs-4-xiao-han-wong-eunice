@@ -1,41 +1,38 @@
 class Chopping extends Matter {
-  ArrayList<Matter> hasItem = new ArrayList<Matter>();
+  //ArrayList<Matter> hasItem = new ArrayList<Matter>();
   Chopping(float x, float y){
     super("chopping board", x, y, false);
   }
   
   void addItem(Matter item){
+    item.modX(getX());
+    item.modY(getX());
     hasItem.add(item);
-    item.modX(this.getX());
-    println("modified X of "+item);
-    item.modY(this.getY());
-    println("modified Y of "+item);
-    item.display();
   }
   
-  void rmItem(){
-    hasItem.remove(0);
+  Matter rmItem(){
+    if (!hasItem.isEmpty()) {
+      return hasItem.remove(0);
+    }
+    return null;
   }
   
   void display(){
     fill(234, 182, 118);
     stroke(0, 0, 0);
-    rect(getX()-60, getY()-60, 120, 70);
+    rect(getX(), getY(), 120, 70);
     fill(234, 182, 118);
+    if(!hasItem.isEmpty()){
+      Matter onBoard = hasItem.get(0);
+      text("Chopping " + onBoard.getName(), getX(), getY());
+    }
   }
   
   Matter copy(float x, float y){
     return new Chopping(0,0);
   }
-  
-  Matter getItem(){
-    return hasItem.get(0);
-  }
-  
-  boolean hasItem(){
-    if (hasItem.size() > 0){
-      return true;
-    }
-    return false;
+
+  boolean isEmpty(){
+    return hasItem.isEmpty();
   }
 }

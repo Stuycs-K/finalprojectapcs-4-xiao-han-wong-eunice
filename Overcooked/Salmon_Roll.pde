@@ -23,4 +23,8 @@ class SalmonRoll extends Order{
   Matter copy(float X, float Y){
     return new Miso(X, Y);
   }
+  
+  String toString(){
+    return "Salmon Roll: Seaweed, Cooked Rice, Chopped Salmon";
+  }
 }

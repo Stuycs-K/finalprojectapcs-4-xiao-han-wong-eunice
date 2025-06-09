@@ -1,10 +1,23 @@
 class Stove extends Matter implements Animatable{
-  float startTime = -1;
   ArrayList<Matter> hasItem = new ArrayList<Matter>();
-  
+  float startTime = -1;
   Stove(float x, float y){
     super("Stove", x, y, false);
     }
+  
+  void addItem(Matter item){
+    item.modX(getX());
+    item.modY(getX());
+    hasItem.add(item);
+    
+  }
+  
+  Matter rmItem(){
+    if (!hasItem.isEmpty()) {
+      return hasItem.remove(0);
+    }
+    return null;
+  }
   
   void start(){
     startTime = millis();
@@ -36,7 +49,7 @@ class Stove extends Matter implements Animatable{
   void display(){
     fill(255,0,0);
     stroke(0, 0, 0);
-    square(getX()-60, getY()-60, 120);
+    square(getX(), getY(), 120);
     fill(189, 148, 104);
     //rotate(radians(-25));
     //rect(245, 550, 50, 10);
@@ -45,31 +58,15 @@ class Stove extends Matter implements Animatable{
     
     //rotate(radians(385));
     fill(98, 98, 126);
-    circle(int(getX()), int(getY()), 100);
+    circle(int(getX() + 60), int(getY() + 60), 100);
   }
   
   Matter copy(float X, float Y){
     return new Stove(X, Y);
   }
   
-  void addItem(Matter obj){
-    if (!hasItem()){
-      hasItem.add(obj);
-      obj.modX(this.getX());
-      obj.modY(this.getY());
-    }
+  boolean isEmpty(){
+    return hasItem.size() == 0;
   }
   
-  boolean hasItem(){
-    if (hasItem.size() > 0){
-      return true;
-    }
-    return false;
-  }
-  
-  void rmItem(){
-    if (hasItem()) {
-       hasItem.remove(0);
-    }
-  }
 }
