@@ -723,8 +723,7 @@ void setup(){
   
 
   
-  setEasy();
-  //randomMode();
+  randomMode();
   timerDisplay();
   
 }
