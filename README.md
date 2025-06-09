@@ -6,10 +6,15 @@ Overcooked is a single-player game that incorporates similar play styles of the 
 # Intended usage:
 
 Keys Used
+
 w - up
+
 a - left
+
 s - down
+
 d - right
+
 e - any action key
   - where the translucent trapezoid spans is the direction that the player is facing. To cook, chop, or wash items, the player must be facing the specific appliance.
     Before clicking 'e' in front of an appliance click the key that will bump you into the appliance again to make sure the location of the trapezoid is facing the
