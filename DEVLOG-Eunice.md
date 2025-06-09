@@ -92,8 +92,8 @@ Finished dog features
   - mouth
   - legs
 
-### 2025-06-08 - Animation(120)
-Figured out why the animation did not work. 
+### 2025-06-08 - Animation + Function Keys(300 min)
+Figured out why the animation did not work. Added a point system, so each specific order is a number of points depending on the difficulty of completing the order. Added a new key 'e' which does all the actions- this includes washing, cooking, and chopping. Set specific colors when the items have gone through an appliance.
 
 
 
