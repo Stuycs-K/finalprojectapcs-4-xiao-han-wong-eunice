@@ -4,11 +4,6 @@ class Chopping extends Matter {
     super("chopping board", x, y, false);
   }
   
-   void colorName(){
-    fill(225,0,0);
-    text(this.getName(), getX(), getY());
-  }
-  
   void addItem(Matter item){
     hasItem.add(item);
   }
@@ -27,8 +22,7 @@ class Chopping extends Matter {
     fill(234, 182, 118);
     if(!hasItem.isEmpty()){
       Matter onBoard = hasItem.get(0);
-      text("chopped " + onBoard.getName(), getX(), getY());
-      colorName();
+      text("Chopping " + onBoard.getName(), getX(), getY());
     }
   }
   

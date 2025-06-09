@@ -34,6 +34,7 @@ Sink sink1, sink2;
 
 //one round lasts 60 seconds
 
+
 void setEasy(){
   ordersDelivered = 0;
   ordersFailed = 0;
@@ -387,19 +388,14 @@ void keyPressed() {
       if (heldFood instanceof FoodItem) {
         preparedList.add((FoodItem) heldFood);
       }
-      boolean orderCompleted = false;
       for (int i = 0; i < orders.size(); i++) {
         Order order = orders.get(i);
         if (order.isComplete(preparedList)) {
             orders.remove(i);
             ordersDelivered++;
             currentScore += order.getScoreValue();
-            orderCompleted = true;
             break;
-          }
         }
-        if(!orderCompleted){
-          ordersFailed++;
       }
     }
     if(matterInFront.getName().equals("chopping board")){
@@ -407,17 +403,20 @@ void keyPressed() {
         Chopping board = (Chopping) matterInFront;
         Matter heldFood = A.getItem();
         if(A.handsFull() && board.isEmpty()) {
-            board.addItem(heldFood);
-            A.drop(heldFood);
-            A.chop((FoodItem)heldFood);
+            if(((FoodItem)heldFood).getChop() > 0 &&!((FoodItem)heldFood).isChopped()){
+              timerDisplay();
+              A.drop(heldFood);
+              board.addItem(heldFood);
+              A.chop((FoodItem)heldFood);
+              }
+            }
             /*println("Hands full? " + A.handsFull());
             println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
             println("HeldFood can be chopped on board? " + ((FoodItem)heldFood).board());
             println("Board is empty? " + board.isEmpty());
             */
-        }
+ 
         else if(!A.handsFull() && !board.isEmpty()){
-          //println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
           Matter removedItem = board.rmItem();
           if (removedItem instanceof FoodItem) {
             A.pickUp((FoodItem) removedItem);
@@ -425,7 +424,8 @@ void keyPressed() {
           }
         }
       }
-    }    
+    }
+    
     if(matterInFront.getName().equals("Counter")){
       if (matterInFront instanceof Counter) {
         Counter counter = (Counter) matterInFront;
@@ -460,27 +460,15 @@ void keyPressed() {
       Matter heldFood = A.getItem();
       A.drop(heldFood);
     }
-    if(matterInFront.getName().equals("Stove")){
-      if(A.handsFull()){
-        Matter heldFood = A.getItem();
-        if (heldFood != null && heldFood instanceof FoodItem) {
-          if (((FoodItem)heldFood).getState() == 0 && ((FoodItem)heldFood).getCook()>0) {
-            if (matterInFront instanceof Animatable) {
-              ((Animatable) matterInFront).start();
-            }
-            if(matterInFront instanceof Stove){
-              A.drop(heldFood);
-              ((Stove)matterInFront).addItem(heldFood);  
-              A.cook((FoodItem)heldFood);
-            }
+    if(matterInFront.getName().equals("Stove") && A.handsFull()){
+      Matter heldFood = A.getItem();
+      if (heldFood != null && heldFood instanceof FoodItem) {
+        FoodItem food = (FoodItem) heldFood;
+        if (food.getState() == 0 && food.stove()) {
+          if (matterInFront instanceof Animatable) {
+            ((Animatable) matterInFront).start();
           }
         }
-      }else if (!A.handsFull() && !((Stove)matterInFront).isEmpty()){
-        Matter removedItem = ((Stove)matterInFront).rmItem();
-        ((Stove)matterInFront).rmItem();
-        //println("is food in stove? " + !((Stove)matterInFront).isEmpty());
-        A.pickUp((FoodItem) removedItem);
-        //println("is food cooked?" + ((FoodItem)removedItem).getState());
       }
     }
     if(matterInFront.getName().equals("Inventory") && !A.handsFull()){
@@ -491,35 +479,7 @@ void keyPressed() {
             A.pickUp(food);
         }
       }
-    }
-    if(matterInFront.getName().equals("Sink")){
-      if(A.handsFull()){
-        Matter heldItem = A.getItem();
-        if(heldItem instanceof FoodItem){
-          if(!((FoodItem)heldItem).isWashed() && ((FoodItem)heldItem).getWash() > 0){
-            A.drop(heldItem);
-            ((Sink)matterInFront).addItem(heldItem);
-            A.washFood((FoodItem)heldItem);
-          }
-        }
-        else if(heldItem instanceof Plate){
-          if(((Plate)heldItem).getState()== 1){
-            A.drop(heldItem);
-            ((Sink)matterInFront).addItem(heldItem);
-            A.washPlate((Plate)heldItem);
-          }
-        }
-      }
-      else if(!A.handsFull() && !((Sink)matterInFront).isEmpty()){
-        Matter removedItem = ((Sink)matterInFront).rmItem();
-        A.pickUp(removedItem);
-        if(removedItem instanceof FoodItem){
-          println("is this washed?" + ((FoodItem)removedItem).isWashed());
-        }else{
-          println("is this washed?" +((Plate)removedItem).isWashed());
-        }
-      }
-    }
+    } 
   }
         
   
@@ -532,7 +492,7 @@ void progressBar(){
 void timerDisplay(){
   fill(0, 0, 0);
   rect(1710, 950, 170, 70);
-  
+ 
 }
 
 void setup(){
@@ -688,7 +648,7 @@ void draw(){
   text("TUNA ROLL", 180, 100);
   */
   
-
+timerDisplay();
 
   for(Counter c : counters){
     c.display();

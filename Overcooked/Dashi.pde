@@ -29,6 +29,9 @@ class Dashi extends FoodItem{
   void display(){
     fill(0, 0, 0);
     textSize(20);
+    if(this.getState() == 1){
+      fill(230, 74, 25);//orange
+    }
     text("Dashi", getX() + 35, getY()+50);
   }
   
