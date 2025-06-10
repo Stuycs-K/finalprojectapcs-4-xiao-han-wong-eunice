@@ -39,5 +39,9 @@ class MisoSoup extends Order{
     return new MisoSoup(X, Y);
   }
   
+  String toString(){
+    return "Miso Soup: Cooked, Seaweed, Cooked Tofu, Dashi Broth";
+  }
+  
   
 }

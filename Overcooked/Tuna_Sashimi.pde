@@ -34,4 +34,8 @@ class TunaSashimi extends Order{
   Matter copy(float X, float Y){
     return new TunaSashimi(X, Y);
   }
+  
+  String toString(){
+    return "Tuna Sashimi: Chopped Tuna";
+  }
 }

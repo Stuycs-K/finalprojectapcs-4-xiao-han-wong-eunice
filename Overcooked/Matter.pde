@@ -1,4 +1,5 @@
 abstract class Matter{
+  ArrayList<Matter> hasItem = new ArrayList<Matter>();
   private String name;
   private float x;
   private float y;
@@ -62,6 +63,11 @@ abstract class Matter{
   
   Matter getItem(){
     return this;
+  }
+  
+  
+  void addItem(Matter item){
+    hasItem.add(item);
   }
   
   abstract void display();

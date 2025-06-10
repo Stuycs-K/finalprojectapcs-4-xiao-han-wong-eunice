@@ -1,11 +1,13 @@
 class Counter extends Matter{
 
-  ArrayList<Matter> hasItem = new ArrayList<Matter>();
+  //ArrayList<Matter> hasItem = new ArrayList<Matter>();
   Counter(float x, float y){
     super("Counter", x, y, false);
   }
   
   void addItem(Matter item){
+    item.modX(getX());
+    item.modY(getX());
     hasItem.add(item);
   }
   

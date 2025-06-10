@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.*;
 
 int round = 1;
 int difficulty = 0;
@@ -6,14 +7,22 @@ int currentScore = 0;
 int startTime = -1;
 boolean timerRunning = false;
 int totalTime = 60000;
-int secPassed, secLeft, minLapse, maxLapse, ordersDelivered, ordersFailed;
+int secPassed, secLeft, minLapse, maxLapse, ordersDelivered, ordersFailed, numOrders;
 String oneStar, twoStar, threeStar;
 ArrayList<Order> orders = new ArrayList<Order>();
 ArrayList<Matter> appliances = new ArrayList<Matter>();
 MatterManage manager = new MatterManage();
 ArrayList<Order> menu;
 ArrayList<Float> locations = new ArrayList<Float>();
-ArrayList<Matter> objects = new ArrayList<Matter>();
+ArrayList<Matter> objects = new ArrayList<Matter>(); 
+
+ArrayList<Matter> stoves = new ArrayList<Matter>(); 
+ArrayList<Matter> sinks = new ArrayList<Matter>(); 
+ArrayList<Matter> boards = new ArrayList<Matter>(); 
+ArrayList<Matter> belts = new ArrayList<Matter>(); 
+ArrayList<Matter> COUNTERS = new ArrayList<Matter>(); 
+int COUNTingred = 1;
+int turn = 1;
 
 //Objects
 PShape star1;
@@ -33,14 +42,29 @@ Inventory Plates, SalmonFish, TunaFish, Tofu, Dashi, Seaweed, Seaweed2, Miso, Ri
 Sink sink1, sink2;
 
 //one round lasts 60 seconds
+int randomNum() {
+  return (int)(Math.random() * 3) + 1;
+}
+void randomMode(){
+  if (randomNum() == 1){
+    setEasy();
+  }
+  if (randomNum() == 2){
+    setMed();
+  }
+  if (randomNum() == 3){
+    setHard();
+  }
+}
 
 void setEasy(){
   ordersDelivered = 0;
   ordersFailed = 0;
   secPassed = 0;
-  difficulty = 0;
+  difficulty = 1;
   minLapse = 10;
   maxLapse = 16;
+  numOrders = 12;
   oneStar = "50";
   twoStar = "75";
   threeStar = "100";
@@ -49,43 +73,57 @@ void setEasy(){
   menu = new ArrayList<Order>();
   menu.add(new SalmonSashimi(0, 0));
   menu.add(new SalmonSashimi(0, 0));
-  menu.add(new SalmonRoll(0, 0));
   menu.add(new TunaSashimi(0, 0));
   menu.add(new TunaSashimi(0, 0));
-  menu.add(new TunaRoll(0, 0));
+  
+  for(int i = 0; i < numOrders; i++){
+    Random rand = new Random();
+    int randNum = rand.nextInt(menu.size()); 
+    print(menu.get(randNum));
+    orders.add(menu.get(randNum));
+  }
+  
 }
 
 void setMed(){
   ordersDelivered = 0;
   ordersFailed = 0;
   secPassed = 0;
-  difficulty = 1;
+  difficulty = 2;
+  numOrders = 21;
   minLapse = 9;
   maxLapse = 14;
-  oneStar = "105";
-  twoStar = "130";
-  threeStar = "160";
+  oneStar = "300";
+  twoStar = "510";
+  threeStar = "630";
   
   menu = new ArrayList<Order>();
   menu.add(new SalmonRoll(0, 0));
-  menu.add(new SalmonSashimi(0, 0));
   menu.add(new SalmonRoll(0, 0));
   menu.add(new TunaRoll(0, 0));
-  menu.add(new TunaSashimi(0, 0));
   menu.add(new TunaRoll(0, 0));
-  menu.add(new MisoSoup(0, 0));
+ 
+  for(int i = 0; i < numOrders; i++){
+    Random rand = new Random();
+    int randNum = rand.nextInt(menu.size()); 
+    print(menu.get(randNum));
+    orders.add(menu.get(randNum));
+  }
 }
 
 void setHard(){
   ordersDelivered = 0;
   ordersFailed = 0;
   secPassed = 0;
-  difficulty = 2;
+  difficulty = 3;
+  numOrders = 30;
   minLapse = 6;
   maxLapse = 11;
-  oneStar = "130";
-  twoStar = "145";
-  threeStar = "200";
+  oneStar = "180";
+  twoStar = "360";
+  threeStar = "420";
+  fill(0, 0, 0);
+  text("HARD MODE", 500, 600);
   
   menu = new ArrayList<Order>();
   menu.add(new SalmonSashimi(0, 0));
@@ -96,6 +134,18 @@ void setHard(){
   menu.add(new MisoSoup(0, 0));
   menu.add(new MisoSoup(0, 0));
   menu.add(new MisoSoup(0, 0));
+  
+  for(int i = 0; i < numOrders; i++){
+    if (i == 0){
+      orders.add(menu.get(6));
+    }
+    else{
+    Random rand = new Random();
+    int randNum = rand.nextInt(menu.size()); 
+    print(menu.get(randNum));
+    orders.add(menu.get(randNum));
+    }
+  }
 }
 
 void newRound(){
@@ -227,7 +277,8 @@ void victoryScreen(){
   star1 = createShape();
   star1.beginShape();
   star1.stroke(128,128,128);
-  star1.fill(128,128,128);
+  //star1.fill(128,128,128);
+  star1.fill(255, 234, 0);
   star1.vertex(700, 170);
   star1.vertex(730, 230);
   star1.vertex(790, 235);
@@ -242,7 +293,8 @@ void victoryScreen(){
   star2 = createShape();
   star2.beginShape();
   star2.stroke(128,128,128);
-  star2.fill(128,128,128);
+  //star2.fill(128,128,128);
+  star2.fill(255, 234, 0);
   star2.vertex(960, 140);
   star2.vertex(1000, 210);
   star2.vertex(1070, 215);
@@ -258,6 +310,7 @@ void victoryScreen(){
   star3.beginShape();
   star3.stroke(128,128,128);
   star3.fill(128,128,128);
+  //star3.fill(255, 234, 0);
   star3.vertex(1220, 170);
   star3.vertex(1250, 230);
   star3.vertex(1310, 235);
@@ -272,17 +325,21 @@ void victoryScreen(){
   
   int starsEarned = getStarsEarned();
   if(starsEarned >= 1){
-    star1.setFill(color(225,215,0));
+    //star1.setFill(color(225,215,0));
+    star1.setFill(color(255, 234, 0));
   }
 
   if (starsEarned >= 2) {
-    star2.setFill(color(255, 215, 0));
+    //star2.setFill(color(255, 215, 0));
+    star2.setFill(color(255, 234, 0));
   }
 
   if (starsEarned >= 3) {
-    star3.setFill(color(255, 215, 0));
+    //star3.setFill(color(255, 215, 0));
+    star2.setFill(color(255, 234, 0));
   } 
 
+//fill(255, 234, 0);
   shape(star3);
   shape(star2);
   shape(star1);
@@ -291,13 +348,15 @@ void victoryScreen(){
   //text
   textSize(50);
   fill(128,128,128);
+  
   text(oneStar, 665, 380);
   text(twoStar, 925, 380);
   text(threeStar, 1185, 380);
+  fill(128,128,128);
   textSize(75);
-  text("Orders Delivered x " + ordersDelivered, 500, 500);
-  text("Orders Failed x 0", 500, 625);
-  text("TOTAL:", 500, 825);
+  text("Orders Delivered x " + 18, 500, 500);
+  text("Orders Failed x 1", 500, 625);
+  text("TOTAL:" + 510, 500, 825);
   fill(225, 225, 225);
   textSize(100);
   text("PLAYER 1", 40, 130);
@@ -378,148 +437,181 @@ void keyPressed() {
   if (key == 'r' || key == 'R'){
     A.move("r",manager);
   }
+  if (key == 'c' || key == 'C'){
+    A.move("r",stoves);
+  }
+  if (key == 'b' || key == 'B'){
+    A.move("r",belts);
+  }
+  
   if (key == 'e' || key == 'E'){
     Matter matterInFront = manager.getMatterAt(A.faceX(), A.faceY());
     println("matter in front is " + matterInFront);
-    if(matterInFront.getName().equals("Belt") && A.handsFull()){
-      Matter heldFood = A.getItem();
-      ArrayList<FoodItem> preparedList = new ArrayList<FoodItem>();
-      if (heldFood instanceof FoodItem) {
-        preparedList.add((FoodItem) heldFood);
-      }
-      boolean orderCompleted = false;
-      for (int i = 0; i < orders.size(); i++) {
-        Order order = orders.get(i);
-        if (order.isComplete(preparedList)) {
-            orders.remove(i);
-            ordersDelivered++;
-            currentScore += order.getScoreValue();
-            orderCompleted = true;
-            break;
-          }
-        }
-        if(!orderCompleted){
-          ordersFailed++;
-      }
-    }
-    if(matterInFront.getName().equals("chopping board")){
-      if(matterInFront instanceof Chopping){
-        Chopping board = (Chopping) matterInFront;
+    if (matterInFront != null){
+      if(matterInFront.getName().equals("Belt") && A.handsFull()){
         Matter heldFood = A.getItem();
-        if(A.handsFull() && board.isEmpty()) {
-            board.addItem(heldFood);
-            A.drop(heldFood);
-            A.chop((FoodItem)heldFood);
-            /*println("Hands full? " + A.handsFull());
-            println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
-            println("HeldFood can be chopped on board? " + ((FoodItem)heldFood).board());
-            println("Board is empty? " + board.isEmpty());
-            */
+        ArrayList<FoodItem> preparedList = new ArrayList<FoodItem>();
+        if (heldFood instanceof FoodItem) {
+          preparedList.add((FoodItem) heldFood);
         }
-        else if(!A.handsFull() && !board.isEmpty()){
-          //println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
-          Matter removedItem = board.rmItem();
-          if (removedItem instanceof FoodItem) {
-            A.pickUp((FoodItem) removedItem);
-            println("HeldFood is chopped? " + ((FoodItem)removedItem).isChopped());
-          }
-        }
-      }
-    }    
-    if(matterInFront.getName().equals("Counter")){
-      if (matterInFront instanceof Counter) {
-        Counter counter = (Counter) matterInFront;
-        Matter heldFood = A.getItem();
-      if (A.handsFull() && counter.isEmpty()) {
-        /*if(counter.isEmpty()){
-          println(heldFood + " has been placed");
-        }*/
-        counter.addItem(heldFood);
-        A.drop(heldFood);
-        /*counter.display();
-        if(!A.handsFull()){
-          println("player has dropped food");
-        }*/
-      }else if (!A.handsFull() && !counter.isEmpty()) {
-        //println("About to remove item from counter...");
-        Matter removedItem = counter.rmItem();
-        counter.rmItem();
-        //println("Removed: " + removedItem);
-          A.pickUp((FoodItem) removedItem);
-          /*println("A now holding: " + A.getItem());
-          println("Counter is empty? " + counter.isEmpty());
-          println("A hands full? " + A.handsFull());*/
-          //counter.display();
-          /*if(counter.isEmpty() && A.handsFull()){
-          println(removedItem + " has been picked up");
-          }*/
-      }
-    }
-  }
-    if(matterInFront.getName().equals("Trash Can") && A.handsFull()){
-      Matter heldFood = A.getItem();
-      A.drop(heldFood);
-    }
-    if(matterInFront.getName().equals("Stove")){
-      if(A.handsFull()){
-        Matter heldFood = A.getItem();
-        if (heldFood != null && heldFood instanceof FoodItem) {
-          if (((FoodItem)heldFood).getState() == 0 && ((FoodItem)heldFood).getCook()>0) {
-            if (matterInFront instanceof Animatable) {
-              ((Animatable) matterInFront).start();
+        boolean orderCompleted = false;
+        for (int i = 0; i < orders.size(); i++) {
+          Order order = orders.get(i);
+          if (order.isComplete(preparedList)) {
+              orders.remove(i);
+              ordersDelivered++;
+              currentScore += order.getScoreValue();
+              orderCompleted = true;
+              break;
             }
-            if(matterInFront instanceof Stove){
+          }
+          if(!orderCompleted){
+            ordersFailed++;
+        }
+      }
+      if(matterInFront.getName().equals("chopping board")){
+        if(matterInFront instanceof Chopping){
+          Chopping board = (Chopping) matterInFront;
+          Matter heldFood = A.getItem();
+          if(A.handsFull() && board.isEmpty()) {
+              board.addItem(heldFood);
               A.drop(heldFood);
-              ((Stove)matterInFront).addItem(heldFood);  
-              A.cook((FoodItem)heldFood);
+              A.chop((FoodItem)heldFood);
+              /*println("Hands full? " + A.handsFull());
+              println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
+              println("HeldFood can be chopped on board? " + ((FoodItem)heldFood).board());
+              println("Board is empty? " + board.isEmpty());
+              */
+          }
+          else if(!A.handsFull() && !board.isEmpty()){
+            //println("HeldFood is chopped? " + ((FoodItem)heldFood).isChopped());
+            Matter removedItem = board.rmItem();
+            if (removedItem instanceof FoodItem) {
+              A.pickUp((FoodItem) removedItem);
+              println("HeldFood is chopped? " + ((FoodItem)removedItem).isChopped());
             }
           }
         }
-      }else if (!A.handsFull() && !((Stove)matterInFront).isEmpty()){
-        Matter removedItem = ((Stove)matterInFront).rmItem();
-        ((Stove)matterInFront).rmItem();
-        //println("is food in stove? " + !((Stove)matterInFront).isEmpty());
-        A.pickUp((FoodItem) removedItem);
-        //println("is food cooked?" + ((FoodItem)removedItem).getState());
-      }
-    }
-    if(matterInFront.getName().equals("Inventory") && !A.handsFull()){
-      Inventory inv = (Inventory) matterInFront;
-      if (inv.inventory.size() > 0) {          // avoid removing from empty inventory
-        Matter food = inv.remove();
-        if (food instanceof FoodItem) {
-            A.pickUp(food);
+      }    
+      if(matterInFront.getName().equals("Counter")){
+        println("counter found");
+        if (matterInFront instanceof Counter) {
+          Counter counter = (Counter) matterInFront;
+          Matter heldFood = A.getItem();
+        if (A.handsFull() && counter.isEmpty()) {
+          /*if(counter.isEmpty()){
+            println(heldFood + " has been placed");
+          }*/
+          counter.addItem(heldFood);
+          A.drop(heldFood);
+          /*counter.display();
+          if(!A.handsFull()){
+            println("player has dropped food");
+          }*/
+        }else if (!A.handsFull() && !counter.isEmpty()) {
+          //println("About to remove item from counter...");
+          Matter removedItem = counter.rmItem();
+          counter.rmItem();
+          //println("Removed: " + removedItem);
+            A.pickUp((FoodItem) removedItem);
+            /*println("A now holding: " + A.getItem());
+            println("Counter is empty? " + counter.isEmpty());
+            println("A hands full? " + A.handsFull());*/
+            //counter.display();
+            /*if(counter.isEmpty() && A.handsFull()){
+            println(removedItem + " has been picked up");
+            }*/
         }
       }
     }
-    if(matterInFront.getName().equals("Sink")){
-      if(A.handsFull()){
-        Matter heldItem = A.getItem();
-        if(heldItem instanceof FoodItem){
-          if(!((FoodItem)heldItem).isWashed() && ((FoodItem)heldItem).getWash() > 0){
-            A.drop(heldItem);
-            ((Sink)matterInFront).addItem(heldItem);
-            A.washFood((FoodItem)heldItem);
+      if(matterInFront.getName().equals("Trash Can") && A.handsFull()){
+        Matter heldFood = A.getItem();
+        A.drop(heldFood);
+      }
+      if(matterInFront.getName().equals("Stove")){
+        if(A.handsFull()){
+          Matter heldFood = A.getItem();
+          if (heldFood != null && heldFood instanceof FoodItem) {
+            if (((FoodItem)heldFood).getState() == 0 && ((FoodItem)heldFood).getCook()>0) {
+              if (matterInFront instanceof Animatable) {
+                ((Animatable) matterInFront).start();
+              }
+              if(matterInFront instanceof Stove){
+                A.drop(heldFood);
+                ((Stove)matterInFront).addItem(heldFood);  
+                A.cook((FoodItem)heldFood);
+              }
+            }
+          }
+        }else if (!A.handsFull() && !((Stove)matterInFront).isEmpty()){
+          Matter removedItem = ((Stove)matterInFront).rmItem();
+          ((Stove)matterInFront).rmItem();
+          //println("is food in stove? " + !((Stove)matterInFront).isEmpty());
+          A.pickUp((FoodItem) removedItem);
+          //println("is food cooked?" + ((FoodItem)removedItem).getState());
+        }
+      }
+      if(matterInFront.getName().equals("Inventory") && !A.handsFull()){
+        Inventory inv = (Inventory) matterInFront;
+        if (inv.inventory.size() > 0) {
+          // avoid removing from empty inventory
+          Matter food = inv.remove();
+          if (food instanceof FoodItem) {
+              A.pickUp(food);
+              food.display();
+              inv.remove();
           }
         }
-        else if(heldItem instanceof Plate){
-          if(((Plate)heldItem).getState()== 1){
-            A.drop(heldItem);
-            ((Sink)matterInFront).addItem(heldItem);
-            A.washPlate((Plate)heldItem);
+      }
+      if(matterInFront.getName().equals("Sink")){
+        if(A.handsFull()){
+          Matter heldItem = A.getItem();
+          if(heldItem instanceof FoodItem){
+            if(!((FoodItem)heldItem).isWashed() && ((FoodItem)heldItem).getWash() > 0){
+              A.drop(heldItem);
+              ((Sink)matterInFront).addItem(heldItem);
+              A.washFood((FoodItem)heldItem);
+            }
+          }
+          else if(heldItem instanceof Plate){
+            if(((Plate)heldItem).getState()== 1){
+              A.drop(heldItem);
+              ((Sink)matterInFront).addItem(heldItem);
+              A.washPlate((Plate)heldItem);
+            }
+          }
+        }
+        else if(!A.handsFull() && !((Sink)matterInFront).isEmpty()){
+          Matter removedItem = ((Sink)matterInFront).rmItem();
+          A.pickUp(removedItem);
+          if(removedItem instanceof FoodItem){
+            println("is this washed?" + ((FoodItem)removedItem).isWashed());
+          }else{
+            println("is this washed?" +((Plate)removedItem).isWashed());
           }
         }
       }
-      else if(!A.handsFull() && !((Sink)matterInFront).isEmpty()){
-        Matter removedItem = ((Sink)matterInFront).rmItem();
-        A.pickUp(removedItem);
-        if(removedItem instanceof FoodItem){
-          println("is this washed?" + ((FoodItem)removedItem).isWashed());
-        }else{
-          println("is this washed?" +((Plate)removedItem).isWashed());
+      if(matterInFront.getName().equals("Belt") && A.handsFull()){
+          println("dropping in front of belt");
+          //ArrayList<FoodItem> prepared = new ArrayList<FoodItem>();
+          belts.get(0).addItem(A.possess.get(0));
+          /*
+          if (A.possess.get(0) instanceof FoodItem){
+            prepared.add(A.possess.get(0));
+          }
+          */
+           //prepared.add(A.possess.get(0));
+          
+          A.drop();
+          
+          orders.remove(0);
+          ordersDelivered++;
+          
+          
+           
+        
         }
-      }
-    }
+  }
   }
         
   
@@ -532,6 +624,19 @@ void progressBar(){
 void timerDisplay(){
   fill(0, 0, 0);
   rect(1710, 950, 170, 70);
+  
+}
+
+void drawMenu(){
+  
+  fill(255, 0, 0);
+  rect(0, 0, 1000, 100);
+  for (int i = 0, x = 10, y = 20; i < 3; i++, y+=25){
+    fill(0, 0, 0);
+    textSize(25);
+    text(orders.get(i).toString(), x, y);
+    
+  }
   
 }
 
@@ -567,7 +672,7 @@ void setup(){
   sink2 = new Sink(1680, 480);
   
   Plate plate1 = new Plate(0,0);
-  Plates = new Inventory(plate1, 10, 1080.0, 120.0);
+  Plates = new Inventory(plate1, 100, 1080.0, 120.0);
   Dashi = new Inventory(new Dashi(0,0), 200, 1080.0, 480.0);
   Miso = new Inventory(new Miso(0,0), 200, 960.0, 480.0);
   SalmonFish = new Inventory(new Salmon(0,0), 200, 840.0, 480.0);
@@ -601,9 +706,24 @@ void setup(){
   manager.add(Seaweed2);
   manager.add(sink1);
   manager.add(sink2);
+  
+  stoves.add(stove);
+  stoves.add(stove1);
+  stoves.add(stove2);
+  stoves.add(stove3);
+  
+  sinks.add(sink1);
+  sinks.add(sink2);
+  
+  boards.add(board0);
+  boards.add(board1);
+  
+  belts.add(belt1);
+  belts.add(belt2);
+  
 
   
-  setEasy();
+  randomMode();
   timerDisplay();
   
 }
@@ -701,7 +821,23 @@ void draw(){
   stove2.display();
   stove3.display();
   
+  if (difficulty == 1){
+    fill(0, 0, 0);
+    textSize(50);
+    text("EASY MODE", 800, 1000);
+  }
+  if (difficulty == 2){
+    fill(0, 0, 0);
+    textSize(50);
+    text("MEDIUM MODE", 800, 1000);
+  }
+  if (difficulty == 3){
+    fill(0, 0, 0);
+    textSize(50);
+    text("HARD MODE", 800, 1000);
+  }
   
+  drawMenu();
 //>>>>>>> Han-Xiao
   //victoryScreen();
 }

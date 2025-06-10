@@ -1,5 +1,5 @@
 class Belt extends Matter{
-  ArrayList<Matter> hasItem = new ArrayList<Matter>();
+  //ArrayList<Matter> hasItem = new ArrayList<Matter>();
   
   Belt(float x, float y){
     super("Belt", x, y, false);

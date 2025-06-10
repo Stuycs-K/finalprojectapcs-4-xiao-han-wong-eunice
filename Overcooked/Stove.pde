@@ -6,7 +6,10 @@ class Stove extends Matter implements Animatable{
     }
   
   void addItem(Matter item){
+    item.modX(getX());
+    item.modY(getX());
     hasItem.add(item);
+    
   }
   
   Matter rmItem(){
@@ -48,6 +51,7 @@ class Stove extends Matter implements Animatable{
     stroke(0, 0, 0);
     square(getX(), getY(), 120);
     fill(189, 148, 104);
+<<<<<<< HEAD
     /*rotate(radians(-25));
     //rect(245, 550, 50, 10);
     rect(getX()-360, getY()+330, 50, 10);
@@ -55,6 +59,14 @@ class Stove extends Matter implements Animatable{
     
     rotate(radians(385));
     */
+=======
+    //rotate(radians(-25));
+    //rect(245, 550, 50, 10);
+    //rect(getX(), getY()+300, 50, 10);
+    //rect(getX(), getY(), 50, 10);
+    
+    //rotate(radians(385));
+>>>>>>> de5859f1e1df83a6fbb3683eb031effb77059b21
     fill(98, 98, 126);
     circle(int(getX() + 60), int(getY() + 60), 100);
     if(!hasItem.isEmpty()){
@@ -68,7 +80,7 @@ class Stove extends Matter implements Animatable{
   }
   
   boolean isEmpty(){
-    return hasItem.isEmpty();
+    return hasItem.size() == 0;
   }
   
 }

@@ -1,9 +1,58 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/YxXKqIeT)
+
+### Final Project Video Link
+https://docs.google.com/document/d/1dfk0zwgNyfp8dS4nMIiWb5ubi9hmCV4EArzLPX7whLQ/edit?usp=sharing
+
+
 # Project Description
 
-lorem ipsum.
+Overcooked is a single-player game that incorporates similar play styles of the original nintendo game, Overcooked. In this game there are specific ingredients that need to be processed together to complete an order and earn points. Other in-game tasks include washing dishes, serving dishes, and trashing unneeded ingredients. There will be a time limit, and the player will try to accumulate as many points as possible. There will be a total of 3 rounds, each round will last one minute and will be progressively harder than the previous.
 
 # Intended usage:
 
-A description as to how the project will be used (describe the user interface). (CHANGE THIS!!!!!)
+Keys Used
+
+w - up
+
+a - left
+
+s - down
+
+d - right
+
+e - any action key
+  - where the translucent trapezoid spans is the direction that the player is facing. To cook, chop, or wash items, the player must be facing the specific appliance.
+    Before clicking 'e' in front of an appliance click the key that will bump you into the appliance again to make sure the location of the trapezoid is facing the
+    appliance. If that is done incorrectly, the game will crash and a nullpointerexception will occur.
+
+How to Make Food
+  - Salmon Sashimi
+      - ingredients : salmon
+  - Tuna Sashimi
+      - ingredients : tuna
+  - Salmon Roll
+      - ingredients : salmon, rice, seaweed
+  - Tuna Roll
+      - ingredients : tuna, rice, seaweed
+  - Miso Soup
+      - ingredients : miso, seaweed, dashi, tofu
+  
+Preparing Ingredients
+  - before putting things together ingredients must be prepped
+      - Dashi: cooked
+      - Miso: washed, chopped, cooked
+      - Rice: washed, cooked
+      - Salmon: washed, chopped
+      - Seaweed: washed, cooked
+      - Tofu: washed, chopped, cooked
+      - Tuna: washed, chopped
+  - you will known the ingredients are washed/chopped/cooked by the following colors:
+      - washed + chopped + cooked = purple
+      - washed + chopped = blue
+      - washed + cooked = brown
+      - chopped + cooked = green
+      - washed = teal
+      - chopped = red
+      - cooked = orange
+    
   
