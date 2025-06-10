@@ -24,7 +24,10 @@ class Sink extends Matter implements Animatable{
   void display(){
     fill(0, 0, 0);
     textSize(20);
-    text("sink", getX() + 20, getY() + 50);
+    if(!hasItem.isEmpty()){
+      Matter onSink = hasItem.get(0);
+      text("Washing " + onSink.getName(), getX(), getY());
+    }
   }
   
   Matter copy(float X, float Y){

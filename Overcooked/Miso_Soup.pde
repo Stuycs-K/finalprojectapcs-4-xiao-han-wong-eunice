@@ -4,7 +4,8 @@ class MisoSoup extends Order{
     super("Miso Soup", new FoodItem[]{
       new Seaweed(0,0),
       new Dashi(0,0),
-      new Tofu(0,0)
+      new Tofu(0,0),
+      new Miso(0,0)
     }, x, y, 40);
     //cannot refer to an instance field need other solution
   }

@@ -48,14 +48,19 @@ class Stove extends Matter implements Animatable{
     stroke(0, 0, 0);
     square(getX(), getY(), 120);
     fill(189, 148, 104);
-    rotate(radians(-25));
+    /*rotate(radians(-25));
     //rect(245, 550, 50, 10);
-    rect(getX(), getY()+300, 50, 10);
+    rect(getX()-360, getY()+330, 50, 10);
     //rect(getX(), getY(), 50, 10);
     
     rotate(radians(385));
+    */
     fill(98, 98, 126);
     circle(int(getX() + 60), int(getY() + 60), 100);
+    if(!hasItem.isEmpty()){
+      Matter onStove = hasItem.get(0);
+      text("Cooking " + onStove.getName(), getX(), getY());
+    }
   }
   
   Matter copy(float X, float Y){

@@ -665,6 +665,7 @@ void draw(){
     if(secLeft <= 0){
       secLeft = 0;
       timerRunning = false;
+      background(225);
       victoryScreen();
     }
   }
